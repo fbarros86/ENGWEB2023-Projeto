@@ -1,0 +1,49 @@
+body, html{
+    margin:0;
+    padding:0;
+}
+.homepage {
+    display: flex;
+    height: 100vh;
+    background-color: black;
+  }
+  
+  .homeimage {
+    flex: 1;
+    background-image: url('/images/error_assets/erro.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: black;
+
+  }
+  
+  .error {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+
+    
+  }
+  
+  .error h1 {
+    font-size:60px;
+    font-weight: bold;
+    color: #c12d2f;
+    margin-top: -100px;
+  }
+  .error h2 {
+    font-size:48px;
+    color: #c12d2f;
+  }
+  .error pre {
+    color: white;
+  }
+  
+  .error img {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
