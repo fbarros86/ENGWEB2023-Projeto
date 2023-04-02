@@ -28,13 +28,13 @@ body, html{
   }
   
   .error h1 {
-    font-size:60px;
+    font-size:48px;
     font-weight: bold;
     color: #c12d2f;
     margin-top: -100px;
   }
   .error h2 {
-    font-size:48px;
+    font-size:38px;
     color: #c12d2f;
   }
   .error pre {

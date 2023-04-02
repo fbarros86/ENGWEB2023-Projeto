@@ -1,0 +1,25 @@
+extends layout_home
+
+block content
+  .top-bar
+    .left-box
+      .number-box 25 #[img(src='/images/user_assets/senha.png', alt='Image', height='20px')]
+        .plus-box +
+    .middle-box Cantina
+    .right-box
+      img(src='/images/user_assets/profile.png', alt='Image', height='50px', width='50px')
+  table.calendar
+    caption= monthName
+    thead
+      tr
+        each dayName in daysOfWeek
+          th= dayName
+    tbody
+      each week in weeks
+        tr
+          each day in week
+            if day.isCurrentMonth
+              td(class=`day ${day.isCurrentWeek ? 'currentWeek' : ''}`)= day.number
+            else
+              td(class='day otherMonth')= day.number
+  script(src='app.js')
