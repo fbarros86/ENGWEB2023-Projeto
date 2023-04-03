@@ -12,5 +12,21 @@ block content
         a(href='#') Editar Perfil
         a(href='#') As Minhas Reservas
         a.w3-text-red(href='#') Log Out
+  .row
+    .hcol
+      h3.w3 Almoço
+    each day in ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta']
+      .col
+        h3= day
+        .square
+          img(src=`images/user_assets/comida1.png`, alt='Almoço')
+          span.checkmark
+  .row
+    .hcol
+      h3 Jantar
+    each day in ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta']
+      .col
+        .square
+          img(src=`images/user_assets/comida1.png`, alt='Jantar')
+          span.checkmark
 
-  
