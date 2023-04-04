@@ -1,184 +1,46 @@
-.top-bar {
+.side-bar {
+  float: left;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   background-color: #c12d2f;
-  height: 80px;
-  padding: 0 50px;
+  padding: 50 0px;
+  width: 10vh;
+  height: 100vh;
 }
 
-
-.left-box {
+.content {
   display: flex;
-  align-items: center;
-
-}
-
-.number-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #c12d2f;
-  border: 2px solid white;
-  border-radius: 30px;
-  color: white;
-  width: 180px;
-  height: 50px;
-  font-size: 24px;
-  font-weight: bold;
-  padding-left: 15px;
-}
-
-
-.plus-box {
-  width: 50px;
-  height: 50px;
-  background-color: #f5f5f5;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: #c12d2f;
-  cursor: pointer;
-  transition: background-color 1s, color 1s;
-}
-
-.plus-box:hover {
-  background-color: #c12d2f;
-  color: white;
-  border: 2px solid white;
-}
-
-
-
-.middle-box {
-  font-size: 34px;
-  font-family: 'Times New Roman', serif;
-  font-weight: bold;
-  color: white;
-  margin: auto;
-}
-
-.right-box {
-  display: flex;
-  margin-left: 130px;
-}  
-
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 50px;
-  right: 0;
-  z-index: 1;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  padding: 12px 16px;
-}
-
-.dropdown-menu a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-menu a:hover {
-  background-color: #f1f1f1;
-}
-
-.show {
-  display: block;
-}
-
-.homepage {
-  display: flex;
-  height: 25vh;
-}
-
-.homeimage {
   flex: 1;
-  background-image: url('/images/user_assets/comida1.png');
-  background-size: cover;
-  background-position: center;
+  flex-direction: column;
+  padding: 50px;
 }
 
-
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.reservar{
+  color: #c12d2f;
+  text-decoration:double;
+  font-weight: bold;
+  padding-bottom: 7vh;
 }
-
-.col {
-  flex-basis: 0;
-  flex-grow: 1;
-  text-align: center;
-  padding: 5px;
+.profile{
+  margin: 2vh;
 }
-.hcol {
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 10%;
-  margin-left:2%;
-  padding: 2px;
-}
-
-h3 {
-  margin: 0;
-}
-
-.square {
-  position: relative;
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-  overflow: hidden;
-}
-
-.square img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.square {
-  display: inline-block;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  width: 200px;
-  height: 200px;
-  border: 1px solid black;
-  text-align: center;
-  position: relative;
-}
-.checkmark {
+.logout{
   position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 24px;
-  color: white;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  bottom:0;
+  margin: 2vh;
 }
 
-.checkmark::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid white;
+.square {
+  border: 3px solid #c12d2f;
+  position: relative;
+  height: 25vh;
+  overflow: hidden;
+  transition: background-color 0.7s;
 }
-
-.checkmark.checked::before {
-  content: '\2713';
+.square:hover{
+  background-color: #ededed;
 }
 
 .reservar-btn{
@@ -194,10 +56,60 @@ h3 {
   width: 10%;
   border-radius: 7px;
   margin: 0 auto;
+  margin-top: 7vh;
+  
 }
 
 .reservar-btn:hover{
   background-color: #c12d2f;
   color: white;
 
+}
+
+.info-btn {
+  background-color: #ffffff;
+  color: #c12d2f;
+  border: 2px solid #c12d2f;
+  border-radius: 7px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 10px auto;
+  padding: 5px;
+  width: 10vw;
+  transition: background-color 1s;
+}
+
+
+.info-btn:hover{
+  background-color: #c12d2f;
+  color: white;
+
+}
+.foodinfo{
+  justify-content: center;
+  text-align: center;
+  margin: 6px;  
+  padding: 6px;
+}
+table{
+  width: 100%;
+}
+th{
+  margin: auto !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+td{
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+table{
+  flex:1;
 }

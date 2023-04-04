@@ -1,33 +1,42 @@
 extends layout_home
 
 block content
-  .top-bar
-    .left-box
-      .number-box 25 #[img(src='/images/user_assets/senha.png', alt='Image', height='20px')]
-        .plus-box +
-    .middle-box CANTINA
-    .right-box
-      img(src='/images/user_assets/profile.png', alt='Profile', height='50px', width='50px' id="dropdown-btn")
-      .dropdown-menu
-        a(href='#') Editar Perfil
-        a(href='#') As Minhas Reservas
-        a.w3-text-red(href='#') Log Out
-  p.w3-padding
-  .row
-    .hcol
-      h3 Almoço
-    each day in ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta']
-      .col
-        h3= day
-        .square
-          img(src=`images/user_assets/almoço${day}.png`, alt='Almoço')
-          span.checkmark
-  .row
-    .hcol
-      h3 Jantar
-    each day in ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta']
-      .col
-        .square
-          img(src=`images/user_assets/jantar${day}.png`, alt='Jantar')
-          span.checkmark
-  .reservar-btn Reservar
+  .side-bar
+    img.profile(src='/images/user_assets/profile.png', alt='Profile', height='50px', width='50px' id="dropdown-btn")
+    img.logout(src='/images/user_assets/logout.png' alt='LogOut'  height='50px', width='50px')
+  .content
+    h1.reservar Reserve os dias que deseje
+    .w3-middle
+      table.w3-table.w3-bordered.w3-padding.w3-centered
+        tr
+          th 
+          th Segunda
+          th Terça
+          th Quarta
+          th Quinta
+          th Sexta
+        tr
+          th Almoço
+          td.square Peito de peru assado
+            button.info-btn Ver Mais
+          td.square Massa bolonhesa
+            button.info-btn Ver Mais
+          td.square Pescada gratinada
+            button.info-btn Ver Mais
+          td.square Frango assado
+            button.info-btn Ver Mais
+          td.square Cenoura BABYYY
+            button.info-btn Ver Mais
+        tr
+          th Jantar
+          td.square Febras de porco com cebolada
+            button.info-btn Ver Mais
+          td.square Redfish no forno com cebolada
+            button.info-btn Ver Mais
+          td.square Espetada de peru grelhada
+            button.info-btn Ver Mais
+          td.square Abrotea assada
+            button.info-btn Ver Mais
+          td.square Massa salteada com cenoura e couve branca
+            button.info-btn Ver Mais
+    .reservar-btn Reservar
