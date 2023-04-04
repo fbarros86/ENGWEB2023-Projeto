@@ -6,7 +6,7 @@
   align-items: center;
   background-color: #c12d2f;
   padding: 50 0px;
-  width: 10vh;
+  width: 7vh;
   height: 100vh;
 }
 
@@ -33,7 +33,6 @@
 }
 
 .square {
-  border: 3px solid #c12d2f;
   position: relative;
   height: 25vh;
   overflow: hidden;
