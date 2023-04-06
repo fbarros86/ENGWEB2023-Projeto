@@ -1,14 +1,17 @@
 extends layout_home
 
 block content
+  .modal(id="display")
   .side-bar
     img.profile(src='/images/user_assets/profile.png', alt='Profile', height='40pw', width='40pw' id="dropdown-btn")
     img.logout(src='/images/user_assets/logout.png' alt='LogOut'  height='40pw', width='40pw')
   .content
-    h1.reservar Reserve os dias que deseje
+    .tituloReservar
+      h1.reservar Reserve as suas refeições!
+      h1.mes #[b.dias 1-7] ABRIL
     .w3-middle
-      table.w3-table.w3-bordered.w3-padding.w3-centered
-        tr
+      table.w3-table.w3-centered
+        tr.w3-border-bottom.w3-margin
           th 
           th SEGUNDA
           th TERÇA
@@ -16,27 +19,27 @@ block content
           th QUINTA
           th SEXTA
         tr
-          th ALMOÇO
+          th.refeicao ALMOÇO
           td.square Peito de peru assado
-            button.w3-display-bottommiddle.info-btn Ver Mais
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
           td.square Massa bolonhesa
-            button.w3-display-bottommiddle.info-btn Ver Mais
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
           td.square Pescada gratinada
-            button.w3-display-bottommiddle.info-btn Ver Mais
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
           td.square Frango assado
-            button.w3-display-bottommiddle.info-btn Ver Mais
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
           td.square Cenoura BABYYY
-            button.w3-display-bottommiddle.info-btn Ver Mais
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
         tr
-          th JANTAR
+          th.refeicao JANTAR
           td.square Febras de porco com cebolada
-            button.w3-display-bottommiddle.info-btn Ver Mais
+            p.info.w3-display-bottommiddle #[a(href="#") DETALHES]
           td.square Redfish no forno com cebolada
-            button.w3-display-bottommiddle.info-btn Ver Mais
+            p.info.w3-display-bottommiddle #[a(href="#") DETALHES]
           td.square Espetada de peru grelhada
-            button.w3-display-bottommiddle.info-btn Ver Mais
+            p.info.w3-display-bottommiddle #[a(href="#") DETALHES]
           td.square Abrotea assada
-            button.w3-display-bottommiddle.info-btn Ver Mais
+            p.info.w3-display-bottommiddle #[a(href="#") DETALHES]
           td.square Massa salteada com cenoura e couve branca
-            button.w3-display-bottommiddle.info-btn Ver Mais
+            p.info.w3-display-bottommiddle #[a(href="#") DETALHES]
     .reservar-btn Reservar
