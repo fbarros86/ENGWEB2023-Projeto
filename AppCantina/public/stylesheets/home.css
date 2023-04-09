@@ -55,6 +55,8 @@
 
 .square {
   position: relative;
+  padding: 20px !important;
+  /*border: 2px solid transparent; Fica fixe assim , mas deformata :(*/
   cursor: pointer;  
   height: 22vh;
   overflow: hidden;
@@ -87,6 +89,7 @@
 }
 table{
   width: 100%;
+  
 }
 th{
   padding-top: 15px !important;
@@ -100,6 +103,7 @@ td{
   align-items: center;
   justify-content: space-between;
   text-align: center;
+  margin: 2px !important;
   padding-top: 15px !important;
   padding-bottom: 15px !important;
 }
@@ -121,4 +125,10 @@ td{
 .info a{
   text-decoration: none !important ;
 
+}
+
+.selected{
+  transition: border-color 0.7s;
+  border: 2px solid #181818;
+  border-radius: 3px;
 }

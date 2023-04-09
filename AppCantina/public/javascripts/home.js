@@ -8,3 +8,7 @@ function showContent(day){
     $("#display").append(ficheiro)
     $("#display").modal() 
 }
+
+function selectDay(element){
+    element.classList.toggle('selected');
+}
