@@ -2,7 +2,7 @@ extends layout_home
 
 block content
   .modal(id="display")
-  .plus-box +
+  .plus-box #[a(href="/buy" style="text-decoration: none;") +]
   .senhas 25
   .side-bar
     img.profile(src='/images/user_assets/profile.png', alt='Profile', height='40pw', width='40pw' id="dropdown-btn")
@@ -35,13 +35,13 @@ block content
         tr
           th.refeicao JANTAR
           td.square(onclick='selectDay(this)') Febras de porco com cebolada
-            p.info.w3-display-bottommiddle #[a(href="#") DETALHES]
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
           td.square(onclick='selectDay(this)') Redfish no forno com cebolada
-            p.info.w3-display-bottommiddle #[a(href="#") DETALHES]
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
           td.square(onclick='selectDay(this)') Espetada de peru grelhada
-            p.info.w3-display-bottommiddle #[a(href="#") DETALHES]
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
           td.square(onclick='selectDay(this)') Abrotea assada
-            p.info.w3-display-bottommiddle #[a(href="#") DETALHES]
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
           td.square(onclick='selectDay(this)') Massa salteada com cenoura e couve branca
-            p.info.w3-display-bottommiddle #[a(href="#") DETALHES]
-    .reservar-btn(onclick='reservou()') Reservar
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+    .reservar-btn(onclick='reservou(this)') Reservar
