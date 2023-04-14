@@ -1,0 +1,302 @@
+[
+    {
+      "_id": "a23428",
+      "login": "adipisicing",
+      "password": "do",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a12891",
+      "login": "in",
+      "password": "sit",
+      "tipo": "student"
+    },
+    {
+      "_id": "a23906",
+      "login": "deserunt",
+      "password": "Lorem",
+      "tipo": "student"
+    },
+    {
+      "_id": "a99834",
+      "login": "reprehenderit",
+      "password": "laboris",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a53743",
+      "login": "reprehenderit",
+      "password": "ad",
+      "tipo": "student"
+    },
+    {
+      "_id": "a20377",
+      "login": "eu",
+      "password": "occaecat",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a28731",
+      "login": "quis",
+      "password": "laborum",
+      "tipo": "student"
+    },
+    {
+      "_id": "a1397",
+      "login": "occaecat",
+      "password": "est",
+      "tipo": "student"
+    },
+    {
+      "_id": "a56125",
+      "login": "ullamco",
+      "password": "reprehenderit",
+      "tipo": "student"
+    },
+    {
+      "_id": "a61409",
+      "login": "officia",
+      "password": "pariatur",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a70504",
+      "login": "aliqua",
+      "password": "esse",
+      "tipo": "student"
+    },
+    {
+      "_id": "a4056",
+      "login": "nisi",
+      "password": "officia",
+      "tipo": "student"
+    },
+    {
+      "_id": "a48357",
+      "login": "sint",
+      "password": "irure",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a65984",
+      "login": "velit",
+      "password": "ipsum",
+      "tipo": "student"
+    },
+    {
+      "_id": "a69604",
+      "login": "laboris",
+      "password": "id",
+      "tipo": "student"
+    },
+    {
+      "_id": "a81524",
+      "login": "nisi",
+      "password": "laborum",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a1837",
+      "login": "excepteur",
+      "password": "cillum",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a37301",
+      "login": "est",
+      "password": "occaecat",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a98748",
+      "login": "aute",
+      "password": "dolor",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a68724",
+      "login": "laborum",
+      "password": "commodo",
+      "tipo": "student"
+    },
+    {
+      "_id": "a54327",
+      "login": "dolore",
+      "password": "amet",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a71427",
+      "login": "enim",
+      "password": "labore",
+      "tipo": "student"
+    },
+    {
+      "_id": "a10217",
+      "login": "et",
+      "password": "culpa",
+      "tipo": "student"
+    },
+    {
+      "_id": "a29627",
+      "login": "nulla",
+      "password": "magna",
+      "tipo": "student"
+    },
+    {
+      "_id": "a826",
+      "login": "non",
+      "password": "labore",
+      "tipo": "student"
+    },
+    {
+      "_id": "a62343",
+      "login": "exercitation",
+      "password": "ad",
+      "tipo": "student"
+    },
+    {
+      "_id": "a21946",
+      "login": "cupidatat",
+      "password": "ipsum",
+      "tipo": "student"
+    },
+    {
+      "_id": "a54440",
+      "login": "quis",
+      "password": "sunt",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a68880",
+      "login": "do",
+      "password": "ex",
+      "tipo": "student"
+    },
+    {
+      "_id": "a11931",
+      "login": "tempor",
+      "password": "adipisicing",
+      "tipo": "student"
+    },
+    {
+      "_id": "a20967",
+      "login": "aliquip",
+      "password": "sit",
+      "tipo": "student"
+    },
+    {
+      "_id": "a80247",
+      "login": "aute",
+      "password": "eiusmod",
+      "tipo": "student"
+    },
+    {
+      "_id": "a45835",
+      "login": "anim",
+      "password": "minim",
+      "tipo": "student"
+    },
+    {
+      "_id": "a34323",
+      "login": "reprehenderit",
+      "password": "ullamco",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a73094",
+      "login": "reprehenderit",
+      "password": "veniam",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a58545",
+      "login": "velit",
+      "password": "nulla",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a59159",
+      "login": "magna",
+      "password": "cillum",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a50887",
+      "login": "sunt",
+      "password": "adipisicing",
+      "tipo": "student"
+    },
+    {
+      "_id": "a20652",
+      "login": "qui",
+      "password": "aliquip",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a41026",
+      "login": "commodo",
+      "password": "do",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a53070",
+      "login": "cillum",
+      "password": "consequat",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a84017",
+      "login": "dolor",
+      "password": "cillum",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a42566",
+      "login": "cillum",
+      "password": "sit",
+      "tipo": "student"
+    },
+    {
+      "_id": "a1059",
+      "login": "sit",
+      "password": "tempor",
+      "tipo": "student"
+    },
+    {
+      "_id": "a47374",
+      "login": "laborum",
+      "password": "cupidatat",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a64491",
+      "login": "Lorem",
+      "password": "dolore",
+      "tipo": "student"
+    },
+    {
+      "_id": "a36987",
+      "login": "commodo",
+      "password": "cillum",
+      "tipo": "student"
+    },
+    {
+      "_id": "a52859",
+      "login": "excepteur",
+      "password": "consequat",
+      "tipo": "notStudent"
+    },
+    {
+      "_id": "a16549",
+      "login": "aliqua",
+      "password": "elit",
+      "tipo": "student"
+    },
+    {
+      "_id": "a49213",
+      "login": "reprehenderit",
+      "password": "consectetur",
+      "tipo": "student"
+    }
+  ]

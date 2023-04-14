@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 
 var mealSchema = new mongoose.Schema({
         _id: String,
-        dia_da_semana:String,
         refeicao:String, //almoco e jantar
         data:Date,
         empratamento:Number,

@@ -9,4 +9,4 @@ var reserveSchema = new mongoose.Schema({
     });
 
 
-module.exports = new mongoose.model('reserva',reserveSchema);
+module.exports = new mongoose.model('reserve',reserveSchema);
