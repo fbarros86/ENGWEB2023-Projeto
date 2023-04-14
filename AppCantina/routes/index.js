@@ -32,7 +32,7 @@ router.post('/', function(req, res, next) {
 });
 
 /* GET admin home page. */
-router.get('/admin/home', function(req, res, next) {
+router.get('/adminhome', function(req, res, next) {
   res.render('admin_home', { title: 'Home' });
 });
 
