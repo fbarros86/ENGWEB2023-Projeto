@@ -1,0 +1,46 @@
+extends layout_home
+
+block content
+  .modal(id="display")
+  .side-bar
+    img.profile(src='/images/user_assets/profile.png', alt='Profile', height='40pw', width='40pw' id="dropdown-btn")
+    img.logout(src='/images/user_assets/logout.png' alt='LogOut'  height='35pw', width='35pw')
+  .content
+    .tituloReservar
+      h1.reservar Reserve as suas refeições!
+      h1.mes #[b.dias 1-7] ABRIL
+    .w3-middle
+      table.w3-table.w3-centered
+        tr.w3-border-bottom.w3-margin
+          th 
+          th SEGUNDA
+          th TERÇA
+          th QUARTA
+          th QUINTA
+          th SEXTA
+        tr
+          th.refeicao ALMOÇO
+          td.square(onclick='selectDay(this)') Sem Informação
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+          td.square(onclick='selectDay(this)') Sem Informação
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+          td.square(onclick='selectDay(this)') Sem Informação
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+          td.square(onclick='selectDay(this)') Sem Informação
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+          td.square(onclick='selectDay(this)') Sem Informação
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+        tr
+          th.refeicao JANTAR
+          td.square(onclick='selectDay(this)') Sem Informação
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+          td.square(onclick='selectDay(this)') Sem Informação
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+          td.square(onclick='selectDay(this)') Sem Informação
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+          td.square(onclick='selectDay(this)') Sem Informação
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+          td.square(onclick='selectDay(this)') Sem Informação
+            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+    .reservar-btn(onclick='reservou(this)') Reservar
+    

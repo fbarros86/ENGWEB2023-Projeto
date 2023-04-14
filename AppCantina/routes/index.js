@@ -25,4 +25,9 @@ router.post('/', function(req, res, next) {
   res.redirect('/home');
 });
 
+/* GET admin home page. */
+router.get('/admin/home', function(req, res, next) {
+  res.render('admin_home', { title: 'Home' });
+});
+
 module.exports = router;

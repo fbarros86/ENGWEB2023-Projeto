@@ -47,9 +47,7 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  border: 3px solid #80171B;
   font-size: 20px;
-  border-radius: 50%;
   transition: background-color 0.7s;
   color:#181818;
   background-color: white;
@@ -95,7 +93,7 @@
 .square {
   position: relative;
   padding: 20px !important;
-  /*border: 2px solid transparent; Fica fixe assim , mas deformata :(*/
+  /*border: 2px solid transparent;*/
   cursor: pointer;  
   height: 22vh;
   overflow: hidden;
@@ -174,13 +172,48 @@ td{
 
 .areservar {
   transition: 0.7s;
-  border: 2px solid yellow;
-  background-color: yellow;
+  color: yellow;
 }
+
+.senha-img.areservar {
+  transition: 0.7s;
+  src: '/images/user_assets/senhaareservar.png';
+  color: yellow;
+}
+
 
 .reservou {
   transition: 0.7s;
-  color: white;
-  border: 2px solid #80171B;
-  background-color: #80171B;
+  color: #80171B;
 }
+/*
+.senha-img {
+  transition: 0.7s;
+  opacity: 1;
+}
+
+.senha-img2{
+  transition: 0.7s;
+  opacity: 0;
+}
+
+.senha-img3{
+  transition: 0.7s;
+  opacity: 0;
+}
+
+.areservar .senha-img {
+  opacity: 0;
+}
+.areservar .senha-img2{
+  opacity: 1;
+}
+
+
+.reservou .senha-img {
+  opacity: 0;
+}
+.reservou .senha-img3{
+  opacity: 1;
+}
+
