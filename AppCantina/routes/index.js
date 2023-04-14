@@ -17,8 +17,8 @@ router.get('/signup', function(req, res, next) {
 /* GET home page. */
 router.get('/home', function(req, res, next) {
 
-  var startOfWeek = moment().startOf('week').add(1, 'day')
-  var endOfWeek = moment().endOf('week').subtract(1, 'day')
+  var startOfWeek = moment().startOf('week')
+  var endOfWeek = moment().endOf('week').subtract(2, 'day')
   res.render('home', { title: 'Home',startOfWeek:startOfWeek, endOfWeek:endOfWeek });
 });
 
@@ -33,7 +33,9 @@ router.post('/', function(req, res, next) {
 
 /* GET admin home page. */
 router.get('/adminhome', function(req, res, next) {
-  res.render('admin_home', { title: 'Home' });
+  var startOfWeek = moment().startOf('week')
+  var endOfWeek = moment().endOf('week').subtract(2, 'day')
+  res.render('admin_home', { title: 'Home', startOfWeek:startOfWeek, endOfWeek:endOfWeek });
 });
 
 module.exports = router;
