@@ -21,4 +21,8 @@ router.get('/buy', function(req, res, next) {
   res.render('buy', { title: 'Comprar senhas' });
 });
 
+router.post('/', function(req, res, next) {
+  res.redirect('/home');
+});
+
 module.exports = router;

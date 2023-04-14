@@ -44,7 +44,7 @@ input:focus {
   outline: solid #c12d2f;
 }
 
-.login button {
+.login button  {
 padding: 8px 16px;
 background-color: #ffffff;
 color: #c12d2f;
@@ -59,6 +59,7 @@ transition: background-color 1s;
   background-color: #c12d2f;
   color: white;
 }
+
 
 .login p {
   margin: 0;
