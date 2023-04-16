@@ -22,8 +22,8 @@ module.exports.getUser = id =>{
                 })
 }
 
-module.exports.addUser = (User) => {
-    return User.collection.insertOne(User)
+module.exports.addUser = (user) => {
+    return User.collection.insertOne(user)
                 .then(dados=>{
                     return dados
                 }
@@ -33,8 +33,8 @@ module.exports.addUser = (User) => {
                 })
   }
 
-module.exports.editUser = (id,User)=>{
-    return User.updateOne({_id:id},User)
+module.exports.editUser = (id,user)=>{
+    return User.updateOne({_id:id},user)
                 .then(dados=>{
                     return dados
                 }

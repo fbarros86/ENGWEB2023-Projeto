@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
         _id: String,
+        email:String,
         login:String,
         password: String,
         tipo:String //estudante, não estudante

@@ -1,7 +1,10 @@
 var express = require('express');
+var axios = require('axios');
+var env = require('../config/env');
 var router = express.Router();
 var moment = require('moment');
 moment.locale('pt-pt');
+var api = 
 
 
 /* GET home page. */
@@ -27,13 +30,28 @@ router.get('/buy', function(req, res, next) {
   res.render('buy', { title: 'Comprar senhas' });
 });
 
-router.post('/', function(req, res, next) {
-  res.redirect('/home');
-});
-
 /* GET admin home page. */
 router.get('/adminhome', function(req, res, next) {
   res.render('admin_home', { title: 'Home' });
 });
+
+/* POST autentication*/
+router.post('/', function(req, res, next) {
+  res.redirect('/home');
+});
+
+/* Create user */
+router.post('/signup', function(req, res, next) {
+  req.body.tipo = "student"
+  //verificar se é estudante e se for _id é igual ao número dele
+  axios.post(env.api+'/users',req.body )
+    .then(response=>
+        res.redirect('/')
+      )
+    .catch(erro=>
+      res.render('error',{error:erro,message:'Unable to add user'}))
+});
+
+
 
 module.exports = router;
