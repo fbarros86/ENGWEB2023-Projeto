@@ -1,13 +1,33 @@
 doctype html
 html
   head
-    title= title
+    title Perfil de #{name}
     link(rel='stylesheet', href='/stylesheets/w3.css')
-    link(rel='stylesheet', href='/stylesheets/profil.css')
+    link(rel='stylesheet', href='/stylesheets/profile.css')
     meta(property="og:title" content="Profile")
     meta(charset="utf-8")
   body
     block content
       .side-bar
-        img.profile(src='/images/user_assets/home.png', alt='Home', height='40pw', width='40pw' id="dropdown-btn")
+        img.home(src='/images/user_assets/home.png', alt='Home', height='43pw', width='43pw' id="dropdown-btn")
+        img.profile(src='/images/user_assets/profile.png', alt='Profile', height='40pw', width='40pw' id="dropdown-btn") 
         img.logout(src='/images/user_assets/logout.png' alt='LogOut'  height='35pw', width='35pw')
+      .title 
+        //- depois por a path guardada de cada user
+        img.profile-image(src='/images/user_assets/profile.png', alt='Profile Image')
+        label(style='color: #80171B; text-decoration: underline;' for="image") Alterar foto de perfil
+        //- h1= name
+        h1 (Nome do Usuário)
+      .content
+        //- por os parâmetros de cada user como value de cada label
+        form
+          .form-field
+            label(for="email") Email:
+            input(type="text" id="email" name="email" value=email readonly)
+          .form-field
+            label(for="name") Nome do Usuário:
+            input(type="text" id="name" name="name" value=name)
+          .form-field
+            label(for="phone") Contacto:
+            input(type="text" id="phone" name="phone" value=phone)
+          button(type="submit") Save Changes

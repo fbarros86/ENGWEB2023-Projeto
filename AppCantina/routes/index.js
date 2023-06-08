@@ -54,6 +54,9 @@ router.post('/signup', function(req, res, next) {
       res.render('error',{error:erro,message:'Unable to add user'}))
 });
 
-
+/* GET profile page. */
+router.get('/profile', function(req, res, next) {
+  res.render('profile', { title: 'Perfil do Usuário' });
+});
 
 module.exports = router;

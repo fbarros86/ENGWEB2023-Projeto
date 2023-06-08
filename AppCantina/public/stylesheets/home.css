@@ -82,12 +82,14 @@
   padding-bottom: 4vw;
 }
 
-.profile{
-  margin: 2vh;
+.home {
+  margin-top: 2vh;
+  margin-bottom: 1.7vh;
 }
-.logout{
+
+.logout {
   position: absolute;
-  bottom:0;
+  bottom: 0;
   margin: 2vh;
 }
 
