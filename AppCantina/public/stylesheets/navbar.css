@@ -1,0 +1,23 @@
+.side-bar {
+    position: fixed;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #80171B;
+    padding: 50 0px;
+    width: 7vh;
+    height: 100vh;
+}
+
+.home {
+  margin-top: 2vh;
+  margin-bottom: 1.7vh;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  margin: 2vh;
+}

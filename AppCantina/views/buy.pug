@@ -1,20 +1,24 @@
-extends layout_buy
+extends layout
 
 block content
-  .side-bar
-    img.profile(src='/images/user_assets/profile.png', alt='Profile', height='40pw', width='40pw' id="dropdown-btn")
-    img.logout(src='/images/user_assets/logout.png' alt='LogOut'  height='35pw', width='35pw')
-  .content
-    h1.tituloComprar Comprar senhas
-    .w3-row
-      .w3-col.w3-half
-        .w3-card-4.borda
-          h2.nrsenhas 1 Senha
-          p.nrsenhas 2.70€
-          .comprar-btn Comprar
-      .w3-col.w3-half
-        .w3-card-4.borda
-          h2.nrsenhas 10 Senhas
-          p.nrsenhas 25€
-          .comprar-btn Comprar
+  link(rel='stylesheet', href='/stylesheets/buy.css')
+  script(src="javascripts/home.js")
+  body
+    .senhas 25
+        img.senha-img(src='/images/user_assets/senha.png', alt='Senha', height='40pw', width='40pw')
+    include navbar.pug
+    .content
+      h1.tituloComprar Comprar senhas
+      .w3-row
+        .w3-col.w3-half
+          .w3-card-4.borda
+            h2.nrsenhas 1 Senha
+            p.nrsenhas 2.70€
+            .comprar-btn Comprar
+        .w3-col.w3-half
+          .w3-card-4.borda
+            h2.nrsenhas 10 Senhas
+            p.nrsenhas 25€
+            .comprar-btn Comprar
+      include footer.pug
 

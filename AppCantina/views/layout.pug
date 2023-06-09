@@ -3,8 +3,12 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/w3.css')
-    link(rel='stylesheet', href='/stylesheets/login.css')
-    meta(property="og:title" content="Login")
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/footer.css')
+    link(rel='stylesheet', href='/stylesheets/jquery.modal.min.css')
+    script(src="javascripts/jquery.min.js")
+    script(src="javascripts/jquery.modal.min.js")
+    meta(property="og:title" content= title)
     meta(charset="utf-8")
-  body
-    block content
+  block content
+  

@@ -1,54 +1,60 @@
-extends layout_home
-
+extends layout
 block content
-  .modal(id="display")
-  .plus-box #[a(href="/buy" style="text-decoration: none;") +]
-  .senhas 25
-    img.senha-img(src='/images/user_assets/senha.png', alt='Senha', height='40pw', width='40pw')
+  link(rel='stylesheet', href='/stylesheets/home.css')
+  script(src="javascripts/home.js")
+  body
+    .modal(id="display")
     
-    //img.senha-img2(src='/images/user_assets/senhaareservar.png', alt='Senha', height='40pw', width='40pw')
-    //img.senha-img3(src='/images/user_assets/senhareservou.png', alt='Senha', height='40pw', width='40pw')
-
-  .side-bar
-    img.home(src='/images/user_assets/home.png', alt='Home', height='43pw', width='43pw' id="dropdown-btn")
-    img.profile(src='/images/user_assets/profile.png', alt='Profile', height='40pw', width='40pw' id="dropdown-btn") 
-    img.logout(src='/images/user_assets/logout.png' alt='LogOut'  height='35pw', width='35pw')
-  .content
-    .tituloReservar
-      h1.reservar Reserve as suas refeições!
-      h1.mes #[b.dias #{startOfWeek.date()}] #{startOfWeek.format('MMMM')} - #[b.dias #{endOfWeek.date()}] #{endOfWeek.format('MMMM')}
-    .w3-middle
-      table.w3-table.w3-centered
-        tr.w3-border-bottom.w3-margin
-          th 
-          th SEGUNDA
-          th TERÇA
-          th QUARTA
-          th QUINTA
-          th SEXTA
-        tr
-          th.refeicao ALMOÇO
-          td.square(onclick='selectDay(this)') Peito de peru assado
-            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-          td.square(onclick='selectDay(this)') Massa bolonhesa
-            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-          td.square(onclick='selectDay(this)') Pescada gratinada
-            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-          td.square(onclick='selectDay(this)') Frango assado
-            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-          td.square(onclick='selectDay(this)') Cenoura BABYYY
-            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-        tr
-          th.refeicao JANTAR
-          td.square(onclick='selectDay(this)') Febras de porco com cebolada
-            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-          td.square(onclick='selectDay(this)') Redfish no forno com cebolada
-            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-          td.square(onclick='selectDay(this)') Espetada de peru grelhada
-            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-          td.square(onclick='selectDay(this)') Abrotea assada
-            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-          td.square(onclick='selectDay(this)') Massa salteada com cenoura e couve branca
-            p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-    .reservar-btn(onclick='reservou(this)') Reservar
-    
+    .plus-box #[a(href="/buy" style="text-decoration: none;") +]
+    .senhas 25
+      img.senha-img(id="img-senha" src='/images/user_assets/senha.png', alt='Senha', height='40pw', width='40pw')
+      
+      //img.senha-img2(src='/images/user_assets/senhaareservar.png', alt='Senha', height='40pw', width='40pw')
+      //img.senha-img3(src='/images/user_assets/senhareservou.png', alt='Senha', height='40pw', width='40pw')
+    include navbar.pug
+    .content
+      .tituloReservar
+        h1.reservar Reserve as suas refeições!
+        h1.mes #[b.dias #{startOfWeek.date()}] #{startOfWeek.format('MMMM')} - #[b.dias #{endOfWeek.date()}] #{endOfWeek.format('MMMM')}
+      .w3-middle
+        table.w3-table.w3-centered
+          tr.w3-border-bottom.w3-margin
+            th 
+            th SEGUNDA
+            th TERÇA
+            th QUARTA
+            th QUINTA
+            th SEXTA
+          tr
+            th.refeicao ALMOÇO
+            td.square(onclick='selectDay(this)') Peito de peru assado
+              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+            td.square(onclick='selectDay(this)') Massa bolonhesa
+              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+            td.square(onclick='selectDay(this)') Pescada gratinada
+              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+            td.square(onclick='selectDay(this)') Frango assado
+              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+            td.square(onclick='selectDay(this)') Cenoura BABYYY
+              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+          tr
+            th.refeicao JANTAR
+            td.square(onclick='selectDay(this)') Febras de porco com cebolada
+              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+            td.square(onclick='selectDay(this)') Redfish no forno com cebolada
+              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+            td.square(onclick='selectDay(this)') Espetada de peru grelhada
+              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+            td.square(onclick='selectDay(this)') Abrotea assada
+              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+            td.square(onclick='selectDay(this)') Massa salteada com cenoura e couve branca
+              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+      .reservar-btn(onclick='reservou(this)') Reservar
+    include footer.pug
+        
+  
+  
+  
+  
+  
+      

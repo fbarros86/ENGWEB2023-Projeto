@@ -17,16 +17,21 @@ function showContent(day){
 }
 
 function selectDay(element){
+    const imagesenhas = document.querySelector('.senha-img')
     const senhas = document.querySelector('.senhas');
+
     const reservabutton = document.querySelector('.reservar-btn')
     //const senhaImg = document.querySelector('.senha-img');
     //const senhaImg2 = document.querySelector('.senha-img2');
-
+    console.log(senhas)
     element.classList.toggle('selected'); 
     if (element.classList.contains('selected')) {
         senhas.textContent = Number(senhas.textContent) - 1;
+        senhas.appendChild(imagesenhas)
       } else {
         senhas.textContent = Number(senhas.textContent) + 1;
+        senhas.appendChild(imagesenhas)
+
       }
       
     const selectedSquares = document.querySelectorAll('.selected');

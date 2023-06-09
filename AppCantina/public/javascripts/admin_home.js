@@ -4,7 +4,7 @@ $(function(){
 function showContent(info){
     event.stopPropagation();
     var ficheiro1=`
-    <div class="w3-card-4 w3-margin w3-padding-large w3-white">
+    <div class="w3-margin w3-padding-large w3-white">
     <h2 class="w3-center">Preencha o Formulário</h2>
 
     <form class="w3-container" method="POST">

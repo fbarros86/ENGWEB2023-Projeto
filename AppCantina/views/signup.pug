@@ -1,15 +1,17 @@
-extends layoutSign
+extends layout
 
 block content
-  .homepage 
-    .homeimage 
-    .signup 
-      div(style="padding:150px;")
-        h1 Sign Up #[img(src="/images/signup_assets/uminho.png" alt="Logo")] 
-        form(method="post")
-          input.w3-round(type="text" name="login" placeholder="Username")
-          input.w3-round(type="text" name="email" placeholder="Email")
-          input.w3-round(type="password" name="password" placeholder="Password")
-          .w3-container 
-            p.w3-left-align Já tens conta? #[a(href="/") Log in]
-              button.w3-right.w3-round(type="submit") Registar
+  link(rel='stylesheet', href='/stylesheets/signup.css')
+  body 
+    .homepage 
+      .homeimage 
+      .signup 
+        div(style="padding:150px;")
+          h1 Sign Up #[img(src="/images/signup_assets/uminho.png" alt="Logo")] 
+          form(method="post")
+            input.w3-round(type="text" name="login" placeholder="Username")
+            input.w3-round(type="text" name="email" placeholder="Email")
+            input.w3-round(type="password" name="password" placeholder="Password")
+            .w3-container 
+              p.w3-left-align Já tens conta? #[a(href="/") Log in]
+                button.w3-right.w3-round(type="submit") Registar

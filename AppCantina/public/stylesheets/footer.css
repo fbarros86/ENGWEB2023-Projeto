@@ -1,0 +1,20 @@
+.separacaofooter{
+    background-color: #80171B;
+    color:  #FFFFF9;
+    display: flex;
+    justify-content:space-between;
+    margin-top: 7%;
+    padding-left:  10vh;
+    
+  
+  }
+  .bloco{
+    color:  #FFFFF9;
+    flex:1;
+  }
+  
+  
+  .leftpadding{
+    color:  #FFFFF9;
+    padding-left: 10px;
+  }

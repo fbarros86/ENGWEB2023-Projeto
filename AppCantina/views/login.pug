@@ -1,14 +1,16 @@
 extends layout
 
 block content
-  .homepage 
-    .homeimage 
-    .login 
-      div(style="padding:150px;")
-        h1 Log In #[img(src="/images/login_assets/uminho.png" alt="Logo")] 
-        form( method="post")
-          input.w3-round(type="text" name="username" placeholder="Username")
-          input.w3-round(type="password" name="password" placeholder="Password")
-          .w3-container 
-            p.w3-left-align Não tens conta? #[a(href="/signup") Regista-te]
-              button.w3-right.w3-round(type="submit") Entrar
+  link(rel='stylesheet', href='/stylesheets/login.css')
+  body
+    .homepage 
+      .homeimage 
+      .login 
+        div(style="padding:150px;")
+          h1 Log In #[img(src="/images/login_assets/uminho.png" alt="Logo")] 
+          form( method="post")
+            input.w3-round(type="text" name="username" placeholder="Username")
+            input.w3-round(type="password" name="password" placeholder="Password")
+            .w3-container 
+              p.w3-left-align Não tens conta? #[a(href="/signup") Regista-te]
+                button.w3-right.w3-round(type="submit") Entrar
