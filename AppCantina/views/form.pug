@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    link(rel='stylesheet', href='/stylesheets/form.css')
+    include navbar.pug
+    .container
+        h1 Criar Novo Usuário
+            form(action="/createUser" method="POST")
+                .form-field
+                    label(for="name") Nome:
+                    input(type="text" id="name" name="name" placeholder="Enter your name" required)
+                .form-field
+                    label(for="password") Password:
+                    input(type="password" id="password" name="password" placeholder="Enter your password" required)
+                .form-field
+                    label(for="type") Type:
+                    select(id="type" name="type" required)
+                        option(value="student") Student
+                        option(value="notStudent") Not a Student
+                .form-field
+                    label(for="type") Access Type:
+                    select(id="type" name="type" required)
+                        option(value="normal") Normal
+                        option(value="admin") Admin
+                button(type="submit") Submit
+    include footer.pug

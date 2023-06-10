@@ -59,6 +59,26 @@
     border-radius: 50%;
     margin-bottom: 5px;
   }
+
+  .upload-button {
+    display: inline-block;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .upload-button span {
+    display: inline-block;
+    vertical-align: middle;
+    color: #80171B;
+    text-decoration: underline;
+    font-size: 20px;
+  }
+  
+  .upload-button input[type="file"] {
+    display: none;
+  }
   
   .content {
     display: flex;
@@ -111,7 +131,7 @@
   }
   
   button[type="submit"]:hover {
-    background-color: #c12d2f;
+    background-color: #80171B;
   }
 
   .reservations {

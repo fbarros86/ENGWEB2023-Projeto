@@ -7,7 +7,7 @@ moment.locale('pt-pt');
 var api = 
 
 
-/* GET home page. */
+/* GET login page. */
 router.get('/', function(req, res, next) {
   res.render('login', { title: 'Log In' });
 });
@@ -58,5 +58,11 @@ router.post('/signup', function(req, res, next) {
 router.get('/profile', function(req, res, next) {
   res.render('profile', { title: 'Perfil do Usuário' });
 });
+
+/* GET User form page. */
+router.get('/form', function(req, res, next) {
+  res.render('form', { title: 'Formulário de Usuários' });
+});
+
 
 module.exports = router;
