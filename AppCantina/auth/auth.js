@@ -1,0 +1,39 @@
+var axios = require('axios');
+
+module.exports.verifyAuth = function(req,res,next){
+    if(req.cookies && req.cookies.token){
+        axios.get("http://localhost:7779/users?token="+req.cookies.token)
+            .then(r=>{
+                next()
+            })
+            .catch(e=>{
+                res.status(401).jsonp({error: e})
+            })
+      } 
+      else{
+        //console.log(req)
+        res.redirect('/')
+      }  
+}
+
+module.exports.signup = function (req,res,next){
+    axios.post("http://localhost:7779/users/register",req.body)
+        .then(r=>{
+            next()
+        })
+        .catch(e=>{
+            res.status(401).jsonp({error: e})
+        })
+}
+
+module.exports.login = function (req,res,next){
+    axios.post("http://localhost:7779/users/login",req.body)
+    .then(r=>{
+            res.cookie("token", r.data.token, { maxAge: 3600000 });
+            next()
+        })
+        .catch(e=>{
+            res.status(401).jsonp({error: e})
+        })
+}
+
