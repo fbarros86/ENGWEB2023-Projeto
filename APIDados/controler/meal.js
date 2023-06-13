@@ -22,6 +22,17 @@ module.exports.getMeal = id =>{
                 })
 }
 
+module.exports.getMealDate = date =>{
+    return Meal.find({data:date})
+                .then(dados=>{
+                    return dados
+                }
+                )
+                .catch(erro=>{
+                   return erro
+                })
+}
+
 module.exports.addMeal = (Meal) => {
     return Meal.collection.insertOne(Meal)
                 .then(dados=>{

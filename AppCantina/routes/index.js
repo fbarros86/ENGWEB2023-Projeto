@@ -38,6 +38,19 @@ router.get('/buy', auth.verifyAuthNotAdmin, function(req, res, next) {
 router.get('/adminhome',auth.verifyAuthAdmin,  function(req, res, next) {
   var startOfWeek = moment().startOf('week')
   var endOfWeek = moment().endOf('week').subtract(2, 'day')
+  var listMeals = {};
+  for (let i = 0; i < 5; i++) {
+    var date = moment().startOf('week').add(i, 'day').format('YYYY-MM-DD')
+    axios.get("http://localhost:7778/meals/date/"+date)
+      .then(r=>{
+        listMeals[date]=r
+      })
+      .catch(e=>{
+        console.log(e)
+
+      })
+  }
+  console.log(listMeals)
   res.render('admin_home', { title: 'Home', startOfWeek:startOfWeek, endOfWeek:endOfWeek });
 });
 
@@ -60,7 +73,7 @@ router.get('/profile',auth.verifyAuthNotAdmin ,function(req, res, next) {
 });
 
 /* GET User form page. */
-router.get('/form', auth.verifyAdminAuth,function(req, res, next) {
+router.get('/form', auth.verifyAuthAdmin,function(req, res, next) {
   res.render('form', { title: 'Formulário de Usuários' });
 });
 
