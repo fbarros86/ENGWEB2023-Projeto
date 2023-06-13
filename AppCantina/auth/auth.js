@@ -11,30 +11,35 @@ module.exports.verifyAuth = function(req,res,next){
             })
       } 
       else{
-        //console.log(req)
-        res.redirect('/?e="permission"')
+        res.redirect('/?info=permission')
       }  
 }
 
 
-
+//verifica se está logdado não como admin
 module.exports.verifyAuthNotAdmin = function(req,res,next){
     if(req.cookies && req.cookies.token){
         axios.get("http://localhost:7779/users/token?token="+req.cookies.token)
             .then(r=>{
                     console.log(r)
-                    if(r.data.tipo=="A") res.status(401).jsonp({error: "Utilizador é admin, não tem premissões para esta página"})
+                    if(r.data.tipo=="A"){
+                        // É admin
+                        res.redirect('/?info=notuser')
+                        //res.status(401).jsonp({error: "Utilizador é admin, não tem premissões para esta página"})
+                    } 
                     else {
                         req.user=r.data
                         next()
                     }
             })
             .catch(e=>{
-                res.status(401).jsonp({error: e})
+                //sessão expirou
+                res.redirect('/?info=session')
+                //res.status(401).jsonp({error: e})
             })
       } 
       else{
-        //console.log(req)
+        //nao esta ninguem logged in
         res.redirect('/')
       }  
 }
@@ -56,7 +61,7 @@ module.exports.verifyAuthAdmin = function(req,res,next){
       } 
       else{
         //console.log(req)
-        res.redirect('/?e="permission"')
+        res.redirect('/?info=permission')
       }  
 }
 
