@@ -16,12 +16,39 @@ module.exports.verifyAuth = function(req,res,next){
       }  
 }
 
+
+
+module.exports.verifyAuthNotAdmin = function(req,res,next){
+    if(req.cookies && req.cookies.token){
+        axios.get("http://localhost:7779/users/token?token="+req.cookies.token)
+            .then(r=>{
+                    console.log(r)
+                    if(r.data.tipo=="A") res.status(401).jsonp({error: "Utilizador é admin, não tem premissões para esta página"})
+                    else {
+                        req.user=r.data
+                        next()
+                    }
+            })
+            .catch(e=>{
+                res.status(401).jsonp({error: e})
+            })
+      } 
+      else{
+        //console.log(req)
+        res.redirect('/')
+      }  
+}
+
 module.exports.verifyAuthAdmin = function(req,res,next){
     if(req.cookies && req.cookies.token){
-        axios.get("http://localhost:7779/users?token="+req.cookies.token)
+        axios.get("http://localhost:7779/users/token?token="+req.cookies.token)
             .then(r=>{
-                if(r.data.tipo!="A") res.status(401).jsonp({error: "Utilizador não tem premissões de admin"})
-                else next()
+                    console.log(r)
+                    if(r.data.tipo!="A") res.status(401).jsonp({error: "Utilizador não tem premissões de admin"})
+                    else {
+                        req.user=r.data
+                        next()
+                    }
             })
             .catch(e=>{
                 res.status(401).jsonp({error: e})
@@ -48,7 +75,6 @@ module.exports.login = function (req,res,next){
     axios.post("http://localhost:7779/users/login",req.body)
     .then(r=>{
             res.cookie("token", r.data.token, { maxAge: 3600000 });
-            console.log(r.data)
             if (r.data.tipo=="A") res.redirect("/adminhome")
             else res.redirect("/home")
         })

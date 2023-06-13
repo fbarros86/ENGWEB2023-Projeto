@@ -8,7 +8,7 @@ module.exports.verificaAcesso = function (req, res, next){
           res.status(401).jsonp({error: e})
         }
         else{
-          req.id = payload.username;
+          req.username = payload.username;
           next()
         }
       })

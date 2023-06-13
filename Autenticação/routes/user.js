@@ -9,12 +9,21 @@ var User = require('../controllers/user')
 
 router.get('/', auth.verificaAcesso, function(req, res){
   res.status(200).jsonp({Authorized: true, id:req.id})
-  console.log(res)
 })
 
-router.get('/:id', auth.verificaAcesso, function(req, res){
+router.get('/token', auth.verificaAcesso, function(req, res){
+  User.getUser(req.username)
+    .then(r=>{
+      res.status(200).jsonp(r)
+    })
+    .catch(e => {
+      res.status(500).jsonp({error: e})}) 
+})
+
+
+router.get('/username/:id', auth.verificaAcesso, function(req, res){
   User.getUser(req.params.id)
-    .then(dados => res.status(200).jsonp({dados: dados}))
+    .then(dados => res.status(200).jsonp( dados))
     .catch(e => res.status(500).jsonp({error: e}))
 })
 
@@ -32,7 +41,7 @@ router.post('/', auth.verificaAcesso, function(req, res){
 router.post('/register', function(req, res) {
   var d = new Date().toISOString().substring(0,19)
   userModel.register(new userModel({ _id:req.body.username,username: req.body.username, email: req.body.email, 
-                                      tipo: req.body.tipo }), 
+                                      tipo: req.body.tipo,senhas:0 }), 
                 req.body.password, 
                 function(err, user) {
                   if (err) 

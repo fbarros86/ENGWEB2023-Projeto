@@ -22,20 +22,20 @@ router.get('/logout',function(req, res, next) {
 });
 
 /* GET home page. */
-router.get('/home', auth.verifyAuth, function(req, res, next) {
+router.get('/home', auth.verifyAuthNotAdmin, function(req, res, next) {
 
   var startOfWeek = moment().startOf('week')
   var endOfWeek = moment().endOf('week').subtract(2, 'day')
-  res.render('home', { title: 'Home',startOfWeek:startOfWeek, endOfWeek:endOfWeek });
+  res.render('home', { title: 'Home',startOfWeek:startOfWeek, endOfWeek:endOfWeek,user:req.user });
 });
 
 /* GET buy page. */
-router.get('/buy', auth.verifyAuth, function(req, res, next) {
+router.get('/buy', auth.verifyAuthNotAdmin, function(req, res, next) {
   res.render('buy', { title: 'Comprar senhas' });
 });
 
 /* GET admin home page. */
-router.get('/adminhome',auth.verifyAuth,  function(req, res, next) {
+router.get('/adminhome',auth.verifyAuthAdmin,  function(req, res, next) {
   var startOfWeek = moment().startOf('week')
   var endOfWeek = moment().endOf('week').subtract(2, 'day')
   res.render('admin_home', { title: 'Home', startOfWeek:startOfWeek, endOfWeek:endOfWeek });
