@@ -35,21 +35,24 @@ router.get('/buy', auth.verifyAuth, function(req, res, next) {
 });
 
 /* GET admin home page. */
-router.get('/adminhome',auth.verifyAuth,  function(req, res, next) {
+router.get('/adminhome',auth.verifyAuthAdmin,  function(req, res, next) {
   var startOfWeek = moment().startOf('week')
   var endOfWeek = moment().endOf('week').subtract(2, 'day')
   res.render('admin_home', { title: 'Home', startOfWeek:startOfWeek, endOfWeek:endOfWeek });
 });
 
 /* POST autentication*/
-router.post('/',auth.login, function(req, res, next) {
-  res.redirect('/home');
-});
+router.post('/',auth.login);
 
 /* Create user */
-router.post('/signup',auth.signup, function(req, res, next) {
-  res.redirect('/')
-});
+router.post('/signup',function(req,res,next){
+   req.body.tipo="NE" 
+   next()
+  }
+  ,auth.signup, function(req, res, next) {
+    res.redirect('/')
+  }
+);
 
 /* GET profile page. */
 router.get('/profile', function(req, res, next) {

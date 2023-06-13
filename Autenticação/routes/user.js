@@ -31,7 +31,7 @@ router.post('/', auth.verificaAcesso, function(req, res){
 router.post('/register', function(req, res) {
   var d = new Date().toISOString().substring(0,19)
   userModel.register(new userModel({ _id:req.body.username,username: req.body.username, email: req.body.email, 
-                                      tipo: "Estudante" }), 
+                                      tipo: req.body.tipo }), 
                 req.body.password, 
                 function(err, user) {
                   if (err) 
@@ -39,14 +39,10 @@ router.post('/register', function(req, res) {
   })
 })
 
-teste = function(req,res,next){
-  console.log(req.body)
-  next()
-}
 
 
 
-router.post('/login', teste,passport.authenticate('local'), function(req, res) {
+router.post('/login',passport.authenticate('local'), function(req, res) {
   console.log("Authentication successful");
   jwt.sign(
     { username: req.user.username },
@@ -54,7 +50,7 @@ router.post('/login', teste,passport.authenticate('local'), function(req, res) {
     { expiresIn: 3600 },
     function(e, token) {
       if (e) res.status(500).jsonp({ error: "Erro na geração do token: " + e });
-      else res.status(201).jsonp({ token: token });
+      else res.status(201).jsonp({ token: token, tipo:req.user.tipo });
     }
   );
 });
