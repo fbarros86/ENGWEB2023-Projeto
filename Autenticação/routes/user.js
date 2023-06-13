@@ -8,7 +8,8 @@ var auth = require('../auth/auth')
 var User = require('../controllers/user')
 
 router.get('/', auth.verificaAcesso, function(req, res){
-  res.status(200).jsonp({Authorized: true})
+  res.status(200).jsonp({Authorized: true, id:req.id})
+  console.log(res)
 })
 
 router.get('/:id', auth.verificaAcesso, function(req, res){

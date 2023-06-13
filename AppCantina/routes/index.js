@@ -35,7 +35,7 @@ router.get('/buy', auth.verifyAuth, function(req, res, next) {
 });
 
 /* GET admin home page. */
-router.get('/adminhome',auth.verifyAuthAdmin,  function(req, res, next) {
+router.get('/adminhome',auth.verifyAuth,  function(req, res, next) {
   var startOfWeek = moment().startOf('week')
   var endOfWeek = moment().endOf('week').subtract(2, 'day')
   res.render('admin_home', { title: 'Home', startOfWeek:startOfWeek, endOfWeek:endOfWeek });
