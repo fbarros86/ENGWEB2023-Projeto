@@ -41,7 +41,7 @@ router.post('/', auth.verificaAcesso, function(req, res){
 router.post('/register', function(req, res) {
   var d = new Date().toISOString().substring(0,19)
   userModel.register(new userModel({ _id:req.body.username,username: req.body.username, email: req.body.email, 
-                                      tipo: req.body.tipo,senhas:0 }), 
+                                      tipo: req.body.tipo,senhas:1 }), 
                 req.body.password, 
                 function(err, user) {
                   if (err) 

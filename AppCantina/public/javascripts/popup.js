@@ -18,7 +18,13 @@ function popup(){
     else if(myParam=="notuser"){
         alert("The user must not be an Admin")
     }
+    else if(myParam=="notadmin"){
+        alert("The user must be an Admin")
+    }
     else if(myParam=="session"){
         alert("The session ended, please Login again")
+    }
+    else if(myParam=="wrong"){
+        alert("The username or password you introduced was incorrect. Please try again.")
     }
 }
