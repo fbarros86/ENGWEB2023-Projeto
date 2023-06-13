@@ -15,17 +15,15 @@ block content
                                 tr
                                     th Nome
                                     th Tipo
-                                    th Acesso
+                                    th
                             tbody
                                 each val in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
                                     tr
                                         td Jorge Paulo
                                         td Student
-                                        td Normal
                                         td
                                             img.edit(src='/images/user_assets/edit.png', alt='Edit', height='33pw', width='33pw' id="btn")
                                             img.delete(src='/images/user_assets/delete.png', alt='Delete', height='33pw', width='33pw' id="btn")
-                                        td
         .rightside.col
             .container
                 h1 Criar Novo Usuário
@@ -41,10 +39,6 @@ block content
                             select(id="userType" name="type" required)
                                 option(value="student") Student
                                 option(value="notStudent") Not a Student
-                        .form-field
-                            label(for="type") Access Type:
-                            select(id="accessType" name="accessType" required)
-                                option(value="normal") Normal
-                                option(value="admin") Admin
+                                option(value="notStudent") Admin
                         button(type="submit") Submit
     include footer.pug
