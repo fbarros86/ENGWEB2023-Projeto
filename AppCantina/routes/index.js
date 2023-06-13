@@ -50,17 +50,17 @@ router.post('/signup',function(req,res,next){
    next()
   }
   ,auth.signup, function(req, res, next) {
-    res.redirect('/')
+    res.redirect('/?e=create')
   }
 );
 
 /* GET profile page. */
-router.get('/profile', function(req, res, next) {
+router.get('/profile',auth.verifyAuth ,function(req, res, next) {
   res.render('profile', { title: 'Perfil do Usuário' });
 });
 
 /* GET User form page. */
-router.get('/form', function(req, res, next) {
+router.get('/form', auth.verifyAuth,function(req, res, next) {
   res.render('form', { title: 'Formulário de Usuários' });
 });
 
