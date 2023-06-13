@@ -12,7 +12,7 @@ module.exports.verifyAuth = function(req,res,next){
       } 
       else{
         //console.log(req)
-        res.redirect('/')
+        res.redirect('/?e="permission"')
       }  
 }
 
@@ -29,7 +29,7 @@ module.exports.verifyAuthAdmin = function(req,res,next){
       } 
       else{
         //console.log(req)
-        res.redirect('/')
+        res.redirect('/?e="permission"')
       }  
 }
 
