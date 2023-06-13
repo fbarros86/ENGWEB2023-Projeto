@@ -5,18 +5,28 @@ var Meal = require('../controler/meal')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Meal.list()
-    .then(Meals=>{
-      res.json(Meals)
+    .then(meals=>{
+      res.json(meals)
     })
     .catch(erro=>{
       res.status(601).json({ message: "Erro a obter lista de refeições",error:erro })
     })
 });
 
+router.get('/date/:date', function(req, res, next) {
+  Meal.getMealDate(req.params.date)
+    .then(meal=>{
+      res.json(meal)
+    })
+    .catch(erro=>{
+      res.status(602).json({ message: "Erro a obter refeição",error:erro })
+    })
+});
+
 router.get('/:id', function(req, res, next) {
   Meal.getMeal(req.params.id)
-    .then(Meal=>{
-      res.json(Meal)
+    .then(meal=>{
+      res.json(meal)
     })
     .catch(erro=>{
       res.status(602).json({ message: "Erro a obter refeição",error:erro })

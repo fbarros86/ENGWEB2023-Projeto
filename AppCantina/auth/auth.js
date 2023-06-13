@@ -48,7 +48,6 @@ module.exports.verifyAuthAdmin = function(req,res,next){
     if(req.cookies && req.cookies.token){
         axios.get("http://localhost:7779/users/token?token="+req.cookies.token)
             .then(r=>{
-                    console.log(r)
                     if(r.data.tipo!="A") res.status(401).jsonp({error: "Utilizador não tem premissões de admin"})
                     else {
                         req.user=r.data
