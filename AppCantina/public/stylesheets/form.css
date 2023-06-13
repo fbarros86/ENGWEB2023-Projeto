@@ -4,6 +4,17 @@ body {
     margin: 0;
     padding: 0;
   }
+
+  .row {
+    display: flex;
+  }
+  
+  .leftside,
+  .rightside {
+    height: 100vh;
+    flex: 1;
+    align-items: center;
+  }
   
   .container {
     display: flex;
@@ -22,6 +33,7 @@ body {
   
   form {
     margin-top: 10%;
+    margin-left: 3%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,8 +58,18 @@ body {
   }
   
   input[type="text"],
-  input[type="password"],
-  select {
+  input[type="password"]{
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 10px;
+  }
+
+  select#userType,
+  select#accessType {
     width: 100%;
     padding: 8px;
     font-size: 16px;
@@ -71,4 +93,28 @@ body {
   
   button[type="submit"]:hover {
     background-color: #80171B;
+  }
+
+  h1.h1-list {
+    margin-left: 25%;
+    margin-bottom: 5%;
+  }
+
+  .table {
+    width: 100%;
+    align-items: center;
+    margin-top: 1px;
+    margin-left: 15%;
+  }
+  
+  .table-container {
+    margin-top: 1px;
+    max-height: 500px; /* Adjust the maximum height as needed */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling */
+    outline: none; /* Remove default focus outline */
+  }
+
+  .edit {
+    margin-right: 7%
   }
