@@ -99,7 +99,7 @@ router.post('add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
         res.redirect("/adminhome")
     })
     .catch(e=>{
-        res.redirect("/adminhome")//colocar pop up a dizer que falhou
+        res.redirect("/adminhome?info=failtoadd")//colocar pop up a dizer que falhou
     })
 })
 
@@ -109,7 +109,7 @@ router.post('edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
       res.redirect("/adminhome")
   })
   .catch(e=>{
-      res.redirect("/adminhome")//colocar pop up a dizer que falhou
+      res.redirect("/adminhome?info=failtoedit")//colocar pop up a dizer que falhou
   })
 
 
