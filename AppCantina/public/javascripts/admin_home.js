@@ -1,13 +1,13 @@
 $(function(){
 })
 
-function showContent(){
+function showContent(tipo,data){
     event.stopPropagation();
     var ficheiro1=`
     <div class="w3-margin w3-padding-large w3-white">
     <h2 class="w3-center">Preencha o Formulário</h2>
 
-    <form class="w3-container" method="POST">
+    <form class="w3-container" method="POST" action="/add/${tipo}/${data}">
       <div class="w3-row w3-section">
         <label class="w3-col input-label" for="vegetariano">Vegetariano:</label>
           <div class="w3-col" style="margin-top: -8%">
@@ -91,13 +91,13 @@ function showContent(){
 }
 
 
-function editContent(refeicao){
+function editContent(refeicao,tipo,data){
   event.stopPropagation();
   var ficheiro1=`
   <div class="w3-margin w3-padding-large w3-white">
   <h2 class="w3-center">Preencha o Formulário</h2>
 
-  <form class="w3-container" method="POST">
+  <form class="w3-container" method="POST" action="/edit/${tipo}/${data}">
     <div class="w3-row w3-section">
       <label class="w3-col input-label" for="vegetariano">Vegetariano:</label>
         <div class="w3-col" style="margin-top: -8%">

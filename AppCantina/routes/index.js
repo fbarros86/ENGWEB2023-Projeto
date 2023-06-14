@@ -5,6 +5,7 @@ var router = express.Router();
 var moment = require('moment');
 moment.locale('pt-pt');
 var auth = require('../auth/auth')
+const { v4: uuidv4 } = require('uuid');
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
@@ -63,8 +64,19 @@ function getListMeals(req, res, next) {
 
 /* GET admin home page. */
 router.get('/adminhome',auth.verifyAuthAdmin, getListMeals,function(req, res, next) {
-  console.log(req.listMeals)
   res.render('admin_home', { title: 'Home', startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,meals:req.listMeals });
+});
+
+
+
+/* GET profile page. */
+router.get('/profile',auth.verifyAuthNotAdmin ,function(req, res, next) {
+  res.render('profile', { title: 'Perfil do Usuário' });
+});
+
+/* GET User form page. */
+router.get('/form', auth.verifyAuthAdmin,function(req, res, next) {
+  res.render('form', { title: 'Formulário de Usuários' });
 });
 
 /* POST autentication*/
@@ -80,15 +92,28 @@ router.post('/signup',function(req,res,next){
   }
 );
 
-/* GET profile page. */
-router.get('/profile',auth.verifyAuthNotAdmin ,function(req, res, next) {
-  res.render('profile', { title: 'Perfil do Usuário' });
-});
+router.post('add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
+  req.body._id=uuidv4()
+  axios.post("http://localhost:7778/meals/"+req.params.tipo+"/"+req.params.data,req.body)
+    .then(r=>{
+        res.redirect("/adminhome")
+    })
+    .catch(e=>{
+        res.redirect("/adminhome")//colocar pop up a dizer que falhou
+    })
+})
 
-/* GET User form page. */
-router.get('/form', auth.verifyAuthAdmin,function(req, res, next) {
-  res.render('form', { title: 'Formulário de Usuários' });
-});
+router.post('edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
+  axios.put("http://localhost:7778/meals/"+req.params.tipo+"/"+req.params.data,req.body)
+  .then(r=>{
+      res.redirect("/adminhome")
+  })
+  .catch(e=>{
+      res.redirect("/adminhome")//colocar pop up a dizer que falhou
+  })
+
+
+})
 
 
 module.exports = router;
