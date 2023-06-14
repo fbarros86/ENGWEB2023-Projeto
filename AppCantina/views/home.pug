@@ -27,28 +27,32 @@ block content
             th SEXTA
           tr
             th.refeicao ALMOÇO
-            td.square(onclick='selectDay(this)') Peito de peru assado
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-            td.square(onclick='selectDay(this)') Massa bolonhesa
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-            td.square(onclick='selectDay(this)') Pescada gratinada
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-            td.square(onclick='selectDay(this)') Frango assado
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-            td.square(onclick='selectDay(this)') Cenoura BABYYY
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+            each c in [0,1,2,3,4]
+              - var date = startOfWeek.clone().add(c, 'day').format('DD-MM-YYYY')
+              if (meals[date].length>0 && meals[date][0].refeicao=="almoco")
+                - var refeicao = meals[date][0]
+                td.square(onclick='selectDay(this)') #{refeicao.prato}
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
+              else if (meals[date].length>1 && meals[date][1].refeicao=="almoco")
+                - var refeicao = meals[date][1]
+                td.square(onclick='selectDay(this)') #{refeicao.prato}
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES] 
+              else
+                td.square(onclick='selectDay(this)') Sem Informação
           tr
             th.refeicao JANTAR
-            td.square(onclick='selectDay(this)') Febras de porco com cebolada
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-            td.square(onclick='selectDay(this)') Redfish no forno com cebolada
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-            td.square(onclick='selectDay(this)') Espetada de peru grelhada
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-            td.square(onclick='selectDay(this)') Abrotea assada
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
-            td.square(onclick='selectDay(this)') Massa salteada com cenoura e couve branca
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') DETALHES]
+            each c in [0,1,2,3,4]
+              - var date = startOfWeek.clone().add(c, 'day').format('DD-MM-YYYY')
+              if (meals[date].length>0 && meals[date][0].refeicao=="jantar")
+                - var refeicao = meals[date][0]
+                td.square(onclick='selectDay(this)') #{refeicao.prato}
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
+              else if (meals[date].length>1 && meals[date][1].refeicao=="jantar")
+                - var refeicao = meals[date][1]
+                td.square(onclick='selectDay(this)') #{refeicao.prato}
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
+              else
+                td.square(onclick='selectDay(this)') Sem Informação
       .reservar-btn(onclick='reservou(this)') Reservar
     include footer.pug
         

@@ -14,7 +14,7 @@ function checkreservar(){
 
 function showContent(day){
     event.stopPropagation();
-    var ficheiro=$('<pre>'+ day +'</pre>')
+    var ficheiro=$('<pre>'+ JSON.stringify(day) +'</pre>')
     $("#display").empty()
     $("#display").append(ficheiro)
     $("#display").modal() 

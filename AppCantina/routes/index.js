@@ -22,18 +22,6 @@ router.get('/logout',function(req, res, next) {
   res.redirect("/?info=logout");
 });
 
-/* GET home page. */
-router.get('/home', auth.verifyAuthNotAdmin, function(req, res, next) {
-  var startOfWeek = moment().startOf('week')
-  var endOfWeek = moment().endOf('week').subtract(2, 'day')
-  res.render('home', { title: 'Home',startOfWeek:startOfWeek, endOfWeek:endOfWeek,user:req.user });
-});
-
-/* GET buy page. */
-router.get('/buy', auth.verifyAuthNotAdmin, function(req, res, next) {
-  res.render('buy', { title: 'Comprar senhas' });
-});
-
 function getListMeals(req, res, next) {
   req.startOfWeek = moment().startOf('week');
   req.endOfWeek = moment().endOf('week').subtract(2, 'day');
@@ -61,6 +49,18 @@ function getListMeals(req, res, next) {
       res.render("error", { error });
     });
 }
+
+/* GET home page. */
+router.get('/home', auth.verifyAuthNotAdmin, getListMeals,function(req, res, next) {
+  res.render('home', { title: 'Home',startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,user:req.user,meals:req.listMeals });
+});
+
+/* GET buy page. */
+router.get('/buy', auth.verifyAuthNotAdmin, function(req, res, next) {
+  res.render('buy', { title: 'Comprar senhas' });
+});
+
+
 
 /* GET admin home page. */
 router.get('/adminhome',auth.verifyAuthAdmin, getListMeals,function(req, res, next) {
