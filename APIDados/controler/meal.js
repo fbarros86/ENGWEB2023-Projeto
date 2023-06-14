@@ -33,8 +33,8 @@ module.exports.getMealDate = date =>{
                 })
 }
 
-module.exports.addMeal = (Meal) => {
-    return Meal.collection.insertOne(Meal)
+module.exports.addMeal = (meal) => {
+    return Meal.collection.insertOne(meal)
                 .then(dados=>{
                     return dados
                 }
@@ -44,8 +44,19 @@ module.exports.addMeal = (Meal) => {
                 })
   }
 
-module.exports.editMeal = (id,Meal)=>{
-    return Meal.updateOne({_id:id},Meal)
+module.exports.editMeal = (id,meal)=>{
+    return Meal.updateOne({_id:id},meal)
+                .then(dados=>{
+                    return dados
+                }
+                )
+                .catch(erro=>{
+                   return erro
+                })
+}
+
+module.exports.editMealDate = (date,tipo,meal)=>{
+    return Meal.updateOne({data:date,refeicao:tipo},meal)
                 .then(dados=>{
                     return dados
                 }

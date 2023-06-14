@@ -43,10 +43,11 @@ router.post('/', function(req, res, next) {
     })
 });
 
-router.put('/:id', function(req, res, next) {
-  Meal.editMeal(req.params.id,req.body)
-    .then(Meal=>{
-      res.json(Meal)
+
+router.put('/:tipo/:data', function(req, res, next) {
+  Meal.editMealDate(req.params.data,req.params.tipo,req.body)
+    .then(meal=>{
+      res.json(meal)
     })
     .catch(erro=>{
       res.status(604).json({ message: "Erro a atualizar refeição",error:erro })

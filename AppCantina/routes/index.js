@@ -92,9 +92,11 @@ router.post('/signup',function(req,res,next){
   }
 );
 
-router.post('add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
+router.post('/add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
   req.body._id=uuidv4()
-  axios.post("http://localhost:7778/meals/"+req.params.tipo+"/"+req.params.data,req.body)
+  req.body.refeicao=req.params.tipo
+  req.body.data = req.params.data
+  axios.post("http://localhost:7778/meals/",req.body)
     .then(r=>{
         res.redirect("/adminhome")
     })
@@ -103,14 +105,14 @@ router.post('add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
     })
 })
 
-router.post('edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
+router.post('/edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
   axios.put("http://localhost:7778/meals/"+req.params.tipo+"/"+req.params.data,req.body)
-  .then(r=>{
-      res.redirect("/adminhome")
-  })
-  .catch(e=>{
-      res.redirect("/adminhome")//colocar pop up a dizer que falhou
-  })
+    .then(r=>{
+          res.redirect("/adminhome")
+    })
+      .catch(e=>{
+          res.redirect("/adminhome")//colocar pop up a dizer que falhou
+    })
 
 
 })
