@@ -34,24 +34,38 @@ router.get('/buy', auth.verifyAuthNotAdmin, function(req, res, next) {
   res.render('buy', { title: 'Comprar senhas' });
 });
 
-/* GET admin home page. */
-router.get('/adminhome',auth.verifyAuthAdmin,  function(req, res, next) {
-  var startOfWeek = moment().startOf('week')
-  var endOfWeek = moment().endOf('week').subtract(2, 'day')
-  var listMeals = {};
-  for (let i = 0; i < 5; i++) {
-    var date = moment().startOf('week').add(i, 'day').format('YYYY-MM-DD')
-    axios.get("http://localhost:7778/meals/date/"+date)
-      .then(r=>{
-        listMeals[date]=r
-      })
-      .catch(e=>{
-        console.log(e)
+function getListMeals(req, res, next) {
+  req.startOfWeek = moment().startOf('week');
+  req.endOfWeek = moment().endOf('week').subtract(2, 'day');
+  req.listMeals = {};
 
+  const requests = [];
+  for (let i = 0; i < 5; i++) {
+    const date = moment().startOf('week').add(i, 'day').format('DD-MM-YYYY');
+    const request = axios.get("http://localhost:7778/meals/date/" + date)
+      .then(r => {
+        req.listMeals[date] = r.data;
       })
+      .catch(e => {
+        res.render("error", { error: e });
+      });
+
+    requests.push(request);
   }
-  console.log(listMeals)
-  res.render('admin_home', { title: 'Home', startOfWeek:startOfWeek, endOfWeek:endOfWeek });
+
+  Promise.all(requests)
+    .then(() => {
+      next();
+    })
+    .catch(error => {
+      res.render("error", { error });
+    });
+}
+
+/* GET admin home page. */
+router.get('/adminhome',auth.verifyAuthAdmin, getListMeals,function(req, res, next) {
+  console.log(req.listMeals)
+  res.render('admin_home', { title: 'Home', startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,meals:req.listMeals });
 });
 
 /* POST autentication*/

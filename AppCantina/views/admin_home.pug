@@ -21,26 +21,32 @@ block content
             th SEXTA
           tr
             th.refeicao ALMOÇO
-            td.square(onclick='selectDay(this)') Sem Informação
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
-            td.square(onclick='selectDay(this)') Sem Informação
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
-            td.square(onclick='selectDay(this)') Sem Informação
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
-            td.square(onclick='selectDay(this)') Sem Informação
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
-            td.square(onclick='selectDay(this)') Sem Informação
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+            each c in [0,1,2,3,4]
+              - var date = startOfWeek.clone().add(c, 'day').format('DD-MM-YYYY')
+              if (meals[date].length>0 && meals[date][0].refeicao=="almoco")
+                - var refeicao = meals[date][0]
+                td.square #{refeicao.prato}
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ')') EDITAR]
+              else if (meals[date].length>1 && meals[date][1].refeicao=="almoco")
+                - var refeicao = meals[date][1]
+                td.square #{refeicao.prato}
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ')') EDITAR]
+              else
+                td.square Sem Informação
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent()') ADICIONAR]
           tr
             th.refeicao JANTAR
-            td.square(onclick='selectDay(this)') Sem Informação
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
-            td.square(onclick='selectDay(this)') Sem Informação
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
-            td.square(onclick='selectDay(this)') Sem Informação
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
-            td.square(onclick='selectDay(this)') Sem Informação
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
-            td.square(onclick='selectDay(this)') Sem Informação
-              p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("Peito de peru")') ADICIONAR]
+            each c in [0,1,2,3,4]
+              - var date = startOfWeek.clone().add(c, 'day').format('DD-MM-YYYY')
+              if (meals[date].length>0 && meals[date][0].refeicao=="jantar")
+                - var refeicao = meals[date][0]
+                td.square #{refeicao.prato}
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ')') EDITAR]
+              else if (meals[date].length>1 && meals[date][1].refeicao=="jantar")
+                - var refeicao = meals[date][1]
+                td.square #{refeicao.prato}
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ')') EDITAR]
+              else
+                td.square Sem Informação
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent()') ADICIONAR]
     include footer.pug

@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var mealSchema = new mongoose.Schema({
         _id: String,
         refeicao:String, //almoco e jantar
-        data:Date,
+        data:String,
         empratamento:Number,
         sopa:String,
         prato:String,

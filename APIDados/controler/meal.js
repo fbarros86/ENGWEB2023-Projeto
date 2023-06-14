@@ -23,7 +23,7 @@ module.exports.getMeal = id =>{
 }
 
 module.exports.getMealDate = date =>{
-    return Meal.find({data:date})
+    return Meal.find({"data":date})
                 .then(dados=>{
                     return dados
                 }
