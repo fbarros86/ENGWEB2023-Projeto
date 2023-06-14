@@ -18,12 +18,11 @@ router.get('/signup', function(req, res, next) {
 
 router.get('/logout',function(req, res, next) {
   res.clearCookie('token');
-  res.redirect("/");
+  res.redirect("/?info=logout");
 });
 
 /* GET home page. */
 router.get('/home', auth.verifyAuthNotAdmin, function(req, res, next) {
-
   var startOfWeek = moment().startOf('week')
   var endOfWeek = moment().endOf('week').subtract(2, 'day')
   res.render('home', { title: 'Home',startOfWeek:startOfWeek, endOfWeek:endOfWeek,user:req.user });
@@ -77,7 +76,7 @@ router.post('/signup',function(req,res,next){
    next()
   }
   ,auth.signup, function(req, res, next) {
-    res.redirect('/?e=create')
+    res.redirect('/?info=create')
   }
 );
 
