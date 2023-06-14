@@ -5,7 +5,7 @@ $(function(){
 function checkreservar(){
   const myButton = document.getElementById('reservarbtn');
   const selectedSquares = document.querySelectorAll('.selected');
-  if (selectedSquares.length === 0) {
+  if (selectedSquares.length == 0) {
     myButton.disabled = true;
   } else {
     myButton.disabled = false;
