@@ -101,18 +101,18 @@ router.post('/add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
         res.redirect("/adminhome")
     })
     .catch(e=>{
-        res.redirect("/adminhome")//colocar pop up a dizer que falhou
+        res.redirect("/adminhome?info=failtoadd")//colocar pop up a dizer que falhou
     })
 })
 
 router.post('/edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
   axios.put("http://localhost:7778/meals/"+req.params.tipo+"/"+req.params.data,req.body)
-    .then(r=>{
-          res.redirect("/adminhome")
-    })
-      .catch(e=>{
-          res.redirect("/adminhome")//colocar pop up a dizer que falhou
-    })
+  .then(r=>{
+      res.redirect("/adminhome")
+  })
+  .catch(e=>{
+      res.redirect("/adminhome?info=failtoedit")//colocar pop up a dizer que falhou
+  })
 
 
 })

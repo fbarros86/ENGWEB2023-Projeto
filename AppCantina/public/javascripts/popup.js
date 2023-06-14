@@ -27,4 +27,10 @@ function popup(){
     else if(myParam=="wrong"){
         alert("The username or password you introduced was incorrect. Please try again.")
     }
+    else if(myParam=="failtoadd"){
+        alert("Adding Meal Failed, the DataBase is probably offline")
+    }
+    else if(myParam="failtoedit"){
+        alert("Failed to Edit Meal, the DataBase is probably offline")
+    }
 }
