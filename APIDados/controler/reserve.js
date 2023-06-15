@@ -22,6 +22,16 @@ module.exports.getReserve = id =>{
                 })
 }
 
+module.exports.getUserReserves = idUser => {
+    return Reserve.find({ idUser: idUser })
+                .then(dados => {
+                    return dados;
+                })
+                .catch(erro => {
+                    return erro;
+                });
+  };
+
 module.exports.addReserve = (Reserve) => {
     return Reserve.collection.insertOne(Reserve)
                 .then(dados=>{

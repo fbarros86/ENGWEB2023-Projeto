@@ -23,6 +23,16 @@ router.get('/:id', function(req, res, next) {
     })
 });
 
+router.get('/user/:idUser', function(req, res, next) {
+  Reserve.getUserReserves(req.params.idUser)
+    .then(Reserve=>{
+      res.json(Reserve)
+    })
+    .catch(erro=>{
+      res.status(606).json({ message: "Erro a obter reserva",error:erro })
+    })
+});
+
 router.post('/', function(req, res, next) {
   Reserve.addReserve(req.body)
     .then(Reserve=>{

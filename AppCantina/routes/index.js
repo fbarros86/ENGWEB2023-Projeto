@@ -70,8 +70,18 @@ router.get('/adminhome',auth.verifyAuthAdmin, getListMeals,function(req, res, ne
 
 
 /* GET profile page. */
-router.get('/profile',auth.verifyAuthNotAdmin ,function(req, res, next) {
-  res.render('profile', { title: 'Perfil do Usuário' });
+router.get('/profile', auth.verifyAuthNotAdmin, function(req, res, next) {
+  axios.get("http://localhost:7778/users/" + req.user._id)
+    .then(response => {
+      axios.get("http://localhost:7778/reserves/user/" + req.user._id)
+        .then(reserveResponse => {
+          res.render('profile', { title: 'Perfil do Usuário', u: response.data, reserves: reserveResponse.data });
+        })
+        .catch(error => {
+        });
+    })
+    .catch(error => {
+    });
 });
 
 /* GET User form page. */
