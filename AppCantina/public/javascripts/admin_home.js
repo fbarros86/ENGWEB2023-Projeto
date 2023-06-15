@@ -112,22 +112,22 @@ function editContent(refeicao,tipo,data){
 
     <div class="w3-row w3-section">
       <label class="w3-col input-label" for="sopa">Sopa:</label>
-      <input class="w3-col" type="text" id="sopa" name="sopa" value=${refeicao.sopa}>
+      <input class="w3-col" type="text" id="sopa" name="sopa" value="${refeicao.sopa}">
     </div>
 
     <div class="w3-row w3-section">
       <label class="w3-col input-label" for="prato">Prato:</label>
-      <input class="w3-col" type="text" id="prato" name="prato" value=${refeicao.prato}>
+      <input class="w3-col" type="text" id="prato" name="prato" value="${refeicao.prato}">
     </div>
 
     <div class="w3-row w3-section">
       <label class="w3-col input-label" for="acompanhamento1">Acompanhamento 1:</label>
-      <input class="w3-col" type="text" id="acompanhamento1" name="acompanhamento1" value=${refeicao.acompanhamento1}>
+      <input class="w3-col" type="text" id="acompanhamento1" name="acompanhamento1" value="${refeicao.acompanhamento1}">
     </div>
 
     <div class="w3-row w3-section">
       <label class="w3-col input-label" for="acompanhamento2">Acompanhamento 2:</label>
-      <input class="w3-col" type="text" id="acompanhamento2" name="acompanhamento2" value=${refeicao.acompanhamento2}>
+      <input class="w3-col" type="text" id="acompanhamento2" name="acompanhamento2" value="${refeicao.acompanhamento2}">
     </div>
 
     <div class="w3-row w3-section">
