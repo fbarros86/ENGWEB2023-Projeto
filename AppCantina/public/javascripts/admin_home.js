@@ -147,7 +147,7 @@ function editContent(refeicao,tipo,data){
 
     <div class="w3-row w3-section">
       <label class="w3-col input-label" for="hidratos">Hidratos:</label>
-      <input class="w3-col" type="number" id="hidratos" name="hidratos value=${refeicao.hidratos}>
+      <input class="w3-col" type="number" id="hidratos" name="hidratos" value=${refeicao.hidratos}>
     </div>
 
       <div class="w3-row w3-section">

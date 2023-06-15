@@ -12,11 +12,102 @@ function checkreservar(){
   }
 }
 
-function showContent(day){
+function showContent(refeicao){
     event.stopPropagation();
-    var ficheiro=$('<pre>'+ JSON.stringify(day) +'</pre>')
+    var ficheiro=$('<pre>'+ JSON.stringify(refeicao) +'</pre>')
+    var ficheiro1=`
+  <div class="w3-margin w3-padding-large w3-white">
+  `
+  if (true){
+    ficheiro1+=`
+  
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="vegetariano">Vegetariano:</label>
+        <div class="w3-col" style="margin-top: -8%">
+          <input class="w3-check" type="checkbox" id="vegetariano" name="vegetariano" style="transform: scale(1); margin-left: 100px;" disabled checked>
+        </div>
+    </div>
+    `
+  }
+  else{
+    ficheiro1+=`
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="vegetariano">Vegetariano:</label>
+      <div class="w3-col" style="margin-top: -8%">
+        <input class="w3-check" type="checkbox" id="vegetariano" name="vegetariano" style="transform: scale(1); margin-left: 100px;" disabled>
+      </div>
+    </div>
+    `
+  }
+  ficheiro1+=`
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="empratamento">Empratamento:</label>
+      <input class="w3-col" type="number" id="empratamento" name="empratamento" value=${refeicao.empratamento} disabled>
+    </div>
+
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="sopa">Sopa:</label>
+      <input class="w3-col" type="text" id="sopa" name="sopa" value=${refeicao.sopa} disabled>
+    </div>
+
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="prato">Prato:</label>
+      <input class="w3-col" type="text" id="prato" name="prato" value=${refeicao.prato} disabled>
+    </div>
+
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="acompanhamento1">Acompanhamento 1:</label>
+      <input class="w3-col" type="text" id="acompanhamento1" name="acompanhamento1" value=${refeicao.acompanhamento1} disabled>
+    </div>
+
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="acompanhamento2">Acompanhamento 2:</label>
+      <input class="w3-col" type="text" id="acompanhamento2" name="acompanhamento2" value=${refeicao.acompanhamento2} disabled>
+    </div>
+
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="energia">Energia:</label>
+      <input class="w3-col" type="number" id="energia" name="energia" value=${refeicao.energia} disabled>
+    </div>
+
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="lipidos">Lipidos:</label>
+      <input class="w3-col" type="number" id="lipidos" name="lipidos" value=${refeicao.lipidos} disabled>
+    </div>
+
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="lipidosSaturados">Lipidos Saturados:</label>
+      <input class="w3-col" type="number" id="lipidosSaturados" name="lipidosSaturados" value=${refeicao.lipidosSaturados} disabled>
+    </div>
+
+    <div class="w3-row w3-section">
+      <label class="w3-col input-label" for="hidratos">Hidratos:</label>
+      <input class="w3-col" type="number" id="hidratos" name="hidratos" value=${refeicao.hidratos} disabled>
+    </div>
+
+      <div class="w3-row w3-section">
+        <label class="w3-col input-label" for="acucares">Açúcares:</label>
+        <input class="w3-col" type="number" id="acucares" name="acucares" value=${refeicao.acucares} disabled>
+      </div>
+    
+      <div class="w3-row w3-section">
+        <label class="w3-col input-label" for="fibras">Fibras:</label>
+        <input class="w3-col" type="number" id="fibras" name="fibras" value=${refeicao.fibras} disabled>
+      </div>
+    
+      <div class="w3-row w3-section">
+        <label class="w3-col input-label" for="proteina">Proteína:</label>
+        <input class="w3-col" type="number" id="proteina" name="proteina" value=${refeicao.proteina} disabled>
+      </div>
+    
+      <div class="w3-row w3-section">
+        <label class="w3-col input-label" for="sal">Sal:</label>
+        <input class="w3-col" type="number" id="sal" name="sal" value=${refeicao.sal} disabled>
+      </div>
+    </div>
+    `
     $("#display").empty()
-    $("#display").append(ficheiro)
+    $("#display").append(ficheiro1)
     $("#display").modal() 
 }
 
