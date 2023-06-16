@@ -4,11 +4,11 @@ block content
   script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js")
   script(src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js")
   script(src="javascripts/home.js")
-  body
+  body  
     .modal(id="display")
     
     .plus-box #[a(href="/buy" style="text-decoration: none;") +]
-    .senhas= user.senhas
+    #numberSenhas.senhas= user.senhas
       img.senha-img(id="img-senha" src='/images/user_assets/senha.png', alt='Senha', height='40pw', width='40pw')
       
       //img.senha-img2(src='/images/user_assets/senhaareservar.png', alt='Senha', height='40pw', width='40pw')

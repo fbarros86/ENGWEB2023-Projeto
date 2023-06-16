@@ -1,14 +1,15 @@
+var SENHAS
 $(function(){
 
-  var senhas = user.senhas
-  console.log(senhas)
+  SENHAS =Number (document.querySelector('.senhas').textContent);
+  console.log(SENHAS)
   checkreservar()
 })
 
 
 function checkreservar(){
-  const myButton = document.getElementById('reservarbtn');
-  const selectedSquares = document.querySelectorAll('.selected');
+  var myButton = document.getElementById('reservarbtn');
+  var selectedSquares = document.querySelectorAll('.selected');
   // if (selectedSquares.length == 0) {
   //   myButton.disabled = true;
   // } else {
@@ -116,20 +117,22 @@ function showContent(refeicao){
 }
 
 function selectDay(element){
-    const imagesenhas = document.querySelector('.senha-img')
-    const senhas = document.querySelector('.senhas');
+    var imagesenhas = document.querySelector('.senha-img')
+    var senhas = document.querySelector('.senhas');
 
-    const reservabutton = document.querySelector('.reservar-btn')
-    //const senhaImg = document.querySelector('.senha-img');
-    //const senhaImg2 = document.querySelector('.senha-img2');
+    var reservabutton = document.querySelector('.reservar-btn')
+    //var senhaImg = document.querySelector('.senha-img');
+    //var senhaImg2 = document.querySelector('.senha-img2');
     //console.log(senhas)
-    const selected = true
-    const num = document.querySelectorAll('.selected').length;
+    var selected = true
+    var num = document.querySelectorAll('.selected').length;
     element.classList.toggle('selected'); 
 
     if (element.classList.contains('selected')) {
         if(Number(senhas.textContent) > 0 ){
-          senhas.textContent = Number(senhas.textContent) - 1;
+          SENHAS= Number(SENHAS)-1
+          console.log(SENHAS)
+          senhas.textContent = String(SENHAS);
           senhas.appendChild(imagesenhas)
           //$('.senhas .senha-img').attr('src', '/images/user_assets/senha2.png');
         }
@@ -138,12 +141,13 @@ function selectDay(element){
           selected = false
         }
       } else {
-        senhas.textContent = Number(senhas.textContent) + 1;
+        SENHAS=Number(SENHAS)+1
+        senhas.textContent = String(SENHAS);
         senhas.appendChild(imagesenhas)
 
       }
       
-    const selectedSquares = document.querySelectorAll('.selected');
+    var selectedSquares = document.querySelectorAll('.selected');
       
      if (selectedSquares.length == 0 && (num == 0 || num ==1)) {
         reservabutton.classList.remove('working-reservar-btn');
@@ -199,10 +203,10 @@ function guardaReserva(idR,idU,data){
 }
 
 function reservou(element,userID,data){
-    const senhas = document.querySelector('.senhas');
+    var senhas = document.querySelector('.senhas');
     var nsenhas = Number(senhas.textContent);
     mudaNumSenhas(userID,nsenhas);
-    const selectedSquares = document.querySelectorAll('.selected');
+    var selectedSquares = document.querySelectorAll('.selected');
     if(selectedSquares.length > 0){
         selectedSquares.forEach(square =>{
             guardaReserva(square.id,userID,data) //J/A - 0,1,2,3,4
