@@ -40,7 +40,7 @@ block content
                     th Data
                     th Refeição
                     th Tipo
-                    th
+                    th 
 
                 each r in reserves
                   tbody
@@ -49,6 +49,7 @@ block content
                       td= "almoço"
                       td= r.tipo
                       td
+                        img.delete(src='/images/user_assets/cancel.png', alt='Delete', height='13pw', width='13pw', id="btn")
 
                 - for(let i = reserves.length; i < 10; i++)
                   tbody
