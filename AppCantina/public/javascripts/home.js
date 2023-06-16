@@ -1,5 +1,8 @@
 $(function(){
-    checkreservar()
+
+  var senhas = user.senhas
+  console.log(senhas)
+  checkreservar()
 })
 
 
