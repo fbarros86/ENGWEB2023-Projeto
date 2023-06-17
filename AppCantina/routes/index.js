@@ -86,7 +86,25 @@ router.get('/profile', auth.verifyAuthNotAdmin, function(req, res, next) {
 
 /* GET User form page. */
 router.get('/form', auth.verifyAuthAdmin,function(req, res, next) {
-  res.render('form', { title: 'Formulário de Usuários' });
+  axios.get("http://localhost:7778/users")
+    .then(response => {
+      res.render('form', { title: 'Formulário de Usuários', list: response.data});
+    })
+});
+
+/* GET User edit form page. */
+router.get('/form/:id', auth.verifyAuthAdmin,function(req, res, next) {
+  axios.get("http://localhost:7778/users/" + req.params.id)
+    .then(response => {
+      axios.get("http://localhost:7778/users/")
+        .then(listResponse => {
+          res.render('editForm', { title: 'Formulário de Usuários', list: listResponse.data, u: response.data});
+        })
+        .catch(error => {
+        });
+    })
+    .catch(error => {
+    });
 });
 
 /* POST autentication*/

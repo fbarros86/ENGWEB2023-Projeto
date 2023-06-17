@@ -28,20 +28,20 @@ block content
                                             img.delete(src='/images/user_assets/delete.png', alt='Delete', height='33pw', width='33pw', id="btn")
         .rightside.col
             .container
-                h1 Criar Novo Usuário
+                h1 Editar Usuário
                 form(action="/createUser", method="POST")
                     .form-field
                         label(for="name") Email:
-                        input(type="text", id="name", name="name", placeholder="Enter email", required)
+                        input(type="text", id="name", name="name", value=u.email, required)
                     .form-field
                         label(for="name") Nome:
-                        input(type="text", id="name", name="name", placeholder="Enter name", required)
+                        input(type="text", id="name", name="name", value=u.username, required)
                     .form-field
                         label(for="password") Password:
-                        input(type="password", id="password", name="password", placeholder="Enter password", required)
+                        input(type="password", id="password", name="password", value=u.password, required)
                     .form-field
                         label(for="type") Type:
-                        select(id="userType", name="type", required)
+                        select(id="userType", name="type", value=u.tipo required)
                             option(value="student") Student
                             option(value="notStudent") Not a Student
                             option(value="notStudent") Admin
