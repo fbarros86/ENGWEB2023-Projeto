@@ -21,7 +21,6 @@ module.exports.verifyAuthNotAdmin = function(req,res,next){
     if(req.cookies && req.cookies.token){
         axios.get("http://localhost:7779/users/token?token="+req.cookies.token)
             .then(r=>{
-                    console.log(r)
                     if(r.data.tipo=="A"){
                         // É admin
                         res.redirect('/?info=notuser')

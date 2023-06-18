@@ -32,8 +32,8 @@ module.exports.getUserReserves = idUser => {
                 });
   };
 
-module.exports.addReserve = (Reserve) => {
-    return Reserve.collection.insertOne(Reserve)
+module.exports.addReserve = (reserve) => {
+    return Reserve.collection.insertOne(reserve)
                 .then(dados=>{
                     return dados
                 }
@@ -43,8 +43,8 @@ module.exports.addReserve = (Reserve) => {
                 })
   }
 
-module.exports.editReserve = (id,Reserve)=>{
-    return Reserve.updateOne({_id:id},Reserve)
+module.exports.editReserve = (id,reserve)=>{
+    return Reserve.updateOne({_id:id},reserve)
                 .then(dados=>{
                     return dados
                 }

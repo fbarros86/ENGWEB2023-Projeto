@@ -2,14 +2,15 @@ $(function(){
     checkreservar()
 })
 
+
 function checkreservar(){
   const myButton = document.getElementById('reservarbtn');
   const selectedSquares = document.querySelectorAll('.selected');
-  if (selectedSquares.length == 0) {
-    myButton.disabled = true;
-  } else {
-    myButton.disabled = false;
-  }
+  // if (selectedSquares.length == 0) {
+  //   myButton.disabled = true;
+  // } else {
+  //   myButton.disabled = false;
+  // }
 }
 
 function showContent(refeicao){
@@ -114,7 +115,6 @@ function showContent(refeicao){
 function selectDay(element){
     const imagesenhas = document.querySelector('.senha-img')
     const senhas = document.querySelector('.senhas');
-    console.log(senhas)
 
     const reservabutton = document.querySelector('.reservar-btn')
     //const senhaImg = document.querySelector('.senha-img');
@@ -169,11 +169,40 @@ function selectDay(element){
     checkreservar()
 }
 
-function reservou(element){
-    //const senhas = document.querySelector('.senhas');
+function mudaNumSenhas(uID, nsenhas){
+  $.ajax({
+    url: 'http://localhost:7778/users/' + uID,
+    type: 'PUT',
+    data: JSON.stringify({ senhas: nsenhas }),
+    contentType: 'application/json',
+    success: function(response) {
+      // Handle the successful response
+      console.log(response);
+    },
+    error: function(xhr, status, error) {
+      // Handle the error
+      console.log(error);
+    }
+  });
+  
+}
+
+function guardaReserva(idR,idU,data){
+  newData = moment(data, 'DD-MM-YYYY').add(Number(idR[1]), 'day').format('DD-MM-YYYY')
+  reserve={"_id":uuidv4(),"idUser":idU,data:newData}
+  if(idR[0]=="A") reserve["refeicao"]="almoco"
+  else reserve["refeicao"]="jantar"
+  $.post("http://localhost:7778/reserves",reserve)
+}
+
+function reservou(element,userID,data){
+    const senhas = document.querySelector('.senhas');
+    var nsenhas = Number(senhas.textContent);
+    //mudaNumSenhas(userID,nsenhas);
     const selectedSquares = document.querySelectorAll('.selected');
     if(selectedSquares.length > 0){
         selectedSquares.forEach(square =>{
+            guardaReserva(square.id,userID,data) //J/A - 0,1,2,3,4
             square.classList.remove('selected')
     })
     //senhas.classList.remove('areservar');

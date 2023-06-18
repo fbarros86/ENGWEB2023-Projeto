@@ -30,7 +30,7 @@ function popup(){
     else if(myParam=="failtoadd"){
         alert("Adding Meal Failed, the DataBase is probably offline")
     }
-    else if(myParam="failtoedit"){
+    else if(myParam=="failtoedit"){
         alert("Failed to Edit Meal, the DataBase is probably offline")
     }
 }

@@ -52,7 +52,7 @@ function getListMeals(req, res, next) {
 
 /* GET home page. */
 router.get('/home', auth.verifyAuthNotAdmin, getListMeals,function(req, res, next) {
-  res.render('home', { title: 'Home',startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,user:req.user,meals:req.listMeals });
+  res.render('home', { title: 'Home',startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,user:req.user,meals:req.listMeals, user:req.user});
 });
 
 /* GET buy page. */

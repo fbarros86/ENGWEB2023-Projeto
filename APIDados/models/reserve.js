@@ -4,8 +4,8 @@ var mongoose = require('mongoose');
 var reserveSchema = new mongoose.Schema({
         _id: String,
         idUser:String,
-        data:Date,
-        // falta por o se é almoço ou jantar
+        data:String,
+        refeicao:String,
         tipo:String //vegetariano, normal...
     });
 

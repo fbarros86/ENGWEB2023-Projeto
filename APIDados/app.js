@@ -2,6 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
+const cors = require('cors');
+
 
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb://127.0.0.1/cantina';
@@ -19,7 +21,7 @@ var mealsRouter = require('./routes/meals');
 var app = express();
 
 
-
+app.use(cors()); 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
