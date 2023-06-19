@@ -46,13 +46,51 @@ function getListMeals(req, res, next) {
       next();
     })
     .catch(error => {
+      res.render("error", { error: e });
+    });
+}
+
+function getListMealsandReserves(req, res, next) {
+  req.startOfWeek = moment().startOf('week');
+  req.endOfWeek = moment().endOf('week').subtract(2, 'day');
+  req.listMeals = {};
+
+  const requests = [];
+  for (let i = 0; i < 5; i++) {
+    const date = moment().startOf('week').add(i, 'day').format('DD-MM-YYYY');
+    const request = axios.get("http://localhost:7778/meals/date/" + date)
+      .then(r => {
+        req.listMeals[date] = r.data;
+      })
+      .catch(e => {
+        res.render("error", { error: e });
+      });
+
+    requests.push(request);
+  }
+
+  const request = axios.get("http://localhost:7778/reserves/user/" + req.user.username)
+      .then(r => {
+        req.reserves = r.data;
+      })
+      .catch(e => {
+        res.render("error", { error: e });
+      });
+      requests.push(request);
+      
+  Promise.all(requests)
+    .then(() => {
+      // transformar num dicionário maybe
+      next();
+    })
+    .catch(error => {
       res.render("error", { error });
     });
 }
 
 /* GET home page. */
-router.get('/home', auth.verifyAuthNotAdmin, getListMeals,function(req, res, next) {
-  res.render('home', { title: 'Home',startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,user:req.user,meals:req.listMeals, user:req.user});
+router.get('/home', auth.verifyAuthNotAdmin, getListMealsandReserves,function(req, res, next) {
+  res.render('home', { title: 'Home',currentDay:moment(),startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,user:req.user,meals:req.listMeals, user:req.user, reserves:req.reserves});
 });
 
 /* GET buy page. */

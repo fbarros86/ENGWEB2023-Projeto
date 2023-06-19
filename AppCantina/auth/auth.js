@@ -19,7 +19,7 @@ module.exports.verifyAuth = function(req,res,next){
 //verifica se está logdado não como admin
 module.exports.verifyAuthNotAdmin = function(req,res,next){
     if(req.cookies && req.cookies.token){
-        axios.get("http://localhost:7779/users/token?token="+req.cookies.token)
+         axios.get("http://localhost:7779/users/token?token="+req.cookies.token)
             .then(r=>{
                     if(r.data.tipo=="A"){
                         // É admin
