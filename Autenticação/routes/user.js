@@ -37,23 +37,28 @@ router.post('/', auth.verificaAcesso, function(req, res){
 })
 
 
-
 router.post('/register', function(req, res) {
-  var d = new Date().toISOString().substring(0,19)
-  userModel.register(new userModel({ _id:req.body.username,username: req.body.username, email: req.body.email, 
-                                      tipo: req.body.tipo,senhas:1 }), 
-                req.body.password, 
-                function(err, user) {
-                  if (err) 
-                    res.jsonp({error: err, message: "Register error: " + err})   
-  })
-})
+  try {
+    userModel.register(new userModel({ _id:req.body.username, username: req.body.username, email: req.body.email, 
+                                        tipo: req.body.tipo, senhas: 1 }), 
+                  req.body.password, 
+                  function(err, user) {
+                    if (err) {
+                      res.status(409).jsonp({ error: err, message: "Register error: " + err });
+                    } else {
+                      res.jsonp({ message: "Registration successful" });
+                    }
+                  });
+  } catch (error) {
+    res.status(500).jsonp({ error: error, message: "Internal server error" });
+  }
+});
+
 
 
 
 
 router.post('/login',passport.authenticate('local'), function(req, res) {
-  console.log("Authentication successful");
   jwt.sign(
     { username: req.user.username },
     "Cantina",

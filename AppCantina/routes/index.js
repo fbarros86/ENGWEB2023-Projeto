@@ -111,14 +111,7 @@ router.get('/form/:id', auth.verifyAuthAdmin,function(req, res, next) {
 router.post('/',auth.login);
 
 /* Create user */
-router.post('/signup',function(req,res,next){
-   req.body.tipo="NE" 
-   next()
-  }
-  ,auth.signup, function(req, res, next) {
-    res.redirect('/?info=create')
-  }
-);
+router.post('/signup',auth.signup);
 
 router.post('/add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
   req.body._id=uuidv4()

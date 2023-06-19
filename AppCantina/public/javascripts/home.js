@@ -198,7 +198,7 @@ function guardaReserva(idR,idU,data){
 function reservou(element,userID,data){
     const senhas = document.querySelector('.senhas');
     var nsenhas = Number(senhas.textContent);
-    //mudaNumSenhas(userID,nsenhas);
+    mudaNumSenhas(userID,nsenhas);
     const selectedSquares = document.querySelectorAll('.selected');
     if(selectedSquares.length > 0){
         selectedSquares.forEach(square =>{
