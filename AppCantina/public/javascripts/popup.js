@@ -33,4 +33,7 @@ function popup(){
     else if(myParam=="failtoedit"){
         alert("Failed to Edit Meal, the DataBase is probably offline")
     }
+    else if(myParam=="reserved"){
+        alert("Sucessfully reserved a meal")
+    }
 }

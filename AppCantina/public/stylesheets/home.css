@@ -71,6 +71,11 @@
   padding-bottom: 4vw;
 }
 
+.reserved{
+  pointer-events: none;
+  background-color: #ededed;
+}
+
 .square {
   position: relative;
   padding: 20px !important;

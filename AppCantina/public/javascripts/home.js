@@ -1,20 +1,18 @@
 var SENHAS
 $(function(){
-
+  
   SENHAS =Number (document.querySelector('.senhas').textContent);
-  console.log(SENHAS)
   checkreservar()
+  console.log(SENHAS)
 })
 
 
 function checkreservar(){
-  var myButton = document.getElementById('reservarbtn');
-  var selectedSquares = document.querySelectorAll('.selected');
-  // if (selectedSquares.length == 0) {
-  //   myButton.disabled = true;
-  // } else {
-  //   myButton.disabled = false;
-  // }
+  if ($('.selected').length == 0) {
+    $('.reservar-btn').hide()
+  } else {
+    $('.reservar-btn').show()
+  }
 }
 
 function showContent(refeicao){
@@ -235,4 +233,5 @@ function reservou(element,userID,data){
         //senhas.classList.remove('reservou')
     }
     checkreservar()
+    window.location.href = "http://localhost:7777/home?info=reserved"
 }
