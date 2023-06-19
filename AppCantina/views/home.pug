@@ -36,34 +36,32 @@ block content
             each c in [0,1,2,3,4]
               - var data = startOfWeek.clone().add(c, 'day')
               - var date = data.format('DD-MM-YYYY')
+              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "almoco") || data.isBefore(currentDay)
               if (meals[date].length>0 && meals[date][0].refeicao=="almoco")
                 - var refeicao = meals[date][0]
-                - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "almoco")
                 td.square(id="A"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
                   p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
               else if (meals[date].length>1 && meals[date][1].refeicao=="almoco")
                 - var refeicao = meals[date][1]
-                - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "almoco")
                 td.square(id="A"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
                   p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES] 
               else
-                td.square(id="A"+c onclick='selectDay(this)') Sem Informação
+                td.square(id="A"+c class=isReserved ? 'reserved' : ''  onclick='selectDay(this)') Sem Informação
           tr
             th.refeicao JANTAR
             each c in [0,1,2,3,4]
               - var date = startOfWeek.clone().add(c, 'day').format('DD-MM-YYYY')
+              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "jantar")
               if (meals[date].length>0 && meals[date][0].refeicao=="jantar")
                 - var refeicao = meals[date][0]
-                - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "jantar")
                 td.square(id="J"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
                   p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
               else if (meals[date].length>1 && meals[date][1].refeicao=="jantar")
                 - var refeicao = meals[date][1]
-                - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "jantar")
                 td.square(id="J"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
                   p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
               else
-                td.square(id="J"+c onclick='selectDay(this)') Sem Informação
+                td.square(id="J"+c class=isReserved ? 'reserved' : ''   onclick='selectDay(this)') Sem Informação
       .reservar-btn(onclick='reservou(this,"'+ user.username+'","'+startOfWeek.format('DD-MM-YYYY')+'")') Reservar
     include footer.pug
         
