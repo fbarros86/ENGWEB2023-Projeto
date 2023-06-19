@@ -9,11 +9,20 @@ block content
     .content
       .tituloReservar
         h1.reservar Preencha as Refeições!
+        div.left-arrow
+          a.arrow-link(href="/previous-week")
+            img.arrow(src='/images/user_assets/seta-esquerda.png', alt='Left Arrow')
         h1.mes #[b.dias #{startOfWeek.date()}] #{startOfWeek.format('MMMM')} - #[b.dias #{endOfWeek.date()}] #{endOfWeek.format('MMMM')}
+        div.right-arrow
+          a.arrow-link(href="/next-week")
+            img.arrow(src='/images/user_assets/seta-direita.png', alt='Right Arrow')
       .w3-middle
         table.w3-table.w3-centered
           tr.w3-border-bottom.w3-margin
-            th 
+            th
+              .w3-bar.w3-white
+                button.w3-bar-item.w3-button.normal-btn(onclick="") Normal
+                button.w3-bar-item.w3-button.vegetariano-btn(onclick="") Vegetariano
             th SEGUNDA
             th TERÇA
             th QUARTA
@@ -48,5 +57,5 @@ block content
                   p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ',"jantar","'+date+'")') EDITAR]
               else
                 td.square Sem Informação
-                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("jantar","'+date+'")') ADICIONAR]
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("jantar","'+date+'")') ADICIONAR]         
     include footer.pug

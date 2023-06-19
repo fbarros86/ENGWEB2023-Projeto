@@ -162,11 +162,61 @@ td{
   color: yellow;
 }
 
-
 .reservou {
   transition: 0.7s;
   color: #80171B;
 }
+
+.left-arrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2%;
+  margin-right: -1%;
+}
+
+.right-arrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1%;
+}
+
+.arrow-link {
+  text-decoration: none;
+  margin-top: 3px;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+}
+
+.clickable {
+  text-decoration: underline;
+  font-size:16px;
+}
+
+.vegetariano {
+  color: gray;
+}
+
+.w3-bar {
+  margin-left: 7%
+}
+
+.normal-btn,
+.vegetariano-btn {
+  background-color: white !important;
+  color: black;
+  border-radius: 10px;
+}
+
+.normal-btn:hover,
+.vegetariano-btn:hover {
+  background-color: rgb(180, 180, 180) !important;
+}
+
 /*
 .senha-img {
   transition: 0.7s;

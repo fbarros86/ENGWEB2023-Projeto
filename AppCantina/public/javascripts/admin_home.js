@@ -180,3 +180,4 @@ function editContent(refeicao,tipo,data){
   $("#display").append(ficheiro1)
   $("#display").modal() 
 }
+
