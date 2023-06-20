@@ -12,11 +12,13 @@ block content
       .tituloReservar
         h1.reservar Preencha as Refeições!
         div.left-arrow
-          a.arrow-link(href="/previous-week")
+          - var lastWeek = week - 1
+          a.arrow-link(href="/adminhome?week="+lastWeek)
             img.arrow(src='/images/user_assets/seta-esquerda.png', alt='Left Arrow')
         h1.mes #[b.dias #{startOfWeek.date()}] #{startOfWeek.format('MMMM')} - #[b.dias #{endOfWeek.date()}] #{endOfWeek.format('MMMM')}
         div.right-arrow
-          a.arrow-link(href="/next-week")
+          - var nextWeek =  week + 1
+          a.arrow-link(href="/adminhome?week="+nextWeek)
             img.arrow(src='/images/user_assets/seta-direita.png', alt='Right Arrow')
       .w3-middle
         table.w3-table.w3-centered
@@ -35,14 +37,14 @@ block content
               if (meals[date].length>0 && meals[date][0].refeicao=="almoco")
                 - var refeicao = meals[date][0]
                 td.square #{refeicao.prato}
-                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ',"almoco","'+date+'")') EDITAR]
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ',"almoco","'+date+'","'+week+'")') EDITAR]
               else if (meals[date].length>1 && meals[date][1].refeicao=="almoco")
                 - var refeicao = meals[date][1]
                 td.square #{refeicao.prato}
-                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ',"almoco","'+date+'")') EDITAR]
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ',"almoco","'+date+'","'+week+'")') EDITAR]
               else
                 td.square Sem Informação
-                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("almoco","'+date+'")') ADICIONAR]
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("almoco","'+date+'","'+week+'")') ADICIONAR]
           tr
             th.refeicao JANTAR
             each c in [0,1,2,3,4]
@@ -50,12 +52,12 @@ block content
               if (meals[date].length>0 && meals[date][0].refeicao=="jantar")
                 - var refeicao = meals[date][0]
                 td.square #{refeicao.prato}
-                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ',"jantar","'+date+'")') EDITAR]
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ',"jantar","'+date+'","'+week+'")') EDITAR]
               else if (meals[date].length>1 && meals[date][1].refeicao=="jantar")
                 - var refeicao = meals[date][1]
                 td.square #{refeicao.prato}
-                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ',"jantar","'+date+'")') EDITAR]
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='editContent(' + JSON.stringify(refeicao) + ',"jantar","'+date+'","'+week+'")') EDITAR]
               else
                 td.square Sem Informação
-                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("jantar","'+date+'")') ADICIONAR]         
+                  p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent("jantar","'+date+'","'+week+'")') ADICIONAR]         
     include footer.pug
