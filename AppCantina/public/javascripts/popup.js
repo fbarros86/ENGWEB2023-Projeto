@@ -36,4 +36,7 @@ function popup(){
     else if(myParam=="reserved"){
         alert("Sucessfully reserved a meal")
     }
+    else if(myParam=="exists"){
+        alert("Account already exists")
+    }
 }

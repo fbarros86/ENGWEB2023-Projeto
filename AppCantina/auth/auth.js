@@ -64,16 +64,21 @@ module.exports.verifyAuthAdmin = function(req,res,next){
 }
 
 
-module.exports.signup = function (req,res,next){
-    if (!req.body.tipo) req.body.tipo="NE" 
-    axios.post("http://localhost:7779/users/register",req.body)
-        .then(r=>{
-            res.redirect('/?info=create')
-        })
-        .catch(e=>{
-            res.status(401).jsonp({error: e})
-        })
-}
+module.exports.signup = function (req, res, next) {
+    if (!req.body.tipo) req.body.tipo = "NE";
+    axios.post("http://localhost:7779/users/register", req.body)
+      .then(r => {
+        res.redirect('/?info=create');
+      })
+      .catch(e => {
+        if (e.response && e.response.status === 409) {
+          res.redirect('/signup?info=exists');
+        } else {
+          next(e);
+        }
+      });
+  };
+  
 
 module.exports.login = function (req,res,next){
     axios.post("http://localhost:7779/users/login",req.body)
