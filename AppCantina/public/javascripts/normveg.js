@@ -1,23 +1,31 @@
 var normal
 $(function(){
-    console.log("ENTROU")
 
     normal=true
     check()
     
 })
 
-function select(){
-   
+function selectnormveg(element){
+    if (element.classList.contains('normal-btn')) {
+        normal = true;
+    } else {
+        normal = false;
+    }
+    check()
 }
 
 function check(){
     if(normal == true){
-        $(".normal-btn").add(".selected-normveg")
+        $(".normal-btn").addClass("selected-normveg")
+        $(".vegetariano-btn").removeClass("selected-normveg")
+
     }
     else{
-        $(".vegetariano-btn").add(".selected-normveg")
+        $(".vegetariano-btn").addClass("selected-normveg")
+        $(".normal-btn").removeClass("selected-normveg")
     }
+
    
 }
 

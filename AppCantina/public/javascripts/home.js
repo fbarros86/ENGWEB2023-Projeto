@@ -3,7 +3,6 @@ $(function(){
   
   SENHAS =Number (document.querySelector('.senhas').textContent);
   checkreservar()
-  console.log(SENHAS)
 })
 
 

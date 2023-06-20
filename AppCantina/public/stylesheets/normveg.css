@@ -1,7 +1,5 @@
 .normal-btn,
 .vegetariano-btn {
-  background-color: white;
-  color: black;
   padding: 15px;
   border-radius: 10px;
 }
@@ -15,11 +13,13 @@
     right: -10px; /* Adjust the value as needed */
   }
 
+.selected-normveg{
+      background-color: #ededed !important;
+}
+.selected-normveg:hover{
+    background-color: #ededed !important;
+}
 .normal-btn:hover,
 .vegetariano-btn:hover {
   background-color: #ededed !important;
-}
-
-.selected-normveg{
-    background-color: #ededed !important;
 }
