@@ -78,3 +78,35 @@ p{
   font-weight: bold;
   font-size: 20px;
 }
+
+
+/* Existing CSS code */
+
+/* Add the following CSS for the small dropdown */
+
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.small-dropdown {
+  font-size: 14px;
+  padding: 5px;
+  width: 80px;
+  margin-left: 5px;
+}
+
+/* Additional CSS to improve visual appeal */
+
+.small-dropdown {
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  color: #181818;
+}
+
+.small-dropdown option {
+  background-color: white;
+}
