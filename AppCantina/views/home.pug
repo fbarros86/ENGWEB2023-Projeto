@@ -36,7 +36,7 @@ block content
             each c in [0,1,2,3,4]
               - var data = startOfWeek.clone().add(c, 'day')
               - var date = data.format('DD-MM-YYYY')
-              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "almoco") || data.isBefore(currentDay)
+              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "almoco") || (data.isBefore(currentDay) && !data.isSame(currentDay,"day"))
               if (meals[date].length>0 && meals[date][0].refeicao=="almoco")
                 - var refeicao = meals[date][0]
                 td.square(id="A"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
@@ -50,8 +50,9 @@ block content
           tr
             th.refeicao JANTAR
             each c in [0,1,2,3,4]
-              - var date = startOfWeek.clone().add(c, 'day').format('DD-MM-YYYY')
-              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "jantar")
+              - var data = startOfWeek.clone().add(c, 'day')
+              - var date = data.format('DD-MM-YYYY')
+              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "jantar") || (data.isBefore(currentDay) && !data.isSame(currentDay,"day"))
               if (meals[date].length>0 && meals[date][0].refeicao=="jantar")
                 - var refeicao = meals[date][0]
                 td.square(id="J"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
