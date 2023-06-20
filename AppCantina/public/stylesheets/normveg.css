@@ -2,10 +2,24 @@
 .vegetariano-btn {
   background-color: white !important;
   color: black;
+  padding: 15px;
   border-radius: 10px;
 }
+
+.normal-btn::before,
+.vegetariano-btn::before {
+    content: '';
+    top: -10px; /* Adjust the value as needed */
+    bottom: 500px; /* Adjust the value as needed */
+    left: -10px; /* Adjust the value as needed */
+    right: -10px; /* Adjust the value as needed */
+  }
 
 .normal-btn:hover,
 .vegetariano-btn:hover {
   background-color: #ededed !important;
+}
+
+.selected-normveg{
+    background-color: #ededed ;
 }
