@@ -15,11 +15,34 @@ block content
           .w3-card-4.borda
             h2.nrsenhas 1x#[img.senha-img(src='/images/user_assets/senha.png', alt='Senha', height='50pw', width='50pw')]
             p.nrsenhas 2.70€
+            .quantity-wrapper
+              label(for='quantity') Quantidade:
+              select#quantity.small-dropdown
+                option(value='1') 1
+                option(value='2') 2
+                option(value='3') 3
+                option(value='4') 4
+                option(value='5') 5
+                option(value='6') 6
+                option(value='7') 7
+                option(value='8') 8
+                option(value='9') 9
             .comprar-btn(onclick='showPayment()') Comprar
         .w3-col.w3-half
           .w3-card-4.borda
             h2.nrsenhas 10x#[img.senha-img(src='/images/user_assets/senha.png', alt='Senha', height='50pw', width='50pw')]
             p.nrsenhas 25€
-            .comprar-btn(onclick='showContent()') Comprar
+            .quantity-wrapper
+              label(for='quantity') Quantidade:
+              select#quantity.small-dropdown
+                option(value='1') 1
+                option(value='2') 2
+                option(value='3') 3
+                option(value='4') 4
+                option(value='5') 5
+                option(value='6') 6
+                option(value='7') 7
+                option(value='8') 8
+                option(value='9') 9
+            .comprar-btn(onclick='showPayment()') Comprar
     include footer.pug
-

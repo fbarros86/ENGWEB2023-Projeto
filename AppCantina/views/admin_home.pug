@@ -2,7 +2,9 @@ extends layout
 
 block content
   link(rel='stylesheet', href='/stylesheets/home.css')
+  link(rel='stylesheet', href='/stylesheets/normveg.css')
   script(src="javascripts/admin_home.js")
+  script(src="javascripts/normveg.js")
   body
     .modal(id="display")
     include navbar2.pug
@@ -20,9 +22,7 @@ block content
         table.w3-table.w3-centered
           tr.w3-border-bottom.w3-margin
             th
-              .w3-bar.w3-white
-                button.w3-bar-item.w3-button.normal-btn(onclick="") Normal
-                button.w3-bar-item.w3-button.vegetariano-btn(onclick="") Vegetariano
+              include normveg.pug
             th SEGUNDA
             th TERÇA
             th QUARTA

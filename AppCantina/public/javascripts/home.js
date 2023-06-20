@@ -3,7 +3,6 @@ $(function(){
   
   SENHAS =Number (document.querySelector('.senhas').textContent);
   checkreservar()
-  console.log(SENHAS)
 })
 
 
@@ -19,95 +18,74 @@ function showContent(refeicao){
     event.stopPropagation();
     var ficheiro=$('<pre>'+ JSON.stringify(refeicao) +'</pre>')
     var ficheiro1=`
-  <div class="w3-margin w3-padding-large w3-white">
+<table class="w3-table w3-bordered">
   `
-  if (true){
-    ficheiro1+=`
-  
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="vegetariano">Vegetariano:</label>
-        <div class="w3-col" style="margin-top: -8%">
-          <input class="w3-check" type="checkbox" id="vegetariano" name="vegetariano" style="transform: scale(1); margin-left: 100px;" disabled checked>
-        </div>
-    </div>
-    `
-  }
-  else{
-    ficheiro1+=`
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="vegetariano">Vegetariano:</label>
-      <div class="w3-col" style="margin-top: -8%">
-        <input class="w3-check" type="checkbox" id="vegetariano" name="vegetariano" style="transform: scale(1); margin-left: 100px;" disabled>
-      </div>
-    </div>
-    `
-  }
   ficheiro1+=`
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="empratamento">Empratamento:</label>
-      <input class="w3-col" type="number" id="empratamento" name="empratamento" value=${refeicao.empratamento} disabled>
-    </div>
+    <tr>
+        <td>Empratamento</td>
+        <td>${refeicao.empratamento}</td>
+    </tr>
 
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="sopa">Sopa:</label>
-      <input class="w3-col" type="text" id="sopa" name="sopa" value=${refeicao.sopa} disabled>
-    </div>
+  <tr>
+      <td>Sopa</td>
+      <td>${refeicao.sopa}</td>
+  </tr>
 
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="prato">Prato:</label>
-      <input class="w3-col" type="text" id="prato" name="prato" value=${refeicao.prato} disabled>
-    </div>
+  <tr>
+      <td>Prato</td>
+      <td>${refeicao.prato}</td>
+  </tr>
+  
+  <tr>
+      <td>Acompanhamento 1</td>
+      <td>${refeicao.acompanhamento1}</td>
+  </tr>
 
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="acompanhamento1">Acompanhamento 1:</label>
-      <input class="w3-col" type="text" id="acompanhamento1" name="acompanhamento1" value=${refeicao.acompanhamento1} disabled>
-    </div>
+  <tr>
+      <td>Acompanhamento 2</td>
+      <td>${refeicao.acompanhamento2}</td>
+  </tr>
 
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="acompanhamento2">Acompanhamento 2:</label>
-      <input class="w3-col" type="text" id="acompanhamento2" name="acompanhamento2" value=${refeicao.acompanhamento2} disabled>
-    </div>
+  <tr>
+      <td>Energia</td>
+      <td>${refeicao.energia}</td>
+  </tr>
 
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="energia">Energia:</label>
-      <input class="w3-col" type="number" id="energia" name="energia" value=${refeicao.energia} disabled>
-    </div>
+  <tr>
+      <td>Lipidos</td>
+      <td>${refeicao.lipidos}</td>
+  </tr>
 
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="lipidos">Lipidos:</label>
-      <input class="w3-col" type="number" id="lipidos" name="lipidos" value=${refeicao.lipidos} disabled>
-    </div>
+  <tr>
+      <td>Lipidos Saturados</td>
+      <td>${refeicao.lipidosSaturados}</td>
+  </tr>
 
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="lipidosSaturados">Lipidos Saturados:</label>
-      <input class="w3-col" type="number" id="lipidosSaturados" name="lipidosSaturados" value=${refeicao.lipidosSaturados} disabled>
-    </div>
+  <tr>
+      <td>Hidratos</td>
+      <td>${refeicao.hidratos}</td>
+  </tr>
 
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="hidratos">Hidratos:</label>
-      <input class="w3-col" type="number" id="hidratos" name="hidratos" value=${refeicao.hidratos} disabled>
-    </div>
-
-      <div class="w3-row w3-section">
-        <label class="w3-col input-label" for="acucares">Açúcares:</label>
-        <input class="w3-col" type="number" id="acucares" name="acucares" value=${refeicao.acucares} disabled>
-      </div>
+  <tr>
+        <td>Açúcares</td>
+        <td>${refeicao.acucares}</td>
+    </tr>
     
-      <div class="w3-row w3-section">
-        <label class="w3-col input-label" for="fibras">Fibras:</label>
-        <input class="w3-col" type="number" id="fibras" name="fibras" value=${refeicao.fibras} disabled>
-      </div>
+  <tr>
+      <td>Fibras</td>
+      <td>${refeicao.acucares}</td>
+  </tr>
     
-      <div class="w3-row w3-section">
-        <label class="w3-col input-label" for="proteina">Proteína:</label>
-        <input class="w3-col" type="number" id="proteina" name="proteina" value=${refeicao.proteina} disabled>
-      </div>
+  <tr>
+        <td>Proteína</td>
+        <td>${refeicao.proteina}</td>
+    </tr>
     
-      <div class="w3-row w3-section">
-        <label class="w3-col input-label" for="sal">Sal:</label>
-        <input class="w3-col" type="number" id="sal" name="sal" value=${refeicao.sal} disabled>
-      </div>
-    </div>
+  <tr>
+        <td>Sal</td>
+        <td>${refeicao.sal}</td>
+    </tr>
+</table>
     `
     $("#display").empty()
     $("#display").append(ficheiro1)
