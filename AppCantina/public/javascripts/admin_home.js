@@ -9,13 +9,6 @@ function showContent(tipo,data){
 
     <form class="w3-container" method="POST" action="/add/${tipo}/${data}">
       <div class="w3-row w3-section">
-        <label class="w3-col input-label" for="vegetariano">Vegetariano:</label>
-          <div class="w3-col" style="margin-top: -8%">
-            <input class="w3-check" type="checkbox" id="vegetariano" name="vegetariano" style="transform: scale(1); margin-left: 100px;">
-          </div>
-      </div>
-
-      <div class="w3-row w3-section">
         <label class="w3-col input-label" for="empratamento">Empratamento:</label>
         <input class="w3-col" type="number" id="empratamento" name="empratamento">
       </div>
