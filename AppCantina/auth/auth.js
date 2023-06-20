@@ -68,7 +68,7 @@ module.exports.signup = function (req,res,next){
     if (!req.body.tipo) req.body.tipo="NE" 
     axios.post("http://localhost:7779/users/register",req.body)
         .then(r=>{
-            res.redirect('/?info=create')
+            res.redirect(req.link)
         })
         .catch(e=>{
             res.status(401).jsonp({error: e})

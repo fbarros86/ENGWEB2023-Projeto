@@ -46,11 +46,10 @@ block content
                   tbody
                     tr
                       td= r.data
-                      td= "almoço"
+                      td= r.refeicao
                       td= r.tipo
                       td
-                        img.delete(src='/images/user_assets/cancel.png', alt='Delete', height='13pw', width='13pw', id="btn")
-
+                        img.delete(onclick='deleteReserve("'+r._id+'")' src='/images/user_assets/cancel.png', alt='Delete', height='13pw', width='13pw', id="btn")
                 - for(let i = reserves.length; i < 10; i++)
                   tbody
                     tr

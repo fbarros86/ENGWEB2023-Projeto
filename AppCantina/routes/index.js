@@ -126,7 +126,7 @@ router.get('/profile', auth.verifyAuthNotAdmin, function(req, res, next) {
 router.get('/form', auth.verifyAuthAdmin,function(req, res, next) {
   axios.get("http://localhost:7778/users")
     .then(response => {
-      res.render('form', { title: 'Formulário de Usuários', list: response.data});
+      res.render('form', { title: 'Formulário de Utilizadores', list: response.data});
     })
 });
 
@@ -149,7 +149,24 @@ router.get('/form/:id', auth.verifyAuthAdmin,function(req, res, next) {
 router.post('/',auth.login);
 
 /* Create user */
-router.post('/signup',auth.signup);
+router.post('/signup',function(req,res,next){
+  req.link = '/?info=create';
+  next()
+},auth.signup);
+
+router.post('/form',auth.verifyAuthAdmin,function(req,res,next){
+  req.link = '/form?info=create';
+  next()
+},auth.signup);
+
+router.post('/form/edit/:id',auth.verifyAuthAdmin,function(req,res,next){
+  axios.delete("http://localhost:7778/users/"+req.params.id)
+    .then(res=>{
+      req.link = '/form';
+      next()
+    })
+    .catch(err=> res.render("error",{"error":err}))
+},auth.signup);
 
 router.post('/add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
   req.body._id=uuidv4()
