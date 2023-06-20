@@ -1,9 +1,11 @@
 extends layout
 block content
   link(rel='stylesheet', href='/stylesheets/home.css')
+  link(rel='stylesheet', href='/stylesheets/normveg.css')
   script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js")
   script(src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js")
   script(src="javascripts/home.js")
+  script(src="javascripts/normveg.js")
   body  
     .modal(id="display")
     
@@ -22,9 +24,7 @@ block content
         table.w3-table.w3-centered
           tr.w3-border-bottom.w3-margin
             th
-              .w3-bar.w3-white
-                button.w3-bar-item.w3-button.normal-btn(onclick="") Normal
-                button.w3-bar-item.w3-button.vegetariano-btn(onclick="") Vegetariano
+              include normveg.pug
             th SEGUNDA
             th TERÇA
             th QUARTA

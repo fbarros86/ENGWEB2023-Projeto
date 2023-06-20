@@ -210,17 +210,6 @@ td{
   margin-left: 7%
 }
 
-.normal-btn,
-.vegetariano-btn {
-  background-color: white !important;
-  color: black;
-  border-radius: 10px;
-}
-
-.normal-btn:hover,
-.vegetariano-btn:hover {
-  background-color: rgb(180, 180, 180) !important;
-}
 
 /*
 .senha-img {
