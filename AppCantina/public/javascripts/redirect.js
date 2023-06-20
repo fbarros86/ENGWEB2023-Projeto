@@ -1,6 +1,3 @@
-$(function(){
-})
-
-function redirect(path){
+function myredirect(path){
     window.location.href = '/'+path  
 }

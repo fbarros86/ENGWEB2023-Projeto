@@ -7,6 +7,7 @@ block content
   script(src="javascripts/home.js")
   script(src="javascripts/normveg.js")
   body  
+    include navbar.pug
     .modal(id="display")
     
     .plus-box #[a(href="/buy" style="text-decoration: none;") +]
@@ -15,7 +16,6 @@ block content
       
       //img.senha-img2(src='/images/user_assets/senhaareservar.png', alt='Senha', height='40pw', width='40pw')
       //img.senha-img3(src='/images/user_assets/senhareservou.png', alt='Senha', height='40pw', width='40pw')
-    include navbar.pug
     .content
       .tituloReservar
         h1.reservar Reserve as suas refeições!
