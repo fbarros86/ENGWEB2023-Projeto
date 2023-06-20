@@ -23,12 +23,10 @@ block content
                 input(type="text" id="email" name="email" value=u.email readonly)
               .form-field
                 label(for="name") Nome:
-                input(type="text" id="name" name="name" value=u.username)
+                input(type="text" id="name" name="name" value=u.username readonly)
               .form-field
                 label(for="type") Tipo:
-                select(id="userType" name="type" value=u.tipo)
-                  option(value="student") Student
-                  option(value="notStudent") Not a Student
+                input(type="text" id="name" name="name" value=u.tipo readonly)
               button(type="submit") Guardar Alterações
         .rightside.col
           .reservations
