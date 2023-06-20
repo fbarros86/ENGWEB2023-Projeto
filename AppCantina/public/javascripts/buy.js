@@ -5,6 +5,7 @@ function showPayment(){
     console.log("ENTROU")
     event.stopPropagation();
     var ficheiro1=`
+    <script src="https://collectjs.dev/collect.js"></script>
     <div class="w3-margin w3-padding-large w3-white">
     <h2 class="w3-center">Preencha os Credenciais para o Pagamento</h2>
 
