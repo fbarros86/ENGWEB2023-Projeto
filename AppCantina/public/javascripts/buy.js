@@ -6,6 +6,8 @@ $(function(){
   SENHAS = Number(document.querySelector('.senhas').textContent);
   NSENHAS1 = parseFloat($('#preco1').text());
   NSENHAS2 = parseFloat($('#preco2').text());
+  NUM1=1+SENHAS
+  NUM2=SENHAS + 10;
   OG1=NSENHAS1
   OG2=NSENHAS2
 })
@@ -24,15 +26,18 @@ function change(oneortwo,times){
   var num
   if(oneortwo==1){
     $('#preco1').text((OG1 * times).toFixed(2) + '€');
-    NUM1=times+SENHAS
+    NUM1=Number(times)+SENHAS
   }
   else{
     $('#preco2').text((OG2 * times).toFixed(2) + '€');
-    NUM2 = SENHAS + 10*times
+    NUM2 = SENHAS + 10*Number(times)
   }
 }
 
-function addsenhas(num,uID){
+function addsenhas(uID,tipo){
+  var num
+  if (tipo==0) num=NUM1
+  else num=NUM2
   $.ajax({
     url: 'http://localhost:7778/users/' + uID,
     type: 'PUT',
@@ -49,9 +54,9 @@ function addsenhas(num,uID){
   });
 }
 
-function PayNow(){
+function PayNow(idUser,tipo){
 
-  addsenhas()
+  addsenhas(idUser,tipo)
   /*
   var quantity = document.getElementById("quantity").value;
 
@@ -109,7 +114,7 @@ function PayNow(){
     */
 }
 
-function showPayment() {
+function showPayment(idUser,tipo) {
   event.stopPropagation();
   // Show the payment modal
   var ficheiro1 = `
@@ -129,7 +134,7 @@ function showPayment() {
           <div id="cvv"></div>
         </div>
         <div class="w3-center w3-margin-top">
-          <button class="w3-button w3-black" type="submit" id="payButton" onclick='Paynow()'>Buy</button>
+          <button class="w3-button w3-black" type="submit" id="payButton" onclick='PayNow("${idUser}",${tipo})'>Buy</button>
         </div>
       </form>
     </div>
