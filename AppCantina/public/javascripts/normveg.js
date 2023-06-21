@@ -18,14 +18,17 @@ function selectnormveg(element){
 function check(){
     if(normal == true){
         $(".normal-btn").addClass("selected-normveg")
+        $(".vegan").hide()
+        $(".normal").show()
         $(".vegetariano-btn").removeClass("selected-normveg")
 
     }
     else{
         $(".vegetariano-btn").addClass("selected-normveg")
+        $(".normal").hide()
+        $(".vegan").show()
         $(".normal-btn").removeClass("selected-normveg")
     }
-
    
 }
 

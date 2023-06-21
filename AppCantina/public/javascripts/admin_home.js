@@ -1,13 +1,14 @@
 $(function(){
 })
 
-function showContent(tipo,data,week){
+function showContent(tipo,data,week,type){
     event.stopPropagation();
     var ficheiro1=`
     <div class="w3-margin w3-padding-large w3-white">
     <h2 class="w3-center">Preencha o Formulário</h2>
 
     <form class="w3-container" method="POST" action="/add/${tipo}/${data}?week=${week}">
+      <input type="hidden" name="tipo" value="${type}">
       <div class="w3-row w3-section">
         <label class="w3-col input-label" for="empratamento">Empratamento:</label>
         <input class="w3-col" type="number" id="empratamento" name="empratamento">
@@ -84,19 +85,14 @@ function showContent(tipo,data,week){
 }
 
 
-function editContent(refeicao,tipo,data,week){
+function editContent(refeicao,tipo,data,week,type){
   event.stopPropagation();
   var ficheiro1=`
   <div class="w3-margin w3-padding-large w3-white">
   <h2 class="w3-center">Preencha o Formulário</h2>
 
-  <form class="w3-container" method="POST" action="/edit/${tipo}/${data}?week=week">
-    <div class="w3-row w3-section">
-      <label class="w3-col input-label" for="vegetariano">Vegetariano:</label>
-        <div class="w3-col" style="margin-top: -8%">
-          <input class="w3-check" type="checkbox" id="vegetariano" name="vegetariano" style="transform: scale(1); margin-left: 100px;">
-        </div>
-    </div>
+  <form class="w3-container" method="POST" action="/edit/${tipo}/${data}?week=${week}">
+  <input type="hidden" name="tipo" value="${type}">
 
     <div class="w3-row w3-section">
       <label class="w3-col input-label" for="empratamento">Empratamento:</label>
