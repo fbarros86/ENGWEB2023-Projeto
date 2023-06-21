@@ -90,12 +90,12 @@ function getListMealsandReserves(req, res, next) {
 
 /* GET home page. */
 router.get('/home', auth.verifyAuthNotAdmin, getListMealsandReserves,function(req, res, next) {
-  res.render('home', { title: 'Home',currentDay:moment(),startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,user:req.user,meals:req.listMeals, user:req.user, reserves:req.reserves});
+  res.render('home', { title: 'Home',currentDay:moment(),startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,user:req.user,meals:req.listMeals, reserves:req.reserves});
 });
 
 /* GET buy page. */
 router.get('/buy', auth.verifyAuthNotAdmin, function(req, res, next) {
-  res.render('buy', { title: 'Comprar senhas' });
+  res.render('buy', { title: 'Comprar senhas', user:req.user });
 });
 
 
@@ -192,6 +192,30 @@ router.post('/edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
 
 
 })
+
+router.post('/create-payment-intent', async (req, res) => {
+  const { quantity } = req.body;
+
+  // Calculate the total amount based on the quantity
+  // You can customize this calculation as per your pricing logic
+  const amount = quantity * 270;
+
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount,
+      currency: "eur"
+    });
+
+    res.send({
+      client_secret: paymentIntent.client_secret
+    });
+  } catch (error) {
+    res.status(500).send({
+      error: error.message
+    });
+  }
+});
+
 
 
 module.exports = router;

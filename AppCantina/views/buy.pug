@@ -5,7 +5,7 @@ block content
   script(src="javascripts/buy.js")
   body
     .modal(id="display")
-    .senhas 25
+    #numberSenhas.senhas= user.senhas
         img.senha-img(src='/images/user_assets/senha.png', alt='Senha', height='40pw', width='40pw')
     include navbar.pug
     .content
@@ -14,10 +14,10 @@ block content
         .w3-col.w3-half
           .w3-card-4.borda
             h2.nrsenhas 1x#[img.senha-img(src='/images/user_assets/senha.png', alt='Senha', height='50pw', width='50pw')]
-            p.nrsenhas 2.70€
+            p.nrsenhas#preco1 2.70€
             .quantity-wrapper
               label(for='quantity') Quantidade:
-              select#quantity.small-dropdown
+              select#quantity.small-dropdown(onchange='multprice1(this.value)')
                 option(value='1') 1
                 option(value='2') 2
                 option(value='3') 3
@@ -31,10 +31,10 @@ block content
         .w3-col.w3-half
           .w3-card-4.borda
             h2.nrsenhas 10x#[img.senha-img(src='/images/user_assets/senha.png', alt='Senha', height='50pw', width='50pw')]
-            p.nrsenhas 25€
+            p.nrsenhas#preco2 25€
             .quantity-wrapper
               label(for='quantity') Quantidade:
-              select#quantity.small-dropdown
+              select#quantity.small-dropdown(onchange='multprice2(this.value)')
                 option(value='1') 1
                 option(value='2') 2
                 option(value='3') 3
