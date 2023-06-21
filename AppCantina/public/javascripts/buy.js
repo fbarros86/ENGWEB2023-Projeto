@@ -1,6 +1,9 @@
 var NSENHAS1, NSENHAS2
 var OG1, OG2
+var SENHAS
+var NUM1,NUM2
 $(function(){
+  SENHAS = Number(document.querySelector('.senhas').textContent);
   NSENHAS1 = parseFloat($('#preco1').text());
   NSENHAS2 = parseFloat($('#preco2').text());
   OG1=NSENHAS1
@@ -18,15 +21,38 @@ function multprice2(times){
 }
 
 function change(oneortwo,times){
+  var num
   if(oneortwo==1){
     $('#preco1').text((OG1 * times).toFixed(2) + '€');
+    NUM1=times+SENHAS
   }
   else{
     $('#preco2').text((OG2 * times).toFixed(2) + '€');
+    NUM2 = SENHAS + 10*times
   }
 }
 
+function addsenhas(num,uID){
+  $.ajax({
+    url: 'http://localhost:7778/users/' + uID,
+    type: 'PUT',
+    data: JSON.stringify({ senhas: num }),
+    contentType: 'application/json',
+    success: function(response) {
+      // Handle the successful response
+      console.log(response);
+    },
+    error: function(xhr, status, error) {
+      // Handle the error
+      console.log(error);
+    }
+  });
+}
+
 function PayNow(){
+
+  addsenhas()
+  /*
   var quantity = document.getElementById("quantity").value;
 
   // Create a payment intent on the server
@@ -80,6 +106,7 @@ function PayNow(){
           });
       });
     });
+    */
 }
 
 function showPayment() {
@@ -102,7 +129,7 @@ function showPayment() {
           <div id="cvv"></div>
         </div>
         <div class="w3-center w3-margin-top">
-          <button class="w3-button w3-black" type="submit" id="payButton">Buy</button>
+          <button class="w3-button w3-black" type="submit" id="payButton" onclick='Paynow()'>Buy</button>
         </div>
       </form>
     </div>
