@@ -23,13 +23,15 @@ router.get('/logout',function(req, res, next) {
 });
 
 function getListMeals(req, res, next) {
-  req.startOfWeek = moment().startOf('week');
-  req.endOfWeek = moment().endOf('week').subtract(2, 'day');
+  req.week=0
+  if(req.query.week) req.week=req.query.week
+  req.startOfWeek = moment().startOf('week').add(req.week,'week');
+  req.endOfWeek = moment().endOf('week').subtract(2, 'day').add(req.week,'week');
   req.listMeals = {};
 
   const requests = [];
   for (let i = 0; i < 5; i++) {
-    const date = moment().startOf('week').add(i, 'day').format('DD-MM-YYYY');
+    const date = moment().startOf('week').add(i, 'day').add(req.week,'week').format('DD-MM-YYYY');
     const request = axios.get("http://localhost:7778/meals/date/" + date)
       .then(r => {
         req.listMeals[date] = r.data;
@@ -90,7 +92,7 @@ function getListMealsandReserves(req, res, next) {
 
 /* GET home page. */
 router.get('/home', auth.verifyAuthNotAdmin, getListMealsandReserves,function(req, res, next) {
-  res.render('home', { title: 'Home',currentDay:moment(),startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,user:req.user,meals:req.listMeals, reserves:req.reserves});
+  res.render('home', { title: 'Home',currentDay:moment().add(req.week,'week'),startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,user:req.user,meals:req.listMeals, reserves:req.reserves});
 });
 
 /* GET buy page. */
@@ -102,7 +104,7 @@ router.get('/buy', auth.verifyAuthNotAdmin, function(req, res, next) {
 
 /* GET admin home page. */
 router.get('/adminhome',auth.verifyAuthAdmin, getListMeals,function(req, res, next) {
-  res.render('admin_home', { title: 'Home', startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,meals:req.listMeals });
+  res.render('admin_home', { title: 'Home', startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,meals:req.listMeals,week:Number(req.week) });
 });
 
 
@@ -174,7 +176,7 @@ router.post('/add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
   req.body.data = req.params.data
   axios.post("http://localhost:7778/meals/",req.body)
     .then(r=>{
-        res.redirect("/adminhome")
+        res.redirect("/adminhome?week="+req.query.week)
     })
     .catch(e=>{
         res.redirect("/adminhome?info=failtoadd")//colocar pop up a dizer que falhou
@@ -184,7 +186,7 @@ router.post('/add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
 router.post('/edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
   axios.put("http://localhost:7778/meals/"+req.params.tipo+"/"+req.params.data,req.body)
   .then(r=>{
-      res.redirect("/adminhome")
+      res.redirect("/adminhome?week="+req.query.week)
   })
   .catch(e=>{
       res.redirect("/adminhome?info=failtoedit")//colocar pop up a dizer que falhou
