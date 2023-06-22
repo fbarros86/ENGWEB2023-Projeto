@@ -29,27 +29,29 @@ block content
                                             img.btn.delete(onclick='deleteUser("'+l._id+'")' src='/images/user_assets/delete.png', alt='Delete', height='33pw', width='33pw', id="btn")
         .rightside.col
             .container
-                h1 Criar Novos Utilizadores
-                form(method="POST" action="form/file" enctype="multipart/form-data")
-                    .form-field
-                        label(for="file") Upload File (JSON):
-                        input(type="file", id="file", name="file")
-                    button(type="submit") Submit 
-                form( method="POST")
-                    .form-field
+                .form-container
+                    h1 Criar Novos Utilizadores
+                    .file-input
+                        form(method="POST" action="form/file" enctype="multipart/form-data")
+                            .form-field
+                            label(for="file") Upload File (JSON):
+                            input(type="file", id="file", name="file")
+                            button(type="submit") Submit 
+                    form(method="POST")
+                        .form-field
                         label(for="email") Email:
                         input(type="text", id="email", name="email", placeholder="Enter email", required)
-                    .form-field
+                        .form-field
                         label(for="username") Nome:
                         input(type="text", id="username", name="username", placeholder="Enter name", required)
-                    .form-field
+                        .form-field
                         label(for="password") Password:
                         input(type="password", id="password", name="password", placeholder="Enter password", required)
-                    .form-field
+                        .form-field
                         label(for="tipo") Type:
                         select(id="userType", name="tipo", required)
                             option(value="S") Student
                             option(value="NE") Not a Student
                             option(value="A") Admin
-                    button(type="submit") Submit   
+                        button(type="submit") Submit   
     include footer.pug

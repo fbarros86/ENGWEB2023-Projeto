@@ -172,3 +172,57 @@ body {
   margin-bottom: 10px;
   margin-left: 30%;
 }
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F7F7F7;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 100px;
+  margin-top: 120px
+}
+
+.form-container h1 {
+  margin-bottom: -20px;
+}
+
+.form-container label {
+  margin-bottom: 5px;
+}
+
+.form-container input[type="file"],
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 3px;
+}
+
+.form-container button[type="submit"]{
+  padding: 10px 20px;
+  background-color: #181818;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 5px;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: #80171B;
+}
+
+.file-input{
+  margin-bottom: -50px;
+}
