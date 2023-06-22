@@ -28,7 +28,12 @@ block content
                                             img.btn.delete(onclick='deleteUser("'+l._id+'")' src='/images/user_assets/delete.png', alt='Delete', height='33pw', width='33pw', id="btn")
         .rightside.col
             .container
-                h1 Criar Novo Utilizador
+                h1 Criar Novos Utilizadores
+                form(method="POST" action="form/file" enctype="multipart/form-data")
+                    .form-field
+                        label(for="file") Upload File (JSON):
+                        input(type="file", id="file", name="file")
+                    button(type="submit") Submit 
                 form( method="POST")
                     .form-field
                         label(for="email") Email:
@@ -45,5 +50,5 @@ block content
                             option(value="S") Student
                             option(value="NE") Not a Student
                             option(value="A") Admin
-                    button(type="submit") Submit
+                    button(type="submit") Submit   
     include footer.pug

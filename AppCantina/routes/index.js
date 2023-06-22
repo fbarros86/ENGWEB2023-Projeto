@@ -6,6 +6,10 @@ var moment = require('moment');
 moment.locale('pt-pt');
 var auth = require('../auth/auth')
 const { v4: uuidv4 } = require('uuid');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/', fieldname: 'file' });
+const fs = require('fs');
+ 
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
@@ -132,6 +136,8 @@ router.get('/form', auth.verifyAuthAdmin,function(req, res, next) {
     })
 });
 
+
+
 /* GET User edit form page. */
 router.get('/form/:id', auth.verifyAuthAdmin,function(req, res, next) {
   axios.get("http://localhost:7778/users/" + req.params.id)
@@ -160,6 +166,32 @@ router.post('/form',auth.verifyAuthAdmin,function(req,res,next){
   req.link = '/form?info=create';
   next()
 },auth.signup);
+
+
+router.post('/form/file',upload.single('file'), (req, res) => {
+
+  fs.readFile(req.file.path, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error reading the file');
+      return;
+    }
+    try {
+      const users = JSON.parse(data)["utilizadores"];
+      users.forEach((user) => {
+        if (!user.tipo) user.tipo = "NE";
+        axios.post("http://localhost:7779/users/register", user)
+          .catch(e => {
+            console.log(e)
+          });
+      });
+      res.redirect('/form');
+    } catch (error) {
+      console.error(error);
+      res.status(400).send('Error parsing the JSON file');
+    }
+  });
+});
 
 router.post('/form/edit/:id',auth.verifyAuthAdmin,function(req,res,next){
   axios.delete("http://localhost:7778/users/"+req.params.id)
