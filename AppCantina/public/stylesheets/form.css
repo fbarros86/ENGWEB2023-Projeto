@@ -226,3 +226,49 @@ body {
 .file-input{
   margin-bottom: -50px;
 }
+
+#sort-btn {
+  padding: 10px 20px;
+  background-color: #181818;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 4%;
+  margin-left: 25%;
+}
+
+#sort-btn-type {
+  padding: 10px 20px;
+  background-color: #181818;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 4%;
+  margin-left: 10%; /* Adjust the margin as needed */
+}
+
+#sort-btn:hover,
+#sort-btn-type:hover {
+  background-color: #80171B;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.button-container button {
+  flex: 0 0 auto;
+}
+
+
+
+
