@@ -16,3 +16,22 @@ function deleteUser(idU){
       });
     
   }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('search-bar');
+    const rows = document.querySelectorAll('.table tbody tr');
+  
+    searchBar.addEventListener('input', (event) => {
+      const searchTerm = event.target.value.toLowerCase();
+  
+      rows.forEach((row) => {
+        const username = row.querySelector('td:first-child').textContent.toLowerCase();
+  
+        if (username.includes(searchTerm)) {
+          row.style.display = 'table-row';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  });
