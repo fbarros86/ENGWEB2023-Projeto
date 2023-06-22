@@ -107,7 +107,6 @@ function selectDay(element){
     if (element.classList.contains('selected')) {
         if(Number(senhas.textContent) > 0 ){
           SENHAS= Number(SENHAS)-1
-          console.log(SENHAS)
           senhas.textContent = String(SENHAS);
           senhas.appendChild(imagesenhas)
           //$('.senhas .senha-img').attr('src', '/images/user_assets/senha2.png');
@@ -170,22 +169,22 @@ function mudaNumSenhas(uID, nsenhas){
   
 }
 
-function guardaReserva(idR,idU,data,tipo){
-  newData = moment(data, 'DD-MM-YYYY').add(Number(idR[1]), 'day').format('DD-MM-YYYY')
-  reserve={"_id":uuidv4(),"idUser":idU,data:newData,tipo:tipo}
+function guardaReserva(idR,idU,data){
+  newData = moment(data, 'DD-MM-YYYY').add(Number(idR[2]), 'day').format('DD-MM-YYYY')
+  reserve={"_id":uuidv4(),"idUser":idU,data:newData,tipo:idR[1]}
   if(idR[0]=="A") reserve["refeicao"]="almoco"
   else reserve["refeicao"]="jantar"
   $.post("http://localhost:7778/reserves",reserve)
 }
 
-function reservou(element,userID,data,tipo){
+function reservou(element,userID,data){
     var senhas = document.querySelector('.senhas');
     var nsenhas = Number(senhas.textContent);
     mudaNumSenhas(userID,nsenhas);
     var selectedSquares = document.querySelectorAll('.selected');
     if(selectedSquares.length > 0){
         selectedSquares.forEach(square =>{
-            guardaReserva(square.id,userID,data,tipo) //J/A - 0,1,2,3,4
+            guardaReserva(square.id,userID,data) //J/A N/V 0,1,2,3,4
             square.classList.remove('selected')
     })
     //senhas.classList.remove('areservar');

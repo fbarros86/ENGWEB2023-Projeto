@@ -39,10 +39,10 @@ block content
               - var refeicao = meals[date].filter(meal => meal.refeicao === "almoco" && meal.tipo !== "V")
               if refeicao.length
                 - var refeicao = refeicao[0]
-                td.square(id="A"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
+                td.square(id="AN"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
                   p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
               else
-                td.square(id="A"+c class=isReserved ? 'reserved' : ''  onclick='selectDay(this)') Sem Informação
+                td.square(id="AN"+c class=isReserved ? 'reserved' : ''  onclick='selectDay(this)') Sem Informação
           tr.normal
             th.refeicao JANTAR
             each c in [0,1,2,3,4]
@@ -52,10 +52,10 @@ block content
               - var refeicao = meals[date].filter(meal => meal.refeicao === "jantar" && meal.tipo !== "V")
               if refeicao.length
                 - var refeicao = refeicao[0]
-                td.square(id="J"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
+                td.square(id="JN"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
                   p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
               else
-                td.square(id="J"+c class=isReserved ? 'reserved' : ''  onclick='selectDay(this)') Sem Informação
+                td.square(id="JN"+c class=isReserved ? 'reserved' : ''  onclick='selectDay(this)') Sem Informação
           tr.vegan
             th.refeicao ALMOÇO
             each c in [0,1,2,3,4]
@@ -65,10 +65,10 @@ block content
               - var refeicao = meals[date].filter(meal => meal.refeicao === "almoco" && meal.tipo === "V")
               if refeicao.length
                 - var refeicao = refeicao[0]
-                td.square(id="A"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
+                td.square(id="AV"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
                   p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
               else
-                td.square(id="A"+c class=isReserved ? 'reserved' : ''  onclick='selectDay(this)') Sem Informação
+                td.square(id="AV"+c class=isReserved ? 'reserved' : ''  onclick='selectDay(this)') Sem Informação
           tr.vegan
             th.refeicao JANTAR
             each c in [0,1,2,3,4]
@@ -78,12 +78,11 @@ block content
               - var refeicao = meals[date].filter(meal => meal.refeicao === "jantar" && meal.tipo === "V")
               if refeicao.length
                 - var refeicao = refeicao[0]
-                td.square(id="J"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
+                td.square(id="JV"+c class=isReserved ? 'reserved' : '' onclick='selectDay(this)') #{refeicao.prato}
                   p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
               else
-                td.square(id="J"+c class=isReserved ? 'reserved' : ''  onclick='selectDay(this)') Sem Informação
-      .normal.reservar-btn(onclick='reservou(this,"'+ user.username+'","'+startOfWeek.format('DD-MM-YYYY')+'","N")') Reservar
-      .vegan.reservar-btn(onclick='reservou(this,"'+ user.username+'","'+startOfWeek.format('DD-MM-YYYY')+'","V")') Reservar
+                td.square(id="JV"+c class=isReserved ? 'reserved' : ''  onclick='selectDay(this)') Sem Informação
+      .reservar-btn(onclick='reservou(this,"'+ user.username+'","'+startOfWeek.format('DD-MM-YYYY')+'")') Reservar
     include footer.pug
         
   
