@@ -170,22 +170,22 @@ function mudaNumSenhas(uID, nsenhas){
   
 }
 
-function guardaReserva(idR,idU,data){
+function guardaReserva(idR,idU,data,tipo){
   newData = moment(data, 'DD-MM-YYYY').add(Number(idR[1]), 'day').format('DD-MM-YYYY')
-  reserve={"_id":uuidv4(),"idUser":idU,data:newData}
+  reserve={"_id":uuidv4(),"idUser":idU,data:newData,tipo:tipo}
   if(idR[0]=="A") reserve["refeicao"]="almoco"
   else reserve["refeicao"]="jantar"
   $.post("http://localhost:7778/reserves",reserve)
 }
 
-function reservou(element,userID,data){
+function reservou(element,userID,data,tipo){
     var senhas = document.querySelector('.senhas');
     var nsenhas = Number(senhas.textContent);
-    //mudaNumSenhas(userID,nsenhas);
+    mudaNumSenhas(userID,nsenhas);
     var selectedSquares = document.querySelectorAll('.selected');
     if(selectedSquares.length > 0){
         selectedSquares.forEach(square =>{
-            guardaReserva(square.id,userID,data) //J/A - 0,1,2,3,4
+            guardaReserva(square.id,userID,data,tipo) //J/A - 0,1,2,3,4
             square.classList.remove('selected')
     })
     //senhas.classList.remove('areservar');
