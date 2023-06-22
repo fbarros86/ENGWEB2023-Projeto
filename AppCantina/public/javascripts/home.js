@@ -3,6 +3,18 @@ $(function(){
   
   SENHAS =Number (document.querySelector('.senhas').textContent);
   checkreservar()
+  var selected = document.querySelectorAll('.reserved');
+  for (var i = 0; i < selected.length; i++) {
+    var element = selected[i];
+    var tooltip = document.createElement('span');
+    tooltip.className = 'tooltiptext';
+    tooltip.textContent = 'Não é Possível Reservar';
+    element.appendChild(tooltip);
+    console.log(element);
+}
+
+
+  
 })
 
 
