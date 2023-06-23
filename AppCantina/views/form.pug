@@ -22,7 +22,12 @@ block content
                                 tbody
                                     tr
                                         td= l.username
-                                        td= l.tipo
+                                        if l.tipo == "A"
+                                            td Admin 
+                                        else if l.tipo == "S"
+                                            td Student
+                                        else 
+                                            td Not Student
                                         td
                                             a(href='/form/' + l._id)
                                                 img.btn.edit(src='/images/user_assets/edit.png', alt='Edit', height='33pw', width='33pw')
