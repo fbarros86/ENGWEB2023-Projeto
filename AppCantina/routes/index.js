@@ -184,7 +184,7 @@ router.post('/form/file',upload.single('file'), (req, res) => {
       return;
     }
     try {
-      const users = JSON.parse(data)["utilizadores"];
+      const users = JSON.parse(data);
       users.forEach((user) => {
         if (!user.tipo) user.tipo = "NE";
         axios.post("http://localhost:7779/users/register", user)
