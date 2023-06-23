@@ -29,7 +29,7 @@ router.get('/logout',function(req, res, next) {
 function getListMeals(req, res, next) {
   req.week=0
   if(req.query.week) req.week=req.query.week
-  req.tipo=N
+  req.tipo="N"
   if(req.query.type) req.tipo=req.query.type
   req.startOfWeek = moment().startOf('week').add(req.week,'week');
   req.endOfWeek = moment().endOf('week').subtract(2, 'day').add(req.week,'week');
