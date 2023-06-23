@@ -19,8 +19,16 @@ block content
     .content
       .tituloReservar
         h1.reservar Reserve as suas refeições!
+        div.left-arrow
+          - var lastWeek = week - 1
+          a.arrow-link(href="/home?week="+lastWeek)
+            img.arrow(src='/images/user_assets/seta-esquerda.png', alt='Left Arrow')
         h1.mes #[b.dias #{startOfWeek.date()}] #{startOfWeek.format('MMMM')} - #[b.dias #{endOfWeek.date()}] #{endOfWeek.format('MMMM')}
-      .w3-middle
+        div.right-arrow
+          - var nextWeek =  week + 1
+          a.arrow-link(href="/home?week="+nextWeek)
+            img.arrow(src='/images/user_assets/seta-direita.png', alt='Right Arrow')
+      .w3-middle(id=tipo)
         table.w3-table.w3-centered
           tr.w3-border-bottom.w3-margin
             th
@@ -35,7 +43,7 @@ block content
             each c in [0,1,2,3,4]
               - var data = startOfWeek.clone().add(c, 'day')
               - var date = data.format('DD-MM-YYYY')
-              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "almoco" && reserve.tipo !== "V") || (data.isBefore(currentDay) && !data.isSame(currentDay,"day"))
+              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "almoco") || (data.isBefore(currentDay) && !data.isSame(currentDay,"day"))
               - var refeicao = meals[date].filter(meal => meal.refeicao === "almoco" && meal.tipo !== "V")
               if refeicao.length
                 - var refeicao = refeicao[0]
@@ -48,7 +56,7 @@ block content
             each c in [0,1,2,3,4]
               - var data = startOfWeek.clone().add(c, 'day')
               - var date = data.format('DD-MM-YYYY')
-              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "jantar" && reserve.tipo !== "V") || (data.isBefore(currentDay) && !data.isSame(currentDay,"day"))
+              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "jantar") || (data.isBefore(currentDay) && !data.isSame(currentDay,"day"))
               - var refeicao = meals[date].filter(meal => meal.refeicao === "jantar" && meal.tipo !== "V")
               if refeicao.length
                 - var refeicao = refeicao[0]
@@ -61,7 +69,7 @@ block content
             each c in [0,1,2,3,4]
               - var data = startOfWeek.clone().add(c, 'day')
               - var date = data.format('DD-MM-YYYY')
-              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "almoco" && reserve.tipo === "V") || (data.isBefore(currentDay) && !data.isSame(currentDay,"day"))
+              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "almoco") || (data.isBefore(currentDay) && !data.isSame(currentDay,"day"))
               - var refeicao = meals[date].filter(meal => meal.refeicao === "almoco" && meal.tipo === "V")
               if refeicao.length
                 - var refeicao = refeicao[0]
@@ -74,7 +82,7 @@ block content
             each c in [0,1,2,3,4]
               - var data = startOfWeek.clone().add(c, 'day')
               - var date = data.format('DD-MM-YYYY')
-              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "jantar" && reserve.tipo === "V") || (data.isBefore(currentDay) && !data.isSame(currentDay,"day"))
+              - var isReserved = reserves.some(reserve => reserve.data === date && reserve.refeicao === "jantar") || (data.isBefore(currentDay) && !data.isSame(currentDay,"day"))
               - var refeicao = meals[date].filter(meal => meal.refeicao === "jantar" && meal.tipo === "V")
               if refeicao.length
                 - var refeicao = refeicao[0]
@@ -82,7 +90,7 @@ block content
                   p.info.w3-display-bottommiddle #[a(href="#" onclick='showContent('+ JSON.stringify(refeicao) +')') DETALHES]
               else
                 td.square.tooltip(id="JV"+c class=isReserved ? 'reserved' : ''  onclick='selectDay(this)') Sem Informação
-      .reservar-btn(onclick='reservou(this,"'+ user.username+'","'+startOfWeek.format('DD-MM-YYYY')+'")') Reservar
+      .reservar-btn(onclick='reservou(this,"'+ user.username+'","'+startOfWeek.format('DD-MM-YYYY')+'","'+week+'")') Reservar
     include footer.pug
         
   

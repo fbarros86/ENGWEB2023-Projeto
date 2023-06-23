@@ -190,7 +190,7 @@ function guardaReserva(idR,idU,data){
   $.post("http://localhost:7778/reserves",reserve)
 }
 
-function reservou(element,userID,data){
+function reservou(element,userID,data,week){
     var senhas = document.querySelector('.senhas');
     var nsenhas = Number(senhas.textContent);
     mudaNumSenhas(userID,nsenhas);
@@ -221,7 +221,7 @@ function reservou(element,userID,data){
        
       
         //senhas.classList.remove('reservou')
+        checkreservar()
+        window.location.href = "http://localhost:7777/home?info=reserved&week="+week+"&type="+selectedSquares[0].id[1]
     }
-    checkreservar()
-    window.location.href = "http://localhost:7777/home?info=reserved"
-}
+  }
