@@ -65,3 +65,20 @@ function deleteUser(idU){
     });
   
 }
+
+function explain(){
+  event.stopPropagation();
+
+    var ficheiro1=`
+    <h1>Formato do Ficheiro JSON</h1>
+    <p>[{
+      "email": String,
+      "username": String,
+      "password": String,
+      "tipo": Enum("NE","E","A")
+    }]</p>
+    `
+    $("#display").empty()
+    $("#display").append(ficheiro1)
+    $("#display").modal() 
+}
