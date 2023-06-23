@@ -10,7 +10,6 @@ $(function(){
     tooltip.className = 'tooltiptext';
     tooltip.textContent = 'Não é Possível Reservar';
     element.appendChild(tooltip);
-    console.log(element);
 }
 
 
@@ -105,6 +104,7 @@ function showContent(refeicao){
 }
 
 function selectDay(element){
+  if(!$(element).hasClass('reserved')){
     var imagesenhas = document.querySelector('.senha-img')
     var senhas = document.querySelector('.senhas');
 
@@ -161,6 +161,7 @@ function selectDay(element){
         //senhaImg2.classList.remove('areservar');
     }
     checkreservar()
+  }
 }
 
 function mudaNumSenhas(uID, nsenhas){
