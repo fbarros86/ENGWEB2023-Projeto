@@ -66,17 +66,28 @@ function deleteUser(idU){
   
 }
 
-function explain() {
+function explainmeal() {
   event.stopPropagation();
 
   var ficheiro1 = `
   <h1>Formato do Ficheiro JSON</h1>
   <p>[{</p>
-    <p>    "email": String, </p>
-    <p>    "username": String,</p>
-    <p>    "password": String,</p>
-    <p>    "tipo": Enum("NE","E","A")</p>
-    <p>}]</p>`;
+  <p>  refeicao:Enum("A","J"), </p>
+  <p>  data:String, (DD-MM-YYYY)</p>
+  <p>  empratamento:Number,</p>
+  <p>  sopa:String,</p>
+  <p>  prato:String,</p>
+  <p>  acompanhamento1:String,</p>
+  <p>  acompanhamento2:String,</p>
+  <p>  energia:Number,</p>
+  <p>  lipidos:Number,</p>
+  <p>  lipidosSaturados:Number,</p>
+  <p>  hidratos:Number,</p>
+  <p>  acucares:Number,</p>
+  <p>  fibras:Number,</p>
+  <p>  proteina:Number,</p>
+  <p>  sal:Number</p>
+  <p>}]</p>`;
   $("#display").empty();
   $("#display").append(ficheiro1);
   $("#display").modal();
