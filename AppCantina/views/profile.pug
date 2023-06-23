@@ -42,7 +42,10 @@ block content
                   tr
                     td= r.data
                     td= r.refeicao
-                    td= r.tipo
+                    if r.tipo == 'N'
+                      td Normal 
+                    else 
+                      td Vegan
                     td
                       img.delete(onclick='deleteReserve("'+r._id+'")' src='/images/user_assets/cancel.png', alt='Delete', height='13pw', width='13pw', id="btn")
               - for(let i = reserves.length; i < 10; i++)

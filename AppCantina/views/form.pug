@@ -22,7 +22,12 @@ block content
                                 tbody
                                     tr
                                         td= l.username
-                                        td= l.tipo
+                                        if l.tipo == "A"
+                                            td Admin 
+                                        else if l.tipo == "S"
+                                            td Student
+                                        else 
+                                            td Not Student
                                         td
                                             a(href='/form/' + l._id)
                                                 img.btn.edit(src='/images/user_assets/edit.png', alt='Edit', height='33pw', width='33pw')
@@ -37,7 +42,9 @@ block content
                     .file-input
                         form(method="POST" action="form/file" enctype="multipart/form-data")
                             .form-field
-                            label(for="file") Upload File (JSON):
+                            label Upload File (JSON)
+                                #display.modal.fade
+                                img#i-img(src="/images/user_assets/info.png", alt="Image", height='18pw', width='18pw', onclick='explain()') 
                             input(type="file", id="file", name="file")
                             button(type="submit") Submit 
                     form(method="POST")
