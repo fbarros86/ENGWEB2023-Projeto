@@ -20,9 +20,10 @@ block content
           - var nextWeek =  week + 1
           a.arrow-link(href="/adminhome?week="+nextWeek)
             img.arrow(src='/images/user_assets/seta-direita.png', alt='Right Arrow')
-      label.upload Clique aqui para fazer Upload de Meals (JSON)
+      label.upload#uploadLabel(onclick="uploadFile()") Clique aqui para fazer Upload de Meals (JSON)
         #display.modal.fade
         img#i-img.w3-margin(src="/images/user_assets/info.png", alt="Image", height='18pw', width='18pw', onclick='explainmeal()') 
+      input(type="file" id="fileInput" style="display: none;")
       .w3-middle
         table.w3-table.w3-centered
           tr.w3-border-bottom.w3-margin

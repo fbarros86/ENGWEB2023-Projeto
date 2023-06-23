@@ -1,4 +1,9 @@
 $(function(){
+  document.getElementById("uploadLabel").addEventListener("click", function() {
+    document.getElementById("fileInput").click();
+  });
+
+  document.getElementById("fileInput").addEventListener("change", handleFileSelect);
 })
 
 function showContent(tipo,data,week,type){
@@ -172,8 +177,29 @@ function editContent(refeicao,tipo,data,week,type){
 
 function explainmeal() {
   event.stopPropagation();
-  var ficheiro1 = "\n  <h1>Formato do Ficheiro JSON</h1>\n  <p>[{</p>\n  <p>  refeicao:Enum(\"A\",\"J\"), </p>\n  <p>  data:String, (DD-MM-YYYY)</p>\n  <p>  empratamento:Number,</p>\n  <p>  sopa:String,</p>\n  <p>  prato:String,</p>\n  <p>  acompanhamento1:String,</p>\n  <p>  acompanhamento2:String,</p>\n  <p>  energia:Number,</p>\n  <p>  lipidos:Number,</p>\n  <p>  lipidosSaturados:Number,</p>\n  <p>  hidratos:Number,</p>\n  <p>  acucares:Number,</p>\n  <p>  fibras:Number,</p>\n  <p>  proteina:Number,</p>\n  <p>  sal:Number</p>\n}]";
+  var ficheiro1 = "\n  <h1>Formato do Ficheiro JSON</h1>\n  <p>[{</p>\n  <p>  refeicao:Enum(\"almoco\",\"jantar\"), </p>\n  <p>  data:String, (DD-MM-YYYY)</p>\n  <p>  empratamento:Number,</p>\n  <p>  sopa:String,</p>\n  <p>  prato:String,</p>\n  <p>  acompanhamento1:String,</p>\n  <p>  acompanhamento2:String,</p>\n  <p>  energia:Number,</p>\n  <p>  lipidos:Number,</p>\n  <p>  lipidosSaturados:Number,</p>\n  <p>  hidratos:Number,</p>\n  <p>  acucares:Number,</p>\n  <p>  fibras:Number,</p>\n  <p>  proteina:Number,</p>\n  <p>  sal:Number</p>\n}]";
   $("#display").empty();
   $("#display").append(ficheiro1);
   $("#display").modal();
+}
+
+
+
+function handleFileSelect(event) {
+  var file = event.target.files[0];
+
+  // Perform the POST request with the selected file
+  var formData = new FormData();
+  formData.append('file', file);
+
+  fetch('/adminhome/file', {
+    method: 'POST',
+    body: formData
+  })
+    .then(function(response) {
+      location.reload()
+    })
+    .catch(function(error) {
+      console.log(error)
+    });
 }

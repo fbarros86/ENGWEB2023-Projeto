@@ -1,7 +1,6 @@
 var normal
 $(function(){
     var tipo=$('.w3-middle').attr('id');
-    console.log(tipo)
     if(tipo=="N") normal=true
     else normal=false
     check()

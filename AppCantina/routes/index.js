@@ -175,7 +175,7 @@ router.post('/form',auth.verifyAuthAdmin,function(req,res,next){
 },auth.signup);
 
 
-router.post('/form/file',upload.single('file'), (req, res) => {
+router.post('/form/file',auth.verifyAuthAdmin,upload.single('file'), (req, res) => {
 
   fs.readFile(req.file.path, 'utf8', (err, data) => {
     if (err) {
@@ -233,6 +233,30 @@ router.post('/edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
 
 
 })
+
+router.post('/adminhome/file',auth.verifyAuthAdmin,upload.single('file'), (req, res) => {
+
+  fs.readFile(req.file.path, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error reading the file');
+      return;
+    }
+    try {
+      const meals = JSON.parse(data);
+      meals.forEach((meal) => {
+        if (!meal._id) meal._id = uuidv4();
+        axios.post("http://localhost:7778/meals", meal)
+          .catch(e => {
+            console.log(e)
+          });
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(400).send('Error parsing the JSON file');
+    }
+  });
+});
 
 
 
