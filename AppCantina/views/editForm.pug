@@ -37,32 +37,33 @@ block content
                     button#sort-btn-type(onclick='sortByType()') Ordenar pelo tipo
         .rightside.col
             .container
-                h1 Editar Utilizador
-                form(action="/form/edit/"+u._id, method="POST")
-                    .form-field
-                        label(for="text") Email:
-                        input(type="text", id="email", name="email", value=u.email, required)
-                    .form-field
-                        label(for="username") Nome:
-                        input(type="text", id="username", name="username", value=u.username, required)
-                    .form-field
-                        label(for="password") Password:
-                        input(type="password", id="password", name="password", value=u.password, required)
-                    .form-field
-                        label(for="tipo") Type:
-                        select(id="userType", name="tipo", required)
-                            if u.tipo=="S"
-                                option(value="S" selected) Student
-                                option(value="NE") Not a Student
-                                option(value="A") Admin
-                            else if u.tipo=="A"
-                                option(value="S" ) Student
-                                option(value="NE") Not a Student
-                                option(value="A" selected) Admin
-                            else
-                                option(value="S" ) Student
-                                option(value="NE" selected) Not a Student
-                                option(value="A" ) Admin
+                .form-container
+                    h1 Editar Utilizador
+                    form(action="/form/edit/"+u._id, method="POST")
+                        .form-field
+                            label(for="text") Email:
+                            input(type="text", id="email", name="email", value=u.email, required)
+                        .form-field
+                            label(for="username") Nome:
+                            input(type="text", id="username", name="username", value=u.username, required)
+                        .form-field
+                            label(for="password") Password:
+                            input(type="password", id="password", name="password", value=u.password, required)
+                        .form-field
+                            label(for="tipo") Type:
+                            select(id="userType", name="tipo", required)
+                                if u.tipo=="S"
+                                    option(value="S" selected) Student
+                                    option(value="NE") Not a Student
+                                    option(value="A") Admin
+                                else if u.tipo=="A"
+                                    option(value="S" ) Student
+                                    option(value="NE") Not a Student
+                                    option(value="A" selected) Admin
+                                else
+                                    option(value="S" ) Student
+                                    option(value="NE" selected) Not a Student
+                                    option(value="A" ) Admin
 
-                    button(type="submit") Submit
+                        button(type="submit") Submit
     include footer.pug
