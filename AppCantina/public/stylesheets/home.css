@@ -48,9 +48,11 @@
 }
 
 .upload{
-  font-size: 20px;
-  font-size: 48px;
+  margin-top: -3.5%;
+  margin-bottom: 2%;
+  font-size: 22px;
 }
+
 .dias{
   font-size:33px;
   font-weight: 800;
