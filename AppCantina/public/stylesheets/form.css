@@ -181,6 +181,7 @@ body {
   background-color: #F7F7F7;
   border-radius: 5px;
   padding: 20px;
+  margin-left: 100px;
 }
 
 .form-container h1 {
@@ -271,3 +272,8 @@ body {
   margin-left: 10px;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+}

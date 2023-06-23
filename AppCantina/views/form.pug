@@ -4,64 +4,65 @@ block content
     link(rel='stylesheet', href='/stylesheets/form.css')
     script(src="/javascripts/form.js")
     include navbar2.pug
-    .row.no-guetters 
-        .leftside.col
-            .container
-                h1.h1-list Lista de Utilizadores
-                input#search-bar(type="text", placeholder="Procurar pelo nome")
-                .table
-                    .table-container(tabindex="0")
-                        table.table.table-hover
-                            thead
-                                tr
-                                    th Nome
-                                    th Tipo
-                                    th
-                
-                            each l in list
-                                tbody
+    .content
+        .row.no-guetters 
+            .leftside.col
+                .container
+                    h1.h1-list Lista de Utilizadores
+                    input#search-bar(type="text", placeholder="Procurar pelo nome")
+                    .table
+                        .table-container(tabindex="0")
+                            table.table.table-hover
+                                thead
                                     tr
-                                        td= l.username
-                                        if l.tipo == "A"
-                                            td Admin 
-                                        else if l.tipo == "S"
-                                            td Student
-                                        else 
-                                            td Not Student
-                                        td
-                                            a(href='/form/' + l._id)
-                                                img.btn.edit(src='/images/user_assets/edit.png', alt='Edit', height='33pw', width='33pw')
-                                            img.btn.delete(onclick='deleteUser("'+l._id+'")' src='/images/user_assets/delete.png', alt='Delete', height='33pw', width='33pw', id="btn")         
-                .button-container
-                    button#sort-btn(onclick='sortTable()') Ordenar por nome
-                    button#sort-btn-type(onclick='sortByType()') Ordenar pelo tipo
-        .rightside.col
-            .container
-                .form-container
-                    h1 Criar Novos Utilizadores
-                    .file-input
-                        form(method="POST" action="form/file" enctype="multipart/form-data")
+                                        th Nome
+                                        th Tipo
+                                        th
+                    
+                                each l in list
+                                    tbody
+                                        tr
+                                            td= l.username
+                                            if l.tipo == "A"
+                                                td Admin 
+                                            else if l.tipo == "S"
+                                                td Student
+                                            else 
+                                                td Not Student
+                                            td
+                                                a(href='/form/' + l._id)
+                                                    img.btn.edit(src='/images/user_assets/edit.png', alt='Edit', height='33pw', width='33pw')
+                                                img.btn.delete(onclick='deleteUser("'+l._id+'")' src='/images/user_assets/delete.png', alt='Delete', height='33pw', width='33pw', id="btn")         
+                    .button-container
+                        button#sort-btn(onclick='sortTable()') Ordenar por nome
+                        button#sort-btn-type(onclick='sortByType()') Ordenar pelo tipo
+            .rightside.col
+                .container
+                    .form-container
+                        h1 Criar Novos Utilizadores
+                        .file-input
+                            form(method="POST" action="form/file" enctype="multipart/form-data")
+                                .form-field
+                                label Upload File (JSON)
+                                    #display.modal.fade
+                                    img#i-img(src="/images/user_assets/info.png", alt="Image", height='18pw', width='18pw', onclick='explain()') 
+                                input(type="file", id="file", name="file")
+                                button(type="submit") Submit 
+                        form(method="POST")
                             .form-field
-                            label Upload File (JSON)
-                                #display.modal.fade
-                                img#i-img(src="/images/user_assets/info.png", alt="Image", height='18pw', width='18pw', onclick='explain()') 
-                            input(type="file", id="file", name="file")
-                            button(type="submit") Submit 
-                    form(method="POST")
-                        .form-field
-                        label(for="email") Email:
-                        input(type="text", id="email", name="email", placeholder="Enter email", required)
-                        .form-field
-                        label(for="username") Nome:
-                        input(type="text", id="username", name="username", placeholder="Enter name", required)
-                        .form-field
-                        label(for="password") Password:
-                        input(type="password", id="password", name="password", placeholder="Enter password", required)
-                        .form-field
-                        label(for="tipo") Type:
-                        select(id="userType", name="tipo", required)
-                            option(value="S") Student
-                            option(value="NE") Not a Student
-                            option(value="A") Admin
-                        button(type="submit") Submit   
+                            label(for="email") Email:
+                            input(type="text", id="email", name="email", placeholder="Enter email", required)
+                            .form-field
+                            label(for="username") Nome:
+                            input(type="text", id="username", name="username", placeholder="Enter name", required)
+                            .form-field
+                            label(for="password") Password:
+                            input(type="password", id="password", name="password", placeholder="Enter password", required)
+                            .form-field
+                            label(for="tipo") Type:
+                            select(id="userType", name="tipo", required)
+                                option(value="S") Student
+                                option(value="NE") Not a Student
+                                option(value="A") Admin
+                            button(type="submit") Submit   
     include footer.pug
