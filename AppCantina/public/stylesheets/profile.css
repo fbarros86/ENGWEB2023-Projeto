@@ -17,7 +17,6 @@
     align-items: center;
   }
   
-  
   .title {
     display: flex;
     flex-direction: column;
@@ -123,6 +122,10 @@
 
   .table-responsive {
     margin-top: 10%;
+    max-height: 500px; /* Adjust the maximum height as needed */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling */
+    outline: none; /* Remove default focus outline */
   }
   
   .table {
@@ -156,18 +159,8 @@
     border: 1px solid #dee2e6;
   }
   
-  .table-bordered th,
-  .table-bordered td {
-    border: 1px solid #dee2e6;
-  }
-  
-  .table-bordered thead th,
-  .table-bordered thead td {
-    border-bottom-width: 2px;
-  }
-  
-  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05);
+  .table-hover {
+    border-collapse: collapse;
   }
   
   .table-hover tbody tr:hover {

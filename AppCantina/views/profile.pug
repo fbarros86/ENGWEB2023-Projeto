@@ -9,9 +9,6 @@ block content
         .title 
           //- depois por a path guardada de cada user
           img.profile-image(src='/images/user_assets/profile.png', alt='Profile Image')
-          label(for="image" class="upload-button")
-            span Upload Image
-            input(type="file" id="image" name="image")
           h1= u.username
         .content
           //- por os parâmetros de cada user como value de cada label
@@ -25,7 +22,6 @@ block content
             .form-field
               label(for="tipo") Tipo:
               input(type="text" id="tipo" name="tipo" value=u.tipo readonly)
-            button(type="submit") Guardar Alterações
       .rightside.col
         .reservations
           h1 As tuas reservas!
