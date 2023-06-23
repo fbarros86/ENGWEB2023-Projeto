@@ -66,19 +66,18 @@ function deleteUser(idU){
   
 }
 
-function explain(){
+function explain() {
   event.stopPropagation();
 
-    var ficheiro1=`
-    <h1>Formato do Ficheiro JSON</h1>
-    <p>[{
-      "email": String,
-      "username": String,
-      "password": String,
-      "tipo": Enum("NE","E","A")
-    }]</p>
-    `
-    $("#display").empty()
-    $("#display").append(ficheiro1)
-    $("#display").modal() 
+  var ficheiro1 = `
+  <h1>Formato do Ficheiro JSON</h1>
+  <p>[{</p>
+    <p>    "email": String, </p>
+    <p>    "username": String,</p>
+    <p>    "password": String,</p>
+    <p>    "tipo": Enum("NE","E","A")</p>
+    <p>}]</p>`;
+  $("#display").empty();
+  $("#display").append(ficheiro1);
+  $("#display").modal();
 }

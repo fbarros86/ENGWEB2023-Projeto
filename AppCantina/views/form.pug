@@ -42,8 +42,9 @@ block content
                     .file-input
                         form(method="POST" action="form/file" enctype="multipart/form-data")
                             .form-field
-                            label(for="file") Upload File (JSON)  
-                                img(src="/images/user_assets/info.png" alt="Image" height='18pw', width='18pw' onclick='explain()')
+                            label Upload File (JSON)
+                                #display.modal.fade
+                                img#i-img(src="/images/user_assets/info.png", alt="Image", height='18pw', width='18pw', onclick='explain()') 
                             input(type="file", id="file", name="file")
                             button(type="submit") Submit 
                     form(method="POST")
