@@ -170,3 +170,10 @@ function editContent(refeicao,tipo,data,week,type){
   $("#display").modal() 
 }
 
+function explainmeal() {
+  event.stopPropagation();
+  var ficheiro1 = "\n  <h1>Formato do Ficheiro JSON</h1>\n  <p>[{</p>\n  <p>  refeicao:Enum(\"A\",\"J\"), </p>\n  <p>  data:String, (DD-MM-YYYY)</p>\n  <p>  empratamento:Number,</p>\n  <p>  sopa:String,</p>\n  <p>  prato:String,</p>\n  <p>  acompanhamento1:String,</p>\n  <p>  acompanhamento2:String,</p>\n  <p>  energia:Number,</p>\n  <p>  lipidos:Number,</p>\n  <p>  lipidosSaturados:Number,</p>\n  <p>  hidratos:Number,</p>\n  <p>  acucares:Number,</p>\n  <p>  fibras:Number,</p>\n  <p>  proteina:Number,</p>\n  <p>  sal:Number</p>\n}]";
+  $("#display").empty();
+  $("#display").append(ficheiro1);
+  $("#display").modal();
+}
