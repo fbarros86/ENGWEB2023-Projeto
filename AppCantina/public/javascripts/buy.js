@@ -54,10 +54,7 @@ function addsenhas(uID,tipo){
   });
 }
 
-function PayNow(idUser,tipo){
-
-  addsenhas(idUser,tipo)
-  /*
+function PayNow(idUser,tipo){  
   var quantity = document.getElementById("quantity").value;
 
   // Create a payment intent on the server
@@ -103,6 +100,8 @@ function PayNow(idUser,tipo){
               // Display error to the user
               console.error(result.error.message);
             } else {
+              addsenhas(idUser,tipo)
+
               // Payment succeeded, show a success message to the user
               console.log("Payment succeeded:", result.paymentIntent);
               // Optionally, you can redirect the user to a success page
@@ -111,7 +110,7 @@ function PayNow(idUser,tipo){
           });
       });
     });
-    */
+    
 }
 
 function showPayment(idUser,tipo) {
