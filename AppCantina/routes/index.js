@@ -227,28 +227,7 @@ router.post('/edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
 
 })
 
-router.post('/create-payment-intent', async (req, res) => {
-  const { quantity } = req.body;
 
-  // Calculate the total amount based on the quantity
-  // You can customize this calculation as per your pricing logic
-  const amount = quantity * 270;
-
-  try {
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount,
-      currency: "eur"
-    });
-
-    res.send({
-      client_secret: paymentIntent.client_secret
-    });
-  } catch (error) {
-    res.status(500).send({
-      error: error.message
-    });
-  }
-});
 
 
 
