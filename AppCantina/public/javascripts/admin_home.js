@@ -12,7 +12,7 @@ function showContent(tipo,data,week,type){
     <div class="w3-margin w3-padding-large w3-white">
     <h2 class="w3-center">Preencha o Formulário</h2>
 
-    <form class="w3-container" method="POST" action="/add/${tipo}/${data}?week=${week}">
+    <form class="w3-container" method="POST" action="/add/${tipo}/${data}?week=${week}&type=${type}">
       <input type="hidden" name="tipo" value="${type}">
       <div class="w3-row w3-section">
         <label class="w3-col input-label" for="empratamento">Empratamento:</label>
@@ -96,7 +96,7 @@ function editContent(refeicao,tipo,data,week,type){
   <div class="w3-margin w3-padding-large w3-white">
   <h2 class="w3-center">Preencha o Formulário</h2>
 
-  <form class="w3-container" method="POST" action="/edit/${tipo}/${data}?week=${week}">
+  <form class="w3-container" method="POST" action="/edit/${tipo}/${data}?week=${week}&type=${type}">
   <input type="hidden" name="tipo" value="${type}">
 
     <div class="w3-row w3-section">

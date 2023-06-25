@@ -215,7 +215,7 @@ router.post('/add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
   req.body.data = req.params.data
   axios.post("http://localhost:7778/meals/",req.body)
     .then(r=>{
-        res.redirect("/adminhome?week="+req.query.week)
+        res.redirect("/adminhome?week="+req.query.week+"&type="+req.query.type)
     })
     .catch(e=>{
         res.redirect("/adminhome?info=failtoadd")//colocar pop up a dizer que falhou
@@ -225,7 +225,7 @@ router.post('/add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
 router.post('/edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
   axios.put("http://localhost:7778/meals/"+req.params.tipo+"/"+req.params.data,req.body)
   .then(r=>{
-      res.redirect("/adminhome?week="+req.query.week)
+      res.redirect("/adminhome?week="+req.query.week+"&type="+req.query.type)
   })
   .catch(e=>{
       res.redirect("/adminhome?info=failtoedit")//colocar pop up a dizer que falhou
