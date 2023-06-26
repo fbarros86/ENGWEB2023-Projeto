@@ -23,5 +23,5 @@
 }
 
 .logout:hover, .home:hover, .profile:hover {
-  cursor: pointer;
+  cursor:pointer;
 }

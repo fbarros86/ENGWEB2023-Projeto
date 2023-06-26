@@ -8,6 +8,9 @@
   cursor: pointer;
 }
 
+#i-img:hover{
+  cursor: help;
+}
 
 .tooltip {
   position: relative;
