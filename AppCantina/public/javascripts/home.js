@@ -97,10 +97,10 @@ function showContent(refeicao){
         <td>${refeicao.sal}</td>
     </tr>
 </table>
-    `
-    $("#display").empty()
-    $("#display").append(ficheiro1)
-    $("#display").modal() 
+    `  
+  $("#display").empty()
+  $("#display").append(ficheiro1)
+  $("#display").modal() 
 }
 
 function selectDay(element){
