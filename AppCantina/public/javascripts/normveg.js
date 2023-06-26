@@ -13,7 +13,20 @@ function selectnormveg(element){
     } else {
         normal = false;
     }
-    check()
+    $('.w3-table').animate(
+        {
+          opacity: 0, // Fade out the table
+        },
+        500,
+        function() {
+            check()
+        }
+      );
+    $('.w3-table').animate(
+        {
+          opacity: 1, // Fade out the table
+        },
+        500);
 }
 
 function check(){
@@ -30,6 +43,5 @@ function check(){
         $(".vegan").show()
         $(".normal-btn").removeClass("selected-normveg")
     }
-   
 }
 

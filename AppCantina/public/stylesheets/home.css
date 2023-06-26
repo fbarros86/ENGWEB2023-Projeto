@@ -4,6 +4,11 @@
 
 }
 
+#uploadLabel:hover, #fileInput:hover {
+  cursor: pointer;
+}
+
+
 .tooltip {
   position: relative;
   display: inline-block;

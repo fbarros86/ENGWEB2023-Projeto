@@ -14,7 +14,8 @@
   }
 
 .selected-normveg{
-      background-color: #ededed !important;
+  pointer-events: none;
+  background-color: #ededed !important;
 }
 .selected-normveg:hover{
     background-color: #ededed !important;
