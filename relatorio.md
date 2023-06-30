@@ -61,7 +61,7 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 
 ---
 
-# Estrutura/Desenvolvimento (o nome original é Concepção/desenho da Resolução but idk)
+# Estrutura/Desenvolvimento
 
 Neste Capítulo iremos falar de como o projeto foi estruturado e mostrar o seu desenvolvimento em termos de codificação. Este projeto foi estruturado entre três partes:
 
@@ -139,3 +139,15 @@ O código define várias rotas usando o objeto `router` fornecido pelo Express:
 - A rota POST `/add/:tipo/:data` trata da adição de uma refeição. Ela requer autenticação de administrador e cria uma nova refeição com os detalhes fornecidos.
 - A rota POST `/edit/:tipo/:data` trata da edição de uma refeição. Ela requer autenticação de administrador e atualiza a refeição com os detalhes fornecidos.
 - A rota POST `/adminhome/file` trata do upload de arquivos de refeições a partir da página inicial do administrador. Ela lê o arquivo JSON enviado e cria refeições com base nos dados do arquivo.
+
+# Interface
+
+Neste capítulo vamos mostrar alguns prints da interface da nossa plataforma e explicar como um cliente poderá usá-las e para que servem. A nossa plataforma tem sete páginas ao todo, onde duas servem para fazer a autenticação (páginas de login e registo), outras três são para os utilizadores (páginas de home, perfil e buy) e outras duas são para os administradores (páginas de adminhome e form).
+
+## Páginas de Autenticação
+
+## Páginas para Utilizadores
+
+## Páginas para Administradores
+
+
