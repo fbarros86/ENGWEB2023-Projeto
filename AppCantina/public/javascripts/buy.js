@@ -34,22 +34,9 @@ function change(oneortwo,times){
   }
 }
 
-function addsenhas(uID,tipo){
+function addsenhas(tipo){
   var num
   if (tipo==0) num=NUM1
   else num=NUM2
-  $.ajax({
-    url: 'http://localhost:7778/users/' + uID,
-    type: 'PUT',
-    data: JSON.stringify({ senhas: num }),
-    contentType: 'application/json',
-    success: function(response) {
-      // Handle the successful response
-      location.reload()
-    },
-    error: function(xhr, status, error) {
-      // Handle the error
-      console.log(error);
-    }
-  });
+  location.href="http://localhost:7777/buy/"+num
 }

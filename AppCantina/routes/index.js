@@ -38,7 +38,7 @@ function getListMeals(req, res, next) {
   const requests = [];
   for (let i = 0; i < 5; i++) {
     const date = moment().startOf('week').add(i, 'day').add(req.week,'week').format('DD-MM-YYYY');
-    const request = axios.get("http://localhost:7778/meals/date/" + date)
+    const request = axios.get(env.apiAccessPoint+"meals/date/" + date)
       .then(r => {
         req.listMeals[date] = r.data;
       })
@@ -71,7 +71,7 @@ function getListMealsandReserves(req, res, next) {
   const requests = [];
   for (let i = 0; i < 5; i++) {
     const date = moment().startOf('week').add(i, 'day').add(req.week,'week').format('DD-MM-YYYY');
-    const request = axios.get("http://localhost:7778/meals/date/" + date)
+    const request = axios.get(env.apiAccessPoint+"meals/date/" + date)
       .then(r => {
         req.listMeals[date] = r.data;
       })
@@ -82,7 +82,7 @@ function getListMealsandReserves(req, res, next) {
     requests.push(request);
   }
 
-  const request = axios.get("http://localhost:7778/reserves/user/" + req.user.username)
+  const request = axios.get(env.apiAccessPoint+"reserves/user/" + req.user.username)
       .then(r => {
         req.reserves = r.data;
       })
@@ -93,7 +93,6 @@ function getListMealsandReserves(req, res, next) {
       
   Promise.all(requests)
     .then(() => {
-      // transformar num dicionário maybe
       next();
     })
     .catch(error => {
@@ -106,9 +105,38 @@ router.get('/home', auth.verifyAuthNotAdmin, getListMealsandReserves,function(re
   res.render('home', { title: 'Home',currentDay:moment(),startOfWeek:req.startOfWeek, endOfWeek:req.endOfWeek,user:req.user,meals:req.listMeals, reserves:req.reserves,week:Number(req.week),tipo:req.tipo});
 });
 
+router.get('/home/senhas/:n', auth.verifyAuthNotAdmin,function(req, res, next) {
+  axios.put(env.apiAccessPoint+"users/" + req.user._id, {senhas:req.params.n})
+        .then(r => {
+          res.redirect("/home?info=reserved&week="+req.query.week+"&type="+req.query.type)
+        })
+        .catch(error => {
+        });
+});
+
+
+router.post('/home/reserve', auth.verifyAuthNotAdmin,function(req, res, next) {
+  axios.post(env.apiAccessPoint+"reserves/", req.body)
+        .then(r => {
+          res.jsonp("Added succesfully")
+        })
+        .catch(error => {
+          res.jsonp("Failed to add reserve")
+        });
+});
+
 /* GET buy page. */
 router.get('/buy', auth.verifyAuthNotAdmin, function(req, res, next) {
   res.render('buy', { title: 'Comprar senhas', user:req.user });
+});
+
+router.get('/buy/:n', auth.verifyAuthNotAdmin, function(req, res, next) {
+  axios.put(env.apiAccessPoint+"users/"+req.user._id, {senhas:req.params.n})
+        .then(r => {
+          res.redirect("/buy")
+        })
+        .catch(error => {
+        });
 });
 
 
@@ -122,9 +150,9 @@ router.get('/adminhome',auth.verifyAuthAdmin, getListMeals,function(req, res, ne
 
 /* GET profile page. */
 router.get('/profile', auth.verifyAuthNotAdmin, function(req, res, next) {
-  axios.get("http://localhost:7778/users/" + req.user._id)
+  axios.get(env.apiAccessPoint+"users/" + req.user._id)
     .then(response => {
-      axios.get("http://localhost:7778/reserves/user/" + req.user._id)
+      axios.get(env.apiAccessPoint+"reserves/user/" + req.user._id)
         .then(reserveResponse => {
           res.render('profile', { title: 'Perfil do Usuário', u: response.data, reserves: reserveResponse.data });
         })
@@ -135,9 +163,23 @@ router.get('/profile', auth.verifyAuthNotAdmin, function(req, res, next) {
     });
 });
 
+router.get('/profile/reserve/:id', auth.verifyAuthNotAdmin, function(req, res, next) {
+  axios.delete(env.apiAccessPoint+"reserves/" + req.params.id)
+    .then(response => {
+      axios.put(env.apiAccessPoint+"users/" + req.user._id, {senhas:Number(req.user.senhas)+1})
+        .then(reserveResponse => {
+          res.redirect("/profile")
+        })
+        .catch(error => {
+        });
+    })
+    .catch(error => {
+    });
+});
+
 /* GET User form page. */
 router.get('/form', auth.verifyAuthAdmin,function(req, res, next) {
-  axios.get("http://localhost:7778/users")
+  axios.get(env.apiAccessPoint+"users")
     .then(response => {
       res.render('form', { title: 'Formulário de Utilizadores', list: response.data});
     })
@@ -146,15 +188,25 @@ router.get('/form', auth.verifyAuthAdmin,function(req, res, next) {
 
 
 /* GET User edit form page. */
-router.get('/form/:id', auth.verifyAuthAdmin,function(req, res, next) {
-  axios.get("http://localhost:7778/users/" + req.params.id)
+router.get('/form/edit/:id', auth.verifyAuthAdmin,function(req, res, next) {
+  axios.get(env.apiAccessPoint+"users/" + req.params.id)
     .then(response => {
-      axios.get("http://localhost:7778/users/")
+      axios.get(env.apiAccessPoint+"users/")
         .then(listResponse => {
           res.render('editForm', { title: 'Formulário de Usuários', list: listResponse.data, u: response.data});
         })
         .catch(error => {
         });
+    })
+    .catch(error => {
+    });
+});
+
+/* GET User delete form page. */
+router.get('/form/delete/:id', auth.verifyAuthAdmin,function(req, res, next) {
+  axios.delete(env.apiAccessPoint+"users/" + req.params.id)
+    .then(r => {
+      res.redirect("/form")
     })
     .catch(error => {
     });
@@ -187,7 +239,7 @@ router.post('/form/file',auth.verifyAuthAdmin,upload.single('file'), (req, res) 
       const users = JSON.parse(data);
       users.forEach((user) => {
         if (!user.tipo) user.tipo = "NE";
-        axios.post("http://localhost:7779/users/register", user)
+        axios.post(env.authAccessPoint+"users/register", user)
           .catch(e => {
             console.log(e)
           });
@@ -201,7 +253,7 @@ router.post('/form/file',auth.verifyAuthAdmin,upload.single('file'), (req, res) 
 });
 
 router.post('/form/edit/:id',auth.verifyAuthAdmin,function(req,res,next){
-  axios.delete("http://localhost:7778/users/"+req.params.id)
+  axios.delete(env.apiAccessPoint+"users/"+req.params.id)
     .then(res=>{
       req.link = '/form';
       next()
@@ -213,7 +265,7 @@ router.post('/add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
   req.body._id=uuidv4()
   req.body.refeicao=req.params.tipo
   req.body.data = req.params.data
-  axios.post("http://localhost:7778/meals/",req.body)
+  axios.post(env.apiAccessPoint+"meals/",req.body)
     .then(r=>{
         res.redirect("/adminhome?week="+req.query.week+"&type="+req.query.type)
     })
@@ -223,7 +275,7 @@ router.post('/add/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
 })
 
 router.post('/edit/:tipo/:data',auth.verifyAuthAdmin,function(req,res,next){
-  axios.put("http://localhost:7778/meals/"+req.params.tipo+"/"+req.params.data,req.body)
+  axios.put(env.apiAccessPoint+"meals/"+req.params.tipo+"/"+req.params.data,req.body)
   .then(r=>{
       res.redirect("/adminhome?week="+req.query.week+"&type="+req.query.type)
   })
@@ -246,7 +298,7 @@ router.post('/adminhome/file',auth.verifyAuthAdmin,upload.single('file'), (req, 
       const meals = JSON.parse(data);
       meals.forEach((meal) => {
         if (!meal._id) meal._id = uuidv4();
-        axios.post("http://localhost:7778/meals", meal)
+        axios.post(env.apiAccessPoint+"meals", meal)
           .catch(e => {
             console.log(e)
           });

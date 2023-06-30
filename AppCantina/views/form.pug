@@ -30,9 +30,10 @@ block content
                                             else 
                                                 td Not Student
                                             td
-                                                a(href='/form/' + l._id)
+                                                a(href='/form/edit/' + l._id)
                                                     img.btn.edit(src='/images/user_assets/edit.png', alt='Edit', height='33pw', width='33pw')
-                                                img.btn.delete(onclick='deleteUser("'+l._id+'")' src='/images/user_assets/delete.png', alt='Delete', height='33pw', width='33pw', id="btn")         
+                                                a(href='/form/delete/' + l._id)
+                                                    img.btn.delete(src='/images/user_assets/delete.png', alt='Delete', height='33pw', width='33pw', id="btn")         
                     .button-container
                         button#sort-btn(onclick='sortTable()') Ordenar por nome
                         button#sort-btn-type(onclick='sortByType()') Ordenar pelo tipo

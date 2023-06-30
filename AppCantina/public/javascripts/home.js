@@ -1,4 +1,5 @@
 var SENHAS
+
 $(function(){
   
   SENHAS =Number (document.querySelector('.senhas').textContent);
@@ -164,64 +165,43 @@ function selectDay(element){
   }
 }
 
-function mudaNumSenhas(uID, nsenhas){
-  $.ajax({
-    url: 'http://localhost:7778/users/' + uID,
-    type: 'PUT',
-    data: JSON.stringify({ senhas: nsenhas }),
-    contentType: 'application/json',
-    success: function(response) {
-      // Handle the successful response
-      console.log(response);
-    },
-    error: function(xhr, status, error) {
-      // Handle the error
-      console.log(error);
-    }
-  });
-  
-}
 
 function guardaReserva(idR,idU,data){
   newData = moment(data, 'DD-MM-YYYY').add(Number(idR[2]), 'day').format('DD-MM-YYYY')
   reserve={"_id":uuidv4(),"idUser":idU,data:newData,tipo:idR[1]}
   if(idR[0]=="A") reserve["refeicao"]="almoco"
   else reserve["refeicao"]="jantar"
-  $.post("http://localhost:7778/reserves",reserve)
+  
+  $.post("http://localhost:7777/home/reserve",reserve)
 }
 
 function reservou(element,userID,data,week){
     var senhas = document.querySelector('.senhas');
     var nsenhas = Number(senhas.textContent);
-    mudaNumSenhas(userID,nsenhas);
     var selectedSquares = document.querySelectorAll('.selected');
     if(selectedSquares.length > 0){
         selectedSquares.forEach(square =>{
             guardaReserva(square.id,userID,data) //J/A N/V 0,1,2,3,4
             square.classList.remove('selected')
     })
-    //senhas.classList.remove('areservar');
-    //senhas.classList.add('reservou');
-    //element.classList.remove('working-reservar-btn');
-    //senhas.classList.remove('reservou')
-    
     $('.senhas .senha-img').fadeTo(500, 0, function() {
       $(this).attr('src', '/images/user_assets/senha3.png').one('load', function() {
         $(this).fadeTo(500, 1, function() {
           $('.senhas .senha-img').fadeTo(600, 0, function() {
             $(this).attr('src', '/images/user_assets/senha.png').one('load', function() {
               $(this).fadeTo(200, 1);
+              
             });
           });
+          checkreservar()
+          window.location.href = "http://localhost:7777/home/senhas/"+nsenhas+"?week="+week+"&type="+selectedSquares[0].id[1]
+
         });
       });
     });
     
-
-       
+    
+    
       
-        //senhas.classList.remove('reservou')
-        checkreservar()
-        window.location.href = "http://localhost:7777/home?info=reserved&week="+week+"&type="+selectedSquares[0].id[1]
     }
   }

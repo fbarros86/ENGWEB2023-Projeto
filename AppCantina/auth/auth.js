@@ -1,8 +1,10 @@
 var axios = require('axios');
+var env = require('../config/env');
+
 
 module.exports.verifyAuth = function(req,res,next){
     if(req.cookies && req.cookies.token){
-        axios.get("http://localhost:7779/users?token="+req.cookies.token)
+        axios.get(env.authAccessPoint+"users?token="+req.cookies.token)
             .then(r=>{
                 next()
             })
@@ -19,7 +21,7 @@ module.exports.verifyAuth = function(req,res,next){
 //verifica se está logdado não como admin
 module.exports.verifyAuthNotAdmin = function(req,res,next){
     if(req.cookies && req.cookies.token){
-         axios.get("http://localhost:7779/users/token?token="+req.cookies.token)
+         axios.get(env.authAccessPoint+"users/token?token="+req.cookies.token)
             .then(r=>{
                     if(r.data.tipo=="A"){
                         // É admin
@@ -45,7 +47,7 @@ module.exports.verifyAuthNotAdmin = function(req,res,next){
 
 module.exports.verifyAuthAdmin = function(req,res,next){
     if(req.cookies && req.cookies.token){
-        axios.get("http://localhost:7779/users/token?token="+req.cookies.token)
+        axios.get(env.authAccessPoint+"users/token?token="+req.cookies.token)
             .then(r=>{
                     if(r.data.tipo!="A") res.redirect('/?info=notadmin')
                     else {
@@ -66,7 +68,7 @@ module.exports.verifyAuthAdmin = function(req,res,next){
 
 module.exports.signup = function (req, res, next) {
     if (!req.body.tipo) req.body.tipo = "NE";
-    axios.post("http://localhost:7779/users/register", req.body)
+    axios.post(env.authAccessPoint+"users/register", req.body)
       .then(r => {
         res.redirect(req.link)
       })
@@ -81,7 +83,7 @@ module.exports.signup = function (req, res, next) {
   
 
 module.exports.login = function (req,res,next){
-    axios.post("http://localhost:7779/users/login",req.body)
+    axios.post(env.authAccessPoint+"users/login",req.body)
     .then(r=>{
             res.cookie("token", r.data.token, { maxAge: 3600000 });
             if (r.data.tipo=="A") res.redirect("/adminhome")

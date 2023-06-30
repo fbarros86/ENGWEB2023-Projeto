@@ -1,0 +1,51 @@
+version: "3"
+services:
+  app:
+    container_name: AppCantina
+    build: ./AppCantina
+    restart: always
+    ports:
+      - "7777:7777"
+    networks:
+      - cantinanet
+
+  data_server:
+    container_name: cantina_data_server
+    build: ./APIDados
+    restart: always
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/cantina
+    depends_on:
+      - mongodb
+    networks:
+      - cantinanet
+
+  mongodb:
+    container_name: cantina-mongodb
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - cantinaData:/data/db
+    networks:
+      - cantinanet
+
+  auth_server:
+    container_name: cantina_auth_server
+    build: ./Autenticação
+    restart: always
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/cantina
+    depends_on:
+      - mongodb
+    networks:
+      - cantinanet
+      
+networks:
+  cantinanet:
+    name: cantinanet
+    driver: bridge
+volumes:
+  cantinaData:
+  

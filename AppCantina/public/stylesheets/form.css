@@ -110,7 +110,7 @@ body {
   }
   
   .table-container {
-    max-height: 500px; /* Adjust the maximum height as needed */
+    max-height: 61vh; /* Adjust the maximum height as needed */
     overflow-y: scroll; /* Enable vertical scrolling */
     overflow-x: hidden; /* Hide horizontal scrolling */
     outline: none; /* Remove default focus outline */

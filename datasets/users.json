@@ -1,5 +1,4 @@
-{
-  "utilizadores": [
+[
     {
       "email": "a81319@uminho.pt",
       "username": "laboris",
@@ -351,4 +350,3 @@
       "senhas": 39
     }
   ]
-}

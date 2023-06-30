@@ -27,7 +27,7 @@ block content
                 option(value='7') 7
                 option(value='8') 8
                 option(value='9') 9
-            .comprar-btn(onclick='addsenhas("'+user.username+'",0)') Comprar
+            .comprar-btn(onclick='addsenhas(0)') Comprar
         .w3-col.w3-half
           .w3-card-4.borda
             h2.nrsenhas 10x#[img.senha-img(src='/images/user_assets/senha.png', alt='Senha', height='50pw', width='50pw')]
@@ -44,5 +44,5 @@ block content
                 option(value='7') 7
                 option(value='8') 8
                 option(value='9') 9
-            .comprar-btn(onclick='addsenhas("'+user.username+'",1)') Comprar
+            .comprar-btn(onclick='addsenhas(1)') Comprar
     include footer.pug
