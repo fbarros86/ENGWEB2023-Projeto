@@ -40,7 +40,7 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 - Deverá ser possível criar uma nova conta, através do registo, onde será preciso fornecer um username, um email e uma password para criar a conta.
 - Deverão existir pelo menos 2 níveis de acesso:
   - Administrador - pode adicionar e alterar refeições e utilizadores;
-  - Utilizador - pode comprar senhas, reservar refeições e alterar alguns atributos do seu perfil;
+  - Utilizador/Usuário - pode comprar senhas, reservar refeições e alterar alguns atributos do seu perfil;
 - O utilizador poderá comprar senhas e usá-las para reservar refeições. Cada refeição só poderá ser reservada uma vez, podendo reservar múltiplas senhas ao mesmo tempo.
 - Antes de reservar, o utilizador poderá especificar se a refeição é normal ou vegetariana, e deverá conseguir ver todos os detalhes de cada refeição.
 - As senhas podem ser compradas separadamente ou num pack de 10 senhas, sendo que uma senha separada custa 2.70€ mas um pack de 10 senhas custa 25€.
@@ -76,20 +76,44 @@ Cada uma dessas partes desempenha um papel fundamental no funcionamento da plata
 A Autenticação possui várias rotas e funcionalidades relacionadas à autenticação e manipulação de usuários. A seguir, apresento uma breve descrição de cada rota e funcionalidade:
 
 - A função de middleware `auth.verificaAcesso` verifica se o usuário tem acesso autorizado, sendo usada por várias rotas.
-- A rota `/` retorna a informação de que a autorização é bem-sucedida, juntamente com o ID do usuário, verificando se a pessoa está logged in quando acessada com uma requisição GET. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
-- A rota `/token` retorna informações do usuário com base no nome de usuário (req.username) quando acessada com uma requisição GET. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
-- A rota `/username/:id` retorna informações do usuário com o ID fornecido quando acessada com uma requisição GET. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
-- A rota `/` adiciona um novo usuário com base na informação fornecida quando acessada com uma requisição POST. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
-- A rota `/register` cria um novo usuário utilizando o modelo do usuário (`userModel`) e a senha fornecida quando acessada com uma requisição POST.
-- A rota `/login` realiza o login do usuário usando o método de autenticação `passport.authenticate('local')` quando acessada com uma requisição POST. Gera um token JWT contendo o nome de usuário (`req.user.username`) e o tipo do usuário (`req.user.tipo`) com duração de 1 hora (3600 segundos). 
-- A rota `/:id` atualiza os dados do usuário com o ID fornecido quando acessada com uma requisição PUT. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
-- A rota `/:id` remove o usuário com o ID fornecido quando acessada com uma requisição DELETE. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota GET `/` retorna a informação de que a autorização é bem-sucedida, juntamente com o ID do usuário, verificando se a pessoa está logged in. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota GET `/token` retorna informações do usuário com base no nome de usuário (req.username). Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota GET `/username/:id` retorna informações do usuário com o ID fornecido. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota POST `/` adiciona um novo usuário com base na informação fornecida. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota POST `/register` cria um novo usuário utilizando o modelo do usuário (`userModel`) e a senha fornecida.
+- A rota POST `/login` realiza o login do usuário usando o método de autenticação `passport.authenticate('local')`. Gera um token JWT contendo o nome de usuário (`req.user.username`) e o tipo do usuário (`req.user.tipo`) com duração de 1 hora (3600 segundos). 
+- A rota PUT `/:id` atualiza os dados do usuário com o ID fornecido. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota DELETE `/:id` remove o usuário com o ID fornecido. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
 
 ## Api de Dados
 
-A Api de dados esta dividida em 3 arquivos que mexem com a respetiva collection:
+A Api de dados esta dividida em 3 arquivos que mexem com a sua respetiva collection, estando as suas rotas representadas a seguir.
 
+### meals.js:
 
+- A rota GET `/` retorna uma lista de refeições. Chama a função `Meal.list()` do controlador meal para obter os dados das refeições.
+- A rota GET `/:id` retorna uma refeição com o ID fornecido. Chama a função `Meal.getMeal(id)` do controlador `meal.js` para obter os dados da refeição.
+- A rota GET `/date/:date` retorna uma refeição com base na data fornecida. Chama a função `Meal.getMealDate(date)` do controlador `meal.js` para obter os dados da refeição.
+- A rota POST `/` adiciona uma nova refeição com base nas informações fornecidas. Chama a função `Meal.addMeal(meal)` do controlador `meal.js` para adicionar a refeição.
+- A rota PUT `/:tipo/:data` atualiza uma refeição com base no tipo e data fornecidos. Chama a função `Meal.editMealDate(date, tipo, meal)` do controlador `meal.js` para atualizar a refeição.
+- A rota DELETE `/:id` remove a refeição com o ID fornecido. Chama a função `Meal.deleteMeal(id)` do controlador `meal.js` para remover a refeição.
+
+### reserves.js:
+
+- A rota GET `/` retorna uma lista de reservas. Chama a função `Reserve.list()` do controlador `reserve.js` para obter os dados das reservas.
+A rota GET `/:id` retorna uma reserva com o ID fornecido. Chama a função `Reserve.getReserve(id)` do controlador `reserve.js` para obter os dados da reserva.
+- A rota GET `/user/:idUser` retorna as reservas de um determinado usuário com base no ID do usuário fornecido. Chama a função `Reserve.getUserReserves(idUser)` do controlador `reserve.js` para obter as reservas do usuário.
+- A rota POST `/` adiciona uma nova reserva com base nas informações fornecidas. Chama a função `Reserve.addReserve(reserve)` do controlador `reserve.js` para adicionar a reserva.
+- A rota PUT `/:id` atualiza uma reserva com o ID fornecido. Chama a função `Reserve.editReserve(id, reserve)` do controlador `reserve.js` para atualizar a reserva.
+- A rota DELETE `/:id` remove a reserva com o ID fornecido. Chama a função `Reserve.deleteReserve(id)` do controlador `reserve.js` para remover a reserva.
+
+### users.js:
+
+- A rota GET `/` retorna uma lista de usuários. Chama a função `User.list()` do controlador `user.js` para obter os dados dos usuários.
+- A rota GET `/:id` retorna um usuário com o ID fornecido. Chama a função `User.getUser(id)` do controlador `user.js` para obter os dados do usuário.
+- A rota POST `/` adiciona um novo usuário com base nas informações fornecidas. Chama a função `User.addUser(user)` do controlador `user.js` para adicionar o usuário.
+- A rota PUT `/:id` atualiza um usuário com o ID fornecido. Chama a função `User.editUser(id, user)` do controlador `user.js` para atualizar o usuário.
+- A rota DELETE `/:id` remove o usuário com o ID fornecido. Chama a função `User.deleteUser(id)` do controlador `user.js` para remover o usuário.
 
 ## Interface
 
@@ -97,21 +121,21 @@ O arquivo `index.js` começa importando as dependências necessárias, incluindo
 
 O código define várias rotas usando o objeto `router` fornecido pelo Express:
 
-- A rota `'/'` renderiza a página de login quando acessada com uma requisição GET.
-- A rota `'/signup'` renderiza a página de registro quando acessada com uma requisição GET.
-- A rota `'/logout'` limpa o cookie do token e redireciona para `/?info=logout` quando acessada com uma requisição GET.
+- A rota GET `/` renderiza a página de login.
+- A rota GET `/signup` renderiza a página de registro.
+- A rota GET `/logout` limpa o cookie do token e redireciona para `/?info=logout`.
 - A função de middleware `getListMeals` recupera uma lista de refeições para uma determinada semana e armazena-as no objeto `req.listMeals`, sendo usada por várias rotas.
 - A função de middleware `getListMealsandReserves` combina a funcionalidade de `getListMeals` e também recupera as reservas para o usuário autenticado. Ela é usada pela rota da página inicial (`home`).
-- A rota `'/home'` renderiza a página inicial quando acessada com uma requisição GET. Ela requer autenticação e usa o middleware `getListMealsandReserves` para buscar os dados necessários para renderização.
-- A rota `'/buy'` renderiza a página de compra quando acessada com uma requisição GET. Ela requer autenticação.
-- A rota `'/adminhome'` renderiza a página inicial do administrador quando acessada com uma requisição GET. Ela requer autenticação de administrador e usa o middleware `getListMeals` para buscar os dados necessários.
-- A rota `'/profile'` renderiza a página de perfil quando acessada com uma requisição GET. Ela requer autenticação e recupera as informações do usuário e as reservas do usuário autenticado.
-- A rota `'/form'` renderiza a página de formulário do usuário quando acessada com uma requisição GET. Ela requer autenticação de administrador e recupera uma lista de usuários.
-- A rota `'/form/:id'` renderiza a página de edição de formulário do usuário quando acessada com uma requisição GET. Ela requer autenticação de administrador e recupera as informações de um usuário específico e a lista de todos os usuários.
-- A rota `'/signup'` trata do registro de usuário quando acessada com uma requisição POST. Ela opera o middleware `auth.signup` para criar um novo usuário.
-- A rota `'/form'` trata da criação de usuário a partir do formulário de administrador quando acessada com uma requisição POST. Ela opera o middleware `auth.signup` para criar um novo usuário.
-- A rota `'/form/file'` trata do upload de arquivos a partir do formulário de administrador quando acessada com uma requisição POST. Ela lê o arquivo JSON e cria usuários com base nos dados do arquivo.
-- A rota `'/form/edit/:id'` trata da edição de usuário a partir do formulário de administrador quando acessada com uma requisição POST. Ela exclui o usuário com o ID fornecido e opera o middleware `auth.signup` para criar um novo usuário.
-- A rota `'/add/:tipo/:data'` trata da adição de uma refeição quando acessada com uma requisição POST. Ela requer autenticação de administrador e cria uma nova refeição com os detalhes fornecidos.
-- A rota `'/edit/:tipo/:data'` trata da edição de uma refeição quando acessada com uma requisição POST. Ela requer autenticação de administrador e atualiza a refeição com os detalhes fornecidos.
-- A rota `'/adminhome/file'` trata do upload de arquivos de refeições a partir da página inicial do administrador quando acessada com uma requisição POST. Ela lê o arquivo JSON enviado e cria refeições com base nos dados do arquivo.
+- A rota GET `/home` renderiza a página inicial. Ela requer autenticação e usa o middleware `getListMealsandReserves` para buscar os dados necessários para renderização.
+- A rota GET `/buy` renderiza a página de compra. Ela requer autenticação.
+- A rota GET `/adminhome` renderiza a página inicial do administrador. Ela requer autenticação de administrador e usa o middleware `getListMeals` para buscar os dados necessários.
+- A rota GET `/profile` renderiza a página de perfil. Ela requer autenticação e recupera as informações do usuário e as reservas do usuário autenticado.
+- A rota GET `/form` renderiza a página de formulário do usuário. Ela requer autenticação de administrador e recupera uma lista de usuários.
+- A rota GET `/form/:id` renderiza a página de edição de formulário do usuário. Ela requer autenticação de administrador e recupera as informações de um usuário específico e a lista de todos os usuários.
+- A rota POST `/signup` trata do registro de usuário. Ela opera o middleware `auth.signup` para criar um novo usuário.
+- A rota POST `/form` trata da criação de usuário a partir do formulário de administrador. Ela opera o middleware `auth.signup` para criar um novo usuário.
+- A rota POST `/form/file` trata do upload de arquivos a partir do formulário de administrador. Ela lê o arquivo JSON e cria usuários com base nos dados do arquivo.
+- A rota POST `/form/edit/:id` trata da edição de usuário a partir do formulário de administrador. Ela exclui o usuário com o ID fornecido e opera o middleware `auth.signup` para criar um novo usuário.
+- A rota POST `/add/:tipo/:data` trata da adição de uma refeição. Ela requer autenticação de administrador e cria uma nova refeição com os detalhes fornecidos.
+- A rota POST `/edit/:tipo/:data` trata da edição de uma refeição. Ela requer autenticação de administrador e atualiza a refeição com os detalhes fornecidos.
+- A rota POST `/adminhome/file` trata do upload de arquivos de refeições a partir da página inicial do administrador. Ela lê o arquivo JSON enviado e cria refeições com base nos dados do arquivo.
