@@ -12,7 +12,9 @@
    3. [Interface](#interface)
 
 # Introdução
+
 ## Um belo Projeto
+
 O presente relatório descreve o trabalho prático realizado no âmbito da Unidade Curricular de Engenharia Web, inserida no curso de Licenciatura em Engenharia Informática durante o 2º Semestre do ano letivo 2022/2023.
 
 Neste projeto, o grupo optou por escolher o seu próprio tema, que consiste na criação de uma plataforma para ver a ementa da cantina, fazer reservas e comprar senhas.
@@ -71,7 +73,23 @@ Cada uma dessas partes desempenha um papel fundamental no funcionamento da plata
 
 ## Autenticação
 
+A Autenticação possui várias rotas e funcionalidades relacionadas à autenticação e manipulação de usuários. A seguir, apresento uma breve descrição de cada rota e funcionalidade:
+
+- A função de middleware `auth.verificaAcesso` verifica se o usuário tem acesso autorizado, sendo usada por várias rotas.
+- A rota `/` retorna a informação de que a autorização é bem-sucedida, juntamente com o ID do usuário, verificando se a pessoa está logged in quando acessada com uma requisição GET. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota `/token` retorna informações do usuário com base no nome de usuário (req.username) quando acessada com uma requisição GET. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota `/username/:id` retorna informações do usuário com o ID fornecido quando acessada com uma requisição GET. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota `/` adiciona um novo usuário com base na informação fornecida quando acessada com uma requisição POST. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota `/register` cria um novo usuário utilizando o modelo do usuário (`userModel`) e a senha fornecida quando acessada com uma requisição POST.
+- A rota `/login` realiza o login do usuário usando o método de autenticação `passport.authenticate('local')` quando acessada com uma requisição POST. Gera um token JWT contendo o nome de usuário (`req.user.username`) e o tipo do usuário (`req.user.tipo`) com duração de 1 hora (3600 segundos). 
+- A rota `/:id` atualiza os dados do usuário com o ID fornecido quando acessada com uma requisição PUT. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+- A rota `/:id` remove o usuário com o ID fornecido quando acessada com uma requisição DELETE. Usa o middleware `auth.verificaAcesso` para verificar a autorização do usuário.
+
 ## Api de Dados
+
+A Api de dados esta dividida em 3 arquivos que mexem com a respetiva collection:
+
+
 
 ## Interface
 
@@ -96,4 +114,4 @@ O código define várias rotas usando o objeto `router` fornecido pelo Express:
 - A rota `'/form/edit/:id'` trata da edição de usuário a partir do formulário de administrador quando acessada com uma requisição POST. Ela exclui o usuário com o ID fornecido e opera o middleware `auth.signup` para criar um novo usuário.
 - A rota `'/add/:tipo/:data'` trata da adição de uma refeição quando acessada com uma requisição POST. Ela requer autenticação de administrador e cria uma nova refeição com os detalhes fornecidos.
 - A rota `'/edit/:tipo/:data'` trata da edição de uma refeição quando acessada com uma requisição POST. Ela requer autenticação de administrador e atualiza a refeição com os detalhes fornecidos.
-- A rota `'/adminhome/file'` trata do upload de arquivos de refeições a partir da página inicial do administrador quando acessada com uma requisição POST. Ela lê o arquivo JSON enviado e cria refeições com base nos dados do arquivo
+- A rota `'/adminhome/file'` trata do upload de arquivos de refeições a partir da página inicial do administrador quando acessada com uma requisição POST. Ela lê o arquivo JSON enviado e cria refeições com base nos dados do arquivo.
