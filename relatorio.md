@@ -146,24 +146,24 @@ Neste capítulo vamos mostrar alguns prints da interface da nossa plataforma e e
 
 ## Páginas de Autenticação
 
-![login](images/login.png "Página de Login")
+![login](imagens/login.png "Página de Login")
 
-![registo](images/registo.png "Página de Registo")
+![registo](imagens/registo.png "Página de Registo")
 
 ## Páginas para Utilizadores
 
-![home](images/home.png "Página Inicial de um Utilizador")
+![home](imagens/home.png "Página Inicial de um Utilizador")
 
-![buy](images/buy.png "Página para Comprar Senhas")
+![buy](imagens/buy.png "Página para Comprar Senhas")
 
-![perfil](images/perfil.png "Página de perfil do Utilizador")
+![perfil](imagens/perfil.png "Página de perfil do Utilizador")
 
 ## Páginas para Administradores
 
-![adminhome](images/adminhome.png "Página Inicial de um Administrador")
+![adminhome](imagens/adminhome.png "Página Inicial de um Administrador")
 
-![form](images/form.png "Página de Criação de Utilizadores")
+![form](imagens/form.png "Página de Criação de Utilizadores")
 
-![editForm](images/editForm.png "Página de Edição de Utilizadores")
+![editForm](imagens/editForm.png "Página de Edição de Utilizadores")
 
 
