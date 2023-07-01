@@ -16,6 +16,9 @@
   - [reserves.js](#reservesjs)
   - [users.js](#usersjs)
 - [Interface](#interface)
+  - [Páginas de Autenticação](#autenticação)
+  - [Páginas para Utilizadores](#utilizadores)
+  - [Páginas para Administradores](#adminstradores)
 
 # Introdução
 
