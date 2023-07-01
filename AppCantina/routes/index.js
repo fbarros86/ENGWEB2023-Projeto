@@ -228,6 +228,7 @@ router.post('/',auth.login);
 /* Create user */
 router.post('/signup',function(req,res,next){
   req.link = '/?info=create';
+  req.body.tipo = "NE";
   next()
 },auth.signup);
 

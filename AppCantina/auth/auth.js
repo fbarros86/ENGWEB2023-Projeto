@@ -1,6 +1,6 @@
 const Mailjet = require('node-mailjet');
 const mailjet = Mailjet.apiConnect(
-  process.env.API_KEY,process.env.API_SECRECT
+  process.env.API_KEY,process.env.API_SECRET
 );
 
 var axios = require('axios');
@@ -104,7 +104,6 @@ function sendMail(req,res){
 }
 
 module.exports.signup = function (req, res, next) {
-    if (!req.body.tipo) req.body.tipo = "NE";
     axios.post(env.authAccessPoint+"users/register", req.body)
       .then(r => {
         sendMail(req,res)
