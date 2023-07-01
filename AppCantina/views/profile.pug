@@ -21,7 +21,12 @@ block content
               input(type="text" id="name" name="name" value=u.username readonly)
             .form-field
               label(for="tipo") Tipo:
-              input(type="text" id="tipo" name="tipo" value=u.tipo readonly)
+              if u.tipo == 'S'
+                input(type="text" id="tipo" name="tipo" value="Estudante" readonly)
+              else if u.tipo == 'A'
+                input(type="text" id="tipo" name="tipo" value="Administrador" readonly)
+              else 
+                input(type="text" id="tipo" name="tipo" value="Não Estudante" readonly)
       .rightside.col
         .reservations
           h1 As tuas reservas!
