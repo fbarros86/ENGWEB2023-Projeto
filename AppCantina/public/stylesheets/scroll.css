@@ -17,3 +17,9 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #808080; 
   }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

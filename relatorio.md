@@ -1,15 +1,24 @@
 # Índice
 
-1. [Introdução](#introducao)
-2. [Análise e Especificação](#analise-especificacao)
-   1. [Descrição informal do problema](#descricao-problema)
-   2. [Levantamento de Requisitos](#levantamento-requisitos)
-      1. [Requisitos Mínimos](#requisitos-minimos)
-      2. [Requisitos Extra](#requisitos-extra)
-3. [Concepção/desenho da Resolução](#concepcao-desenho-resolucao)
-   1. [Autenticação](#autenticacao)
-   2. [API de Dados](#api-dados)
-   3. [Interface](#interface)
+# Índice
+
+- [Introdução](#introdução)
+  - [Um belo Projeto](#um-belo-projeto)
+- [Análise e Especificação](#análise-e-especificação)
+  - [Descrição informal do problema](#descrição-informal-do-problema)
+  - [Levantamento de Requisitos](#levantamento-de-requisitos)
+    - [Requisitos Mínimos](#requisitos-mínimos)
+    - [Requisitos Extra](#requisitos-extra)
+- [Estrutura/Desenvolvimento](#estruturadesenvolvimento)
+  - [Autenticação](#autenticação)
+- [Api de Dados](#api-de-dados)
+  - [meals.js](#mealsjs)
+  - [reserves.js](#reservesjs)
+  - [users.js](#usersjs)
+- [Interface](#interface)
+  - [Páginas de Autenticação](#páginas-de-autenticação)
+  - [Páginas para Utilizadores](#páginas-para-utilizadores)
+  - [Páginas para Administradores](#páginas-para-administradores)
 
 # Introdução
 
@@ -30,6 +39,7 @@ O objetivo final deste trabalho é fornecer uma plataforma que os alunos da Univ
 # Análise e Especificação
 
 ## Descrição informal do problema
+
 O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos de utilizadores: os alunos e os administradores. Os alunos poderão comprar senhas, consultar o menu e fazer reservas para as refeições, enquanto os administradores poderão criar, editar e eliminar utilizadores, bem como adicionar novas refeições ao menu.
 
 ## Levantamento de Requisitos
@@ -49,6 +59,7 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 - O administrador terá acesso a um form onde é disponibilizada uma tabela com todos os utilizadores da plataforma, podendo editá-los ou apagá-los e poderá criar utilizadores novos com os atributos que quiser.
 
 ### Requisitos Extra
+
 - Se o utilizador tiver sido registado através da página de registo este será considerado "Not Student", se tiver sido um administrador a criar a conta o utilizador será classificado como "Student"
 - Caso o utilizador ou administrador se esqueça da password da sua conta poderá recuperá-la através de uma funcionalidade onde é mandado um email para o email associado a sua conta, podendo, assim, alterar a password através do email mandado.
 - O website deverá ter uma barra de navegação para o utilizador poder navegar facilmente entre as diferentes funcionalidades
@@ -142,12 +153,28 @@ O código define várias rotas usando o objeto `router` fornecido pelo Express:
 
 # Interface
 
-Neste capítulo vamos mostrar alguns prints da interface da nossa plataforma e explicar como um cliente poderá usá-las e para que servem. A nossa plataforma tem sete páginas ao todo, onde duas servem para fazer a autenticação (páginas de login e registo), outras três são para os utilizadores (páginas de home, perfil e buy) e outras duas são para os administradores (páginas de adminhome e form).
+Neste capítulo vamos mostrar alguns prints da interface da nossa plataforma e explicar como um cliente poderá usá-las e para que servem. A nossa plataforma tem sete páginas ao todo, onde duas servem para fazer a autenticação (páginas de login e registo), outras três são para os utilizadores (páginas de home, perfil e buy) e outras três são para os administradores (páginas de adminhome, form, edit form).
 
 ## Páginas de Autenticação
 
+![login](imagens/login.png "Página de Login")
+
+![registo](imagens/registo.png "Página de Registo")
+
 ## Páginas para Utilizadores
 
+![home](imagens/home.png "Página Inicial de um Utilizador")
+
+![buy](imagens/buy.png "Página para Comprar Senhas")
+
+![perfil](imagens/perfil.png "Página de perfil do Utilizador")
+
 ## Páginas para Administradores
+
+![adminhome](imagens/adminhome.png "Página Inicial de um Administrador")
+
+![form](imagens/form.png "Página de Criação de Utilizadores")
+
+![editForm](imagens/editForm.png "Página de Edição de Utilizadores")
 
 
