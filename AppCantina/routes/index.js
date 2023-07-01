@@ -16,7 +16,6 @@ router.get('/', function(req, res, next) {
   res.render('login', { title: 'Log In' });
 });
 
-
 router.get('/confirm/:id', function(req, res, next) {
   axios.put(env.apiAccessPoint+"users/" + req.params.id, {notVerified:"ok"})
         .then(r => {

@@ -89,8 +89,8 @@ function sendMail(req,res){
 		  								"Name": req.body.username
 		  						}
 		  				],
-		  				"Subject": "Teste bueda fixe",
-		  				"HTMLPart": "<p>Props, isto está a funcionar. Clica <a href='http://localhost:7777/confirm/"+req.body.username+"'>aqui</a> link para verifcar conta.</p> "
+		  				"Subject": "Verifica a tua conta",
+		  				"HTMLPart": "<p>Clica <a href='http://localhost:7777/confirm/"+req.body.username+"'>aqui</a> link para verifcar conta.</p> "
 		  		}
 		  ]
 	  })

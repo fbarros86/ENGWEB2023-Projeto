@@ -1,7 +1,3 @@
-  
-
-  
-
 # Índice
 
   
@@ -20,19 +16,19 @@
 
   
 
-- [Descrição informal do problema](#descrição-informal-do-problema)
+	- [Descrição informal do problema](#descrição-informal-do-problema)
 
   
 
-- [Levantamento de Requisitos](#levantamento-de-requisitos)
+  - [Levantamento de Requisitos](#levantamento-de-requisitos)
 
   
 
-- [Requisitos Mínimos](#requisitos-mínimos)
+	- [Requisitos Mínimos](#requisitos-mínimos)
 
   
 
-- [Requisitos Extra](#requisitos-extra)
+	- [Requisitos Extra](#requisitos-extra)
 
   
 
@@ -40,39 +36,40 @@
 
   
 
-- [Autenticação](#autenticação)
+	- [Autenticação](#autenticação)
 
   
 
-- [Api de Dados](#api-de-dados)
+	- [API de Dados](#api-de-dados)
 
   
 
-- [meals.js](#mealsjs)
+		- [meals.js](#mealsjs)
 
   
 
-- [reserves.js](#reservesjs)
+		- [reserves.js](#reservesjs)
 
   
 
-- [users.js](#usersjs)
+		- [users.js](#usersjs)
 
   
 
+	- [Interface](#interface)
 - [Interface](#interface)
 
   
 
-- [Páginas de Autenticação](#páginas-de-autenticação)
+	- [Páginas de Autenticação](#páginas-de-autenticação)
 
   
 
-- [Páginas para Utilizadores](#páginas-para-utilizadores)
+	- [Páginas para Utilizadores](#páginas-para-utilizadores)
 
   
 
-- [Páginas para Administradores](#páginas-para-administradores)
+	- [Páginas para Administradores](#páginas-para-administradores)
 
   
 
@@ -168,11 +165,11 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 
   
 
-- Administrador - pode adicionar e alterar refeições e utilizadores;
+	- Administrador - pode adicionar e alterar refeições e utilizadores;
 
   
 
-- Utilizador - pode comprar senhas, reservar refeições e alterar alguns atributos do seu perfil;
+	- Utilizador - pode comprar senhas, reservar refeições e alterar alguns atributos do seu perfil;
 
   
 
@@ -250,6 +247,7 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 
 - [x] O utilizador não pode reservar dias que já passaram, nem pode fazer várias reservas para o mesmo dia e mesma refeição (almoço ou jantar)
 - [x]  Com o auxílio do Docker, possibilidade de esconder operações sobre a base de dados aos utilizadores.
+- [ ] Com ajuda de uma API externa ter um sistema real de pagamento para a compra de senhas 
 
 
 
@@ -313,7 +311,7 @@ A Autenticação possui várias rotas e funcionalidades relacionadas à autentic
 
   
 
-- A função de middleware `auth.verificaAcesso` verifica se o utilizador tem acesso autorizado, sendo usada por várias rotas.
+- A função de middleware `auth.verificaAcesso` verifica se o utilizador tem acesso autorizado e guarda o *username* do mesmo, sendo usada por várias rotas.
 
   
 
@@ -321,15 +319,9 @@ A Autenticação possui várias rotas e funcionalidades relacionadas à autentic
 
   
 
-- A rota GET `/token` retorna informações do utilizador com base no nome de utilizador (req.username). Usa o middleware `auth.verificaAcesso` para verificar a autorização do utilizador.
+- A rota GET `/token` retorna informações do utilizador com base no token correspondente à sua sessão. Usa o middleware `auth.verificaAcesso` para verificar a autorização do utilizador e para extrair o *username* do utilizador (para depois procurar na base de dados).
 
-  
-
-- A rota GET `/username/:id` retorna informações do utilizador com o ID fornecido. Usa o middleware `auth.verificaAcesso` para verificar a autorização do utilizador.
-
-  
-
-- A rota POST `/` adiciona um novo utilizador com base na informação fornecida. Usa o middleware `auth.verificaAcesso` para verificar a autorização do utilizador.
+ 
 
   
 
@@ -337,27 +329,22 @@ A Autenticação possui várias rotas e funcionalidades relacionadas à autentic
 
   
 
-- A rota POST `/login` realiza o login do utilizador usando o método de autenticação `passport.authenticate('local')`. Gera um token JWT contendo o nome de utilizador (`req.user.username`) e o tipo do utilizador (`req.user.tipo`) com duração de 1 hora (3600 segundos).
+- A rota POST `/login` realiza o login do utilizador usando o método de autenticação `passport.authenticate('local')`. Gera um token JWT contendo o nome de utilizador (`req.user.username`) e com duração de 1 hora (3600 segundos).
 
   
 
-- A rota PUT `/:id` atualiza os dados do utilizador com o ID fornecido. Usa o middleware `auth.verificaAcesso` para verificar a autorização do utilizador.
-
-  
-
-- A rota DELETE `/:id` remove o utilizador com o ID fornecido. Usa o middleware `auth.verificaAcesso` para verificar a autorização do utilizador.
 
   
 
   
 
-## Api de Dados
+## API de Dados
 
   
 
   
 
-A Api de dados esta dividida em 3 arquivos que mexem com a sua respetiva collection, estando as suas rotas representadas a seguir.
+A API de dados esta dividida em 3 arquivos que mexem com a sua respetiva collection, estando as suas rotas representadas a seguir.
 
   
 
@@ -369,27 +356,27 @@ A Api de dados esta dividida em 3 arquivos que mexem com a sua respetiva collect
 
   
 
-- A rota GET `/` retorna uma lista de refeições. Chama a função `Meal.list()` do controlador meal para obter os dados das refeições.
+- A rota GET `meals/` retorna uma lista de refeições. Chama a função `Meal.list()` do controlador meal para obter os dados das refeições.
 
   
 
-- A rota GET `/:id` retorna uma refeição com o ID fornecido. Chama a função `Meal.getMeal(id)` do controlador `meal.js` para obter os dados da refeição.
+- A rota GET `meals/:id` retorna uma refeição com o ID fornecido. Chama a função `Meal.getMeal(id)` do controlador `meal.js` para obter os dados da refeição.
 
   
 
-- A rota GET `/date/:date` retorna uma refeição com base na data fornecida. Chama a função `Meal.getMealDate(date)` do controlador `meal.js` para obter os dados da refeição.
+- A rota GET `meals/date/:date` retorna uma refeição com base na data fornecida. Chama a função `Meal.getMealDate(date)` do controlador `meal.js` para obter os dados da refeição.
 
   
 
-- A rota POST `/` adiciona uma nova refeição com base nas informações fornecidas. Chama a função `Meal.addMeal(meal)` do controlador `meal.js` para adicionar a refeição.
+- A rota POST `meals/` adiciona uma nova refeição com base nas informações fornecidas. Chama a função `Meal.addMeal(meal)` do controlador `meal.js` para adicionar a refeição.
 
   
 
-- A rota PUT `/:tipo/:data` atualiza uma refeição com base no tipo e data fornecidos. Chama a função `Meal.editMealDate(date, tipo, meal)` do controlador `meal.js` para atualizar a refeição.
+- A rota PUT `meals/:tipo/:data` atualiza uma refeição com base no tipo e data fornecidos. Chama a função `Meal.editMealDate(date, tipo, meal)` do controlador `meal.js` para atualizar a refeição.
 
   
 
-- A rota DELETE `/:id` remove a refeição com o ID fornecido. Chama a função `Meal.deleteMeal(id)` do controlador `meal.js` para remover a refeição.
+- A rota DELETE `meals/:id` remove a refeição com o ID fornecido. Chama a função `Meal.deleteMeal(id)` do controlador `meal.js` para remover a refeição.
 
   
 
@@ -401,27 +388,27 @@ A Api de dados esta dividida em 3 arquivos que mexem com a sua respetiva collect
 
   
 
-- A rota GET `/` retorna uma lista de reservas. Chama a função `Reserve.list()` do controlador `reserve.js` para obter os dados das reservas.
+- A rota GET `reserves/` retorna uma lista de reservas. Chama a função `Reserve.list()` do controlador `reserve.js` para obter os dados das reservas.
 
   
 
-A rota GET `/:id` retorna uma reserva com o ID fornecido. Chama a função `Reserve.getReserve(id)` do controlador `reserve.js` para obter os dados da reserva.
+A rota GET `reserves/:id` retorna uma reserva com o ID fornecido. Chama a função `Reserve.getReserve(id)` do controlador `reserve.js` para obter os dados da reserva.
 
   
 
-- A rota GET `/user/:idUser` retorna as reservas de um determinado utilizador com base no ID do utilizador fornecido. Chama a função `Reserve.getUserReserves(idUser)` do controlador `reserve.js` para obter as reservas do utilizador.
+- A rota GET `reserves/user/:idUser` retorna as reservas de um determinado utilizador com base no ID do utilizador fornecido. Chama a função `Reserve.getUserReserves(idUser)` do controlador `reserve.js` para obter as reservas do utilizador.
 
   
 
-- A rota POST `/` adiciona uma nova reserva com base nas informações fornecidas. Chama a função `Reserve.addReserve(reserve)` do controlador `reserve.js` para adicionar a reserva.
+- A rota POST `reserves/` adiciona uma nova reserva com base nas informações fornecidas. Chama a função `Reserve.addReserve(reserve)` do controlador `reserve.js` para adicionar a reserva.
 
   
 
-- A rota PUT `/:id` atualiza uma reserva com o ID fornecido. Chama a função `Reserve.editReserve(id, reserve)` do controlador `reserve.js` para atualizar a reserva.
+- A rota PUT `reserves/:id` atualiza uma reserva com o ID fornecido. Chama a função `Reserve.editReserve(id, reserve)` do controlador `reserve.js` para atualizar a reserva.
 
   
 
-- A rota DELETE `/:id` remove a reserva com o ID fornecido. Chama a função `Reserve.deleteReserve(id)` do controlador `reserve.js` para remover a reserva.
+- A rota DELETE `reserves/:id` remove a reserva com o ID fornecido. Chama a função `Reserve.deleteReserve(id)` do controlador `reserve.js` para remover a reserva.
 
   
 
@@ -433,23 +420,23 @@ A rota GET `/:id` retorna uma reserva com o ID fornecido. Chama a função `Rese
 
   
 
-- A rota GET `/` retorna uma lista de utilizadores. Chama a função `User.list()` do controlador `user.js` para obter os dados dos utilizadores.
+- A rota GET `users/` retorna uma lista de utilizadores. Chama a função `User.list()` do controlador `user.js` para obter os dados dos utilizadores.
 
   
 
-- A rota GET `/:id` retorna um utilizador com o ID fornecido. Chama a função `User.getUser(id)` do controlador `user.js` para obter os dados do utilizador.
+- A rota GET `users/:id` retorna um utilizador com o ID fornecido. Chama a função `User.getUser(id)` do controlador `user.js` para obter os dados do utilizador.
 
   
 
-- A rota POST `/` adiciona um novo utilizador com base nas informações fornecidas. Chama a função `User.addUser(user)` do controlador `user.js` para adicionar o utilizador.
+- A rota POST `users/` adiciona um novo utilizador com base nas informações fornecidas. Chama a função `User.addUser(user)` do controlador `user.js` para adicionar o utilizador.
 
   
 
-- A rota PUT `/:id` atualiza um utilizador com o ID fornecido. Chama a função `User.editUser(id, user)` do controlador `user.js` para atualizar o utilizador.
+- A rota PUT `users/:id` atualiza um utilizador com o ID fornecido. Chama a função `User.editUser(id, user)` do controlador `user.js` para atualizar o utilizador.
 
   
 
-- A rota DELETE `/:id` remove o utilizador com o ID fornecido. Chama a função `User.deleteUser(id)` do controlador `user.js` para remover o utilizador.
+- A rota DELETE `users/:id` remove o utilizador com o ID fornecido. Chama a função `User.deleteUser(id)` do controlador `user.js` para remover o utilizador.
 
   
 
@@ -477,9 +464,10 @@ O código define várias rotas usando o objeto `router` fornecido pelo Express:
 
   
 
-- A rota GET `/signup` renderiza a página de registro.
+- A rota GET `/signup` renderiza a página de registo.
 
-  
+- A rota GET `/confirm/:id` é a rota seguida para validar uma conta e redireciona para a página do login.
+
 
 - A rota GET `/logout` limpa o cookie do token e redireciona para `/?info=logout`.
 
@@ -495,9 +483,13 @@ O código define várias rotas usando o objeto `router` fornecido pelo Express:
 
 - A rota GET `/home` renderiza a página inicial. Ela requer autenticação e usa o middleware `getListMealsandReserves` para buscar os dados necessários para renderização.
 
+- A rota GET `/home/senhas/:n` é utilizada quando são feitas reservas de refeições e serve para diminuir o número de senhas do utilizador consoante as reservas feitas, redirecionando de seguida para a página inicial. Requer autenticação.
+
   
 
 - A rota GET `/buy` renderiza a página de compra. Ela requer autenticação.
+- 
+- A rota GET `/buy/:n` é utilizada quando é feita uma compra de senhas e serve para atualizar o número de senhas do utilizador, de seguida redireciona para página de compra. Ela requer autenticação.
 
   
 
@@ -506,6 +498,7 @@ O código define várias rotas usando o objeto `router` fornecido pelo Express:
   
 
 - A rota GET `/profile` renderiza a página de perfil. Ela requer autenticação e recupera as informações do utilizador e as reservas do utilizador autenticado.
+- A rota GET `/profile/reserve/:id`  é utilizada quando o utilizador remove uma reserva, no seu perfil, remove a reserva e incrementa o número de senhas do utilizador. Redireciona para a página do perfil e necessita de autenticação.
 
   
 
@@ -513,13 +506,16 @@ O código define várias rotas usando o objeto `router` fornecido pelo Express:
 
   
 
-- A rota GET `/form/:id` renderiza a página de edição de formulário do utilizador. Ela requer autenticação de administrador e recupera as informações de um utilizador específico e a lista de todos os utilizadores.
+- A rota GET `/form/edit/:id` renderiza a página de edição de formulário do utilizador. Ela requer autenticação de administrador e recupera as informações de um utilizador específico e a lista de todos os utilizadores.
 
-  
+- A rota GET `/form/delete/:id` requer autenticação de administrador e apaga o utilizador correspondente ao id passado em parâmetro. Redireciona para a página de formulário do utilizador.
+
+
+- A rota POST `/` trata do login de um. utilizador. Ela opera o middleware `auth.login` para iniciar sessão do utilizador, colocando um cookie com o respetivo token de sessão.  
 
 - A rota POST `/signup` trata do registro de utilizador. Ela opera o middleware `auth.signup` para criar um novo utilizador.
 
-  
+ - A rota POST `/home/reserve` serve para adicionar uma reserva à base de dados.
 
 - A rota POST `/form` trata da criação de utilizador a partir do formulário de administrador. Ela opera o middleware `auth.signup` para criar um novo utilizador.
 

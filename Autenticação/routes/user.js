@@ -8,7 +8,7 @@ var auth = require('../auth/auth')
 var User = require('../controllers/user')
 
 router.get('/', auth.verificaAcesso, function(req, res){
-  res.status(200).jsonp({Authorized: true, id:req.id})
+  res.status(200).jsonp({Authorized: true, id:req.username})
 })
 
 router.get('/token', auth.verificaAcesso, function(req, res){
@@ -21,20 +21,6 @@ router.get('/token', auth.verificaAcesso, function(req, res){
 })
 
 
-router.get('/username/:id', auth.verificaAcesso, function(req, res){
-  User.getUser(req.params.id)
-    .then(dados => res.status(200).jsonp( dados))
-    .catch(e => res.status(500).jsonp({error: e}))
-})
-
-
-
-
-router.post('/', auth.verificaAcesso, function(req, res){
-  User.addUser(req.body)
-    .then(dados => res.status(201).jsonp({dados: dados}))
-    .catch(e => res.status(500).jsonp({error: e}))
-})
 
 
 router.post('/register', function(req, res) {
@@ -69,26 +55,5 @@ router.post('/login',passport.authenticate('local'), function(req, res) {
     }
   );
 });
-
-
-router.put('/:id', auth.verificaAcesso, function(req, res) {
-  User.editUser(req.params.id, req.body)
-    .then(dados => {
-      res.jsonp(dados)
-    })
-    .catch(erro => {
-      res.render('error', {error: erro, message: "Erro na alteração do utilizador"})
-    })
-})
-
-router.delete('/:id', auth.verificaAcesso, function(req, res) {
-  User.deleteUser(req.params.id)
-    .then(dados => {
-      res.jsonp(dados)
-    })
-    .catch(erro => {
-      res.render('error', {error: erro, message: "Erro na remoção do utilizador"})
-    })
-})
 
 module.exports = router;
