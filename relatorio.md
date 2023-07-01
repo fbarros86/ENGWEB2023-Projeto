@@ -1,15 +1,21 @@
 # Índice
 
-1. [Introdução](#introducao)
-2. [Análise e Especificação](#analise-especificacao)
-   1. [Descrição informal do problema](#descricao-problema)
-   2. [Levantamento de Requisitos](#levantamento-requisitos)
-      1. [Requisitos Mínimos](#requisitos-minimos)
-      2. [Requisitos Extra](#requisitos-extra)
-3. [Concepção/desenho da Resolução](#concepcao-desenho-resolucao)
-   1. [Autenticação](#autenticacao)
-   2. [API de Dados](#api-dados)
-   3. [Interface](#interface)
+# Índice
+
+- [Introdução](#introdução)
+  - [Um belo Projeto](#um-belo-projeto)
+- [Análise e Especificação](#análise-e-especificação)
+  - [Descrição informal do problema](#descrição-informal-do-problema)
+  - [Levantamento de Requisitos](#levantamento-de-requisitos)
+    - [Requisitos Mínimos](#requisitos-mínimos)
+    - [Requisitos Extra](#requisitos-extra)
+- [Estrutura/Desenvolvimento](#estruturadesenvolvimento)
+  - [Autenticação](#autenticação)
+- [Api de Dados](#api-de-dados)
+  - [meals.js](#mealsjs)
+  - [reserves.js](#reservesjs)
+  - [users.js](#usersjs)
+- [Interface](#interface)
 
 # Introdução
 
