@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Mailjet = require('node-mailjet');
 const mailjet = Mailjet.apiConnect(
   process.env.API_KEY,process.env.API_SECRET
