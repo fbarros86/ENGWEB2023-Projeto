@@ -16,9 +16,9 @@
   - [reserves.js](#reservesjs)
   - [users.js](#usersjs)
 - [Interface](#interface)
-  - [Páginas de Autenticação](#autenticação)
-  - [Páginas para Utilizadores](#utilizadores)
-  - [Páginas para Administradores](#adminstradores)
+  - [Páginas de Autenticação](#páginas-de-autenticação)
+  - [Páginas para Utilizadores](#páginas-para-utilizadores)
+  - [Páginas para Administradores](#páginas-para-administradores)
 
 # Introdução
 
@@ -39,6 +39,7 @@ O objetivo final deste trabalho é fornecer uma plataforma que os alunos da Univ
 # Análise e Especificação
 
 ## Descrição informal do problema
+
 O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos de utilizadores: os alunos e os administradores. Os alunos poderão comprar senhas, consultar o menu e fazer reservas para as refeições, enquanto os administradores poderão criar, editar e eliminar utilizadores, bem como adicionar novas refeições ao menu.
 
 ## Levantamento de Requisitos
@@ -58,6 +59,7 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 - O administrador terá acesso a um form onde é disponibilizada uma tabela com todos os utilizadores da plataforma, podendo editá-los ou apagá-los e poderá criar utilizadores novos com os atributos que quiser.
 
 ### Requisitos Extra
+
 - Se o utilizador tiver sido registado através da página de registo este será considerado "Not Student", se tiver sido um administrador a criar a conta o utilizador será classificado como "Student"
 - Caso o utilizador ou administrador se esqueça da password da sua conta poderá recuperá-la através de uma funcionalidade onde é mandado um email para o email associado a sua conta, podendo, assim, alterar a password através do email mandado.
 - O website deverá ter uma barra de navegação para o utilizador poder navegar facilmente entre as diferentes funcionalidades
