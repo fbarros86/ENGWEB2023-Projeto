@@ -10,7 +10,7 @@ function popup(){
         alert("You don't have permission to acess that page");
     }
     else if(myParam=="create"){
-        alert("Account Created sucessfuly")
+        alert("Account Created sucessfuly, please head to your email to verifiy your account")
     }
     else if(myParam=="logout"){
         alert("Logged out sucessfuly")
@@ -39,4 +39,12 @@ function popup(){
     else if(myParam=="exists"){
         alert("Account already exists")
     }
+    else if(myParam=="unverified"){
+        alert("Account not verified, check your email")
+    }
+    else if(myParam=="verified"){
+        alert("Account verified")
+    }
+
+    
 }

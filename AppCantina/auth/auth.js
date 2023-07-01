@@ -1,3 +1,8 @@
+const Mailjet = require('node-mailjet');
+const mailjet = Mailjet.apiConnect(
+  process.env.API_KEY,process.env.API_SECRECT
+);
+
 var axios = require('axios');
 var env = require('../config/env');
 
@@ -24,10 +29,11 @@ module.exports.verifyAuthNotAdmin = function(req,res,next){
          axios.get(env.authAccessPoint+"users/token?token="+req.cookies.token)
             .then(r=>{
                     if(r.data.tipo=="A"){
-                        // É admin
                         res.redirect('/?info=notuser')
-                        //res.status(401).jsonp({error: "Utilizador é admin, não tem premissões para esta página"})
                     } 
+                    else if(r.data.notVerified && r.data.notVerified=="true"){
+                      res.redirect('/?info=unverified')
+                    }
                     else {
                         req.user=r.data
                         next()
@@ -65,12 +71,43 @@ module.exports.verifyAuthAdmin = function(req,res,next){
       }  
 }
 
+function sendMail(req,res){
+  console.log(req.body.email)
+  const request = mailjet
+	  .post("send", {'version': 'v3.1'})
+	  .request({
+		  "Messages":[
+		  		{
+		  				"From": {
+		  						"Email": "xiquita.barros@gmail.com",
+		  						"Name": "Francisca Barros"
+		  				},
+		  				"To": [
+		  						{
+		  								"Email": req.body.email,
+		  								"Name": req.body.username
+		  						}
+		  				],
+		  				"Subject": "Teste bueda fixe",
+		  				"HTMLPart": "<p>Props, isto está a funcionar. Clica <a href='http://localhost:7777/confirm/"+req.body.username+"'>aqui</a> link para verifcar conta.</p> "
+		  		}
+		  ]
+	  })
+  request
+  	.then((result) => {
+      console.log(result)
+  		res.redirect(req.link)
+  	})
+  	.catch((err) => {
+  		console.log(err.statusCode)
+  	})
+}
 
 module.exports.signup = function (req, res, next) {
     if (!req.body.tipo) req.body.tipo = "NE";
     axios.post(env.authAccessPoint+"users/register", req.body)
       .then(r => {
-        res.redirect(req.link)
+        sendMail(req,res)
       })
       .catch(e => {
         if (e.response && e.response.status === 409) {

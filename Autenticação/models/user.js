@@ -9,7 +9,8 @@ var userSchema = new mongoose.Schema({
         username:String,
         password: String,
         tipo:String,
-        senhas:Number
+        senhas:Number,
+        notVerified:String
     });
 
 userSchema.plugin(passportLocalMongoose);
