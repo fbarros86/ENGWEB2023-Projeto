@@ -142,12 +142,28 @@ O código define várias rotas usando o objeto `router` fornecido pelo Express:
 
 # Interface
 
-Neste capítulo vamos mostrar alguns prints da interface da nossa plataforma e explicar como um cliente poderá usá-las e para que servem. A nossa plataforma tem sete páginas ao todo, onde duas servem para fazer a autenticação (páginas de login e registo), outras três são para os utilizadores (páginas de home, perfil e buy) e outras duas são para os administradores (páginas de adminhome e form).
+Neste capítulo vamos mostrar alguns prints da interface da nossa plataforma e explicar como um cliente poderá usá-las e para que servem. A nossa plataforma tem sete páginas ao todo, onde duas servem para fazer a autenticação (páginas de login e registo), outras três são para os utilizadores (páginas de home, perfil e buy) e outras três são para os administradores (páginas de adminhome, form, edit form).
 
 ## Páginas de Autenticação
 
+![login](images/login.png "Página de Login")
+
+![registo](images/registo.png "Página de Registo")
+
 ## Páginas para Utilizadores
 
+![home](images/home.png "Página Inicial de um Utilizador")
+
+![buy](images/buy.png "Página para Comprar Senhas")
+
+![perfil](images/perfil.png "Página de perfil do Utilizador")
+
 ## Páginas para Administradores
+
+![adminhome](images/adminhome.png "Página Inicial de um Administrador")
+
+![form](images/form.png "Página de Criação de Utilizadores")
+
+![editForm](images/editForm.png "Página de Edição de Utilizadores")
 
 
