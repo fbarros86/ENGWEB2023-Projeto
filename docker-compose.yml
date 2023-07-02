@@ -24,8 +24,6 @@ services:
     container_name: cantina-mongodb
     image: mongo
     restart: always
-    ports:
-      - '27017:27017'
     volumes:
       - cantinaData:/data/db
     networks:

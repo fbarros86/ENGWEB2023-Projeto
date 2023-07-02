@@ -4,72 +4,30 @@
 
   
 
+- [Índice](#índice)
 - [Introdução](#introdução)
-
-  
-
-- [Um belo Projeto](#um-belo-projeto)
-
-  
-
+	- [Um belo Projeto](#um-belo-projeto)
 - [Análise e Especificação](#análise-e-especificação)
-
-  
-
 	- [Descrição informal do problema](#descrição-informal-do-problema)
-
-  
-
-  - [Levantamento de Requisitos](#levantamento-de-requisitos)
-
-  
-
-	- [Requisitos Mínimos](#requisitos-mínimos)
-
-  
-
-	- [Requisitos Extra](#requisitos-extra)
-
-  
-
+	- [Levantamento de Requisitos](#levantamento-de-requisitos)
+		- [Requisitos Mínimos](#requisitos-mínimos)
+		- [Requisitos Extra](#requisitos-extra)
 - [Estrutura/Desenvolvimento](#estruturadesenvolvimento)
-
-  
-
 	- [Autenticação](#autenticação)
-
-  
-
 	- [API de Dados](#api-de-dados)
-
-  
-
-		- [meals.js](#mealsjs)
-
-  
-
-		- [reserves.js](#reservesjs)
-
-  
-
-		- [users.js](#usersjs)
-
-  
-
+		- [meals.js:](#mealsjs)
+		- [reserves.js:](#reservesjs)
+		- [users.js:](#usersjs)
 	- [Interface](#interface)
-- [Interface](#interface)
-
-  
-
+- [Interface](#interface-1)
 	- [Páginas de Autenticação](#páginas-de-autenticação)
-
-  
-
 	- [Páginas para Utilizadores](#páginas-para-utilizadores)
-
-  
-
 	- [Páginas para Administradores](#páginas-para-administradores)
+- [Datasets](#datasets)
+		- [Dataset Utilizadores](#dataset-utilizadores)
+		- [Dataset Refeições](#dataset-refeições)
+- [Modo de funcionamento](#modo-de-funcionamento)
+
 
   
 
@@ -616,3 +574,19 @@ Neste capítulo vamos mostrar alguns prints da interface da nossa plataforma e e
   
 
 ![editForm](imagens/editForm.png  "Página de Edição de Utilizadores")
+
+
+# Datasets
+
+Como foi referido anteriormente, a nossa aplicação permite a adição de utilizadores e refeições através de um ficheiro JSON, assim foram criados 2 datasets usando o site https://datagen.di.uminho.pt/.
+
+### Dataset Utilizadores
+![users](imagens/users.png  "Dataset utilizadores")
+
+### Dataset Refeições
+![meals](imagens/meals.png  "Dataset refeições")
+
+# Modo de funcionamento
+
+O nosso projeto está preparado para correr no docker, sendo composto por 4 containers distintos. Apenas o container da interface, chamado AppCantina está exposto para o exterior (porta 7777) de  forma a proteger a aplicação. Assim, para correr a  nossa aplicação é apenas necessárrio correr o comando:  `docker-compose up -d --build`.
+Além disso, é necessário ter algumas veriáveis de ambiente definidas num ficheiro `.env`. Estas variáveis servem para utilizar a API MailJet e correspondem à API KEY e à API SECRET, que são as chaves que permitem identificar a conta de quem está a usar a API. Por razões de segurança estes dados não são expostos.

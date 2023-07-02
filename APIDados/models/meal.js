@@ -17,7 +17,8 @@ var mealSchema = new mongoose.Schema({
         acucares:Number,
         fibras:Number,
         proteina:Number,
-        sal:Number  
+        sal:Number,
+        tipo:String 
     });
 
 
