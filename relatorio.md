@@ -355,7 +355,7 @@ A API de dados esta dividida em 3 arquivos que mexem com a sua respetiva collect
 
   
 
-A rota GET `reserves/:id` retorna uma reserva com o ID fornecido. Chama a função `Reserve.getReserve(id)` do controlador `reserve.js` para obter os dados da reserva.
+- A rota GET `reserves/:id` retorna uma reserva com o ID fornecido. Chama a função `Reserve.getReserve(id)` do controlador `reserve.js` para obter os dados da reserva.
 
   
 
