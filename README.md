@@ -1,4 +1,4 @@
-## grupo
+## Grupo
 | Número | Nome             |
 | -------- | ------- |
 | 96434  | Francisca Barros |
