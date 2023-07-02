@@ -14,7 +14,10 @@ block content
         .w3-col.w3-half
           .w3-card-4.borda
             h2.nrsenhas 1x#[img.senha-img(src='/images/user_assets/senha.png', alt='Senha', height='50pw', width='50pw')]
-            p.nrsenhas#preco1 2.70€
+            if user.tipo=="S"
+              p.nrsenhas#preco1 2.70€
+            else
+              p.nrsenhas#preco1 4.60€
             .quantity-wrapper
               label(for='quantity') Quantidade:
               select#quantity.small-dropdown(onchange='multprice1(this.value)')
@@ -31,7 +34,10 @@ block content
         .w3-col.w3-half
           .w3-card-4.borda
             h2.nrsenhas 10x#[img.senha-img(src='/images/user_assets/senha.png', alt='Senha', height='50pw', width='50pw')]
-            p.nrsenhas#preco2 25€
+            if user.tipo=="S"
+              p.nrsenhas#preco2 25€
+            else 
+              p.nrsenhas#preco2 46€
             .quantity-wrapper
               label(for='quantity') Quantidade:
               select#quantity.small-dropdown(onchange='multprice2(this.value)')
