@@ -64,7 +64,7 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 
   
 
-O relatório está dividido em várias secções. Iniciamos com a introdução, que apresenta uma visão geral do trabalho realizado. Em seguida, abordamos a análise e especificação, onde descrevemos informalmente o problema a ser resolvido e estabelecemos os requisitos necessários para a sua resolução. Posteriormente, apresentamos a conceção/desenho da solução, detalhando as estratégias adotadas para o desenvolvimento da plataforma. Prosseguimos com a secção de codificação e testes, onde descrevemos o processo de implementação e os testes realizados para verificar a correta funcionalidade da plataforma. Por fim, concluímos o relatório com uma síntese das principais conclusões obtidas ao longo do projeto.
+O relatório está dividido em várias secções. Iniciamos com a introdução, que apresenta uma visão geral do trabalho realizado. Em seguida, abordamos a análise e especificação, onde descrevemos informalmente o problema a ser resolvido e estabelecemos os requisitos necessários para a sua resolução. Posteriormente, apresentamos a estrutura/desenvolvimento do projeto, mostrando como o projeto está estruturado a níveis de codificação. Prosseguimos por mostrar várias prints da interface da nossa plataforma e de seguida falamos dos datasets usados. Por fim, mostramos como é que se põe o projeto a correr e concluímos o relatório com uma síntese das principais conclusões obtidas ao longo do projeto.
 
   
 
