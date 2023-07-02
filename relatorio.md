@@ -180,7 +180,7 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 
   
 
-- [] O utilizador no seu perfil deverá poder atualizar a sua imagem de perfil.
+- [ ] O utilizador no seu perfil deverá poder atualizar a sua imagem de perfil.
 
   
 
