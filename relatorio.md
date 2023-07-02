@@ -27,6 +27,7 @@
 		- [Dataset Utilizadores](#dataset-utilizadores)
 		- [Dataset Refeições](#dataset-refeições)
 - [Modo de funcionamento](#modo-de-funcionamento)
+- [Conclusão](#conclusão)
 
 
   
@@ -167,7 +168,7 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 
   
 
-- [ ] Caso o utilizador ou administrador se esqueça da password da sua conta poderá recuperá-la através de uma funcionalidade onde é mandado um email para o email associado a sua conta, podendo, assim, alterar a password através do email mandado.
+- [ ] Caso o utilizador ou administrador se esqueça da password da sua conta poderá recuperá-la através de uma funcionalidade onde é mandado um email para o email associado à sua conta, podendo, assim, alterar a password através do email mandado.
 
   
 
@@ -175,11 +176,15 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 
   
 
-- [x] O website deverá ter um footer com todas as informações e meios possíveis de um utilizador conseguir contactar a equipa de desenvolvimentos, para problemas técnicos que possam ter com a plataforma, e a cantina, para questões relacionadas com a cantina em si.
+- [x] O website deverá ter um footer com todas as informações e meios possíveis de um utilizador conseguir contactar a equipa de desenvolvimento, para problemas técnicos que possam ter com a plataforma, e a cantina, para questões relacionadas com a cantina em si.
 
   
 
-- [x] O utilizador no seu perfil deverá poder atualizar a sua imagem de perfil, e poderá cancelar reservas em qualquer altura que preceda o dia da reserva.
+- [] O utilizador no seu perfil deverá poder atualizar a sua imagem de perfil.
+
+  
+
+- [x] O utilizador no seu perfil poderá cancelar reservas em qualquer altura que preceda o dia da reserva.
 
   
 
@@ -213,7 +218,7 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
 
   
 
-É de notar, tal como já foi dito, que estes requisitos foram feitos para nos conseguirmos orientar e, como tal, é possível que alguns dos requisitos podem não ter sido feitos, ou por questões de tempo ou porque não achamos necessários para fornecer uma melhor experiência ao utilizador.
+É de notar, tal como já foi dito, que estes requisitos foram feitos para nos conseguirmos orientar e, como tal, é possível que alguns dos requisitos podem não ter sido feitos, ou por questões de tempo ou porque não achamos que seriam necessários para fornecer uma melhor experiência ao utilizador.
 
   
 
@@ -251,7 +256,7 @@ Neste Capítulo iremos falar de como o projeto foi estruturado e mostrar o seu d
 
   
 
-Cada uma dessas partes desempenha um papel fundamental no funcionamento da plataforma, trabalhando em conjunto para a nossa plataforma poder funcionar na totalidade. A estruturação em três partes distintas permite que o projeto seja dividido em módulos independentes, facilitando o desenvolvimento, manutenção e escalabilidade da plataforma.
+Cada uma dessas partes desempenha um papel fundamental no funcionamento da plataforma, trabalhando em conjunto para poder funcionar na totalidade. A estruturação em três partes distintas permite que o projeto seja dividido em módulos independentes, facilitando o desenvolvimento, manutenção e escalabilidade da plataforma.
 
   
 
@@ -507,7 +512,7 @@ O código define várias rotas usando o objeto `router` fornecido pelo Express:
 
   
 
-Neste capítulo vamos mostrar alguns prints da interface da nossa plataforma e explicar como um cliente poderá usá-las e para que servem. A nossa plataforma tem sete páginas ao todo, onde duas servem para fazer a autenticação (páginas de login e registo), outras três são para os utilizadores (páginas de home, perfil e buy) e outras três são para os administradores (páginas de adminhome, form, edit form).
+Neste capítulo vamos mostrar alguns prints da interface da nossa plataforma. A nossa plataforma tem oito páginas distintas ao todo, onde duas servem para fazer a autenticação (páginas de login e registo), outras três são para os utilizadores (páginas de home, perfil e buy) e outras três são para os administradores (páginas de adminhome, form, edit form).
 
   
 
@@ -516,7 +521,6 @@ Neste capítulo vamos mostrar alguns prints da interface da nossa plataforma e e
 ## Páginas de Autenticação
 
   
-
   
 
 ![login](imagens/login.png  "Página de Login")
@@ -590,3 +594,13 @@ Como foi referido anteriormente, a nossa aplicação permite a adição de utili
 
 O nosso projeto está preparado para correr no docker, sendo composto por 4 containers distintos. Apenas o container da interface, chamado AppCantina está exposto para o exterior (porta 7777) de  forma a proteger a aplicação. Assim, para correr a  nossa aplicação é apenas necessárrio correr o comando:  `docker-compose up -d --build`.
 Além disso, é necessário ter algumas veriáveis de ambiente definidas num ficheiro `.env`. Estas variáveis servem para utilizar a API MailJet e correspondem à API KEY e à API SECRET, que são as chaves que permitem identificar a conta de quem está a usar a API. Por razões de segurança estes dados não são expostos.
+
+# Conclusão
+
+Concluíndo, acabamos este projeto com uma plataforma funcional, onde alunos poderão comprar refeições na cantina de forma mais rápida e eficiente e a universidade poderá ter uma ideia de quantas pessoas irão comer na cantina num dia em específico.
+
+Ao longo do desenvolvimento, foram atendidos os requisitos mínimos que definimos, como autenticação, diferentes níveis de acesso, compra de senhas, reserva de refeições e gerenciamento de usuários e refeições. Além disso, alguns requisitos extras foram implementados, tal como envio de e-mail de confirmação, upload de dados via arquivo JSON e possibilidade de seleção de semanas futuras ou passadas.
+
+Para trabalho futuro, há várias oportunidades de aprimoramento e expansão dessa plataforma. Uma possível melhoria seria a implementação de um sistema de pagamento online para a compra de senhas, oferecendo aos usuários uma opção mais conveniente e segura. Além disso, poderiam ser adicionados recursos adicionais, como notificações por e-mail ou SMS para lembretes de reservas e atualizações do menu.
+
+No geral, o projeto foi uma oportunidade valiosa para aplicar conhecimentos de engenharia web e desenvolver habilidades práticas no desenvolvimento de uma plataforma completa.
