@@ -96,7 +96,6 @@ function sendMail(req,res){
 	  })
   request
   	.then((result) => {
-      console.log(result)
   		res.redirect(req.link)
   	})
   	.catch((err) => {
@@ -104,10 +103,24 @@ function sendMail(req,res){
   	})
 }
 
-module.exports.signup = function (req, res, next) {
+module.exports.signupMail = function (req, res, next) {
     axios.post(env.authAccessPoint+"users/register", req.body)
       .then(r => {
         sendMail(req,res)
+      })
+      .catch(e => {
+        if (e.response && e.response.status === 409) {
+          res.redirect('/signup?info=exists');
+        } else {
+          next(e);
+        }
+      });
+  };
+
+  module.exports.signup = function (req, res, next) {
+    axios.post(env.authAccessPoint+"users/register", req.body)
+      .then(r => {
+        res.redirect(req.link)
       })
       .catch(e => {
         if (e.response && e.response.status === 409) {

@@ -5,9 +5,9 @@ var logger = require('morgan');
 const cors = require('cors');
 
 
-//var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 var mongoURL= process.env.MONGODB_URL;
-var mongoURL='mongodb://127.0.0.1/cantina';
+//var mongoURL='mongodb://127.0.0.1/cantina';
 mongoose.connect(mongoURL,{useNewUrlParser:true,useUnifiedTopology:true});
 var db=mongoose.connection;
 db.on('error',console.error.bind(console,'MongoDB connection error ...'));

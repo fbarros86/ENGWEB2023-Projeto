@@ -229,10 +229,10 @@ router.post('/signup',function(req,res,next){
   req.link = '/?info=create';
   req.body.tipo = "NE";
   next()
-},auth.signup);
+},auth.signupMail);
 
 router.post('/form',auth.verifyAuthAdmin,function(req,res,next){
-  req.link = '/form?info=create';
+  req.link = '/form';
   next()
 },auth.signup);
 
