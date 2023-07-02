@@ -7,8 +7,8 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy
 
-var mongoose = require('mongoose');
-//var mongoURL= process.env.MONGODB_URL;
+//var mongoose = require('mongoose');
+var mongoURL= process.env.MONGODB_URL;
 var mongoURL='mongodb://127.0.0.1/cantina';
 mongoose.connect(mongoURL, 
       { useNewUrlParser: true,
