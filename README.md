@@ -165,8 +165,13 @@ O objetivo deste trabalho é desenvolver uma plataforma com dois tipos distintos
   
 
 - [x] Se o utilizador tiver sido registado através da página de registo este será considerado "Not Student"
-
   
+
+
+
+- [x] Ter preços diferentes para os tipos de utilizador diferentes.
+
+
 
 - [ ] Caso o utilizador ou administrador se esqueça da password da sua conta poderá recuperá-la através de uma funcionalidade onde é mandado um email para o email associado à sua conta, podendo, assim, alterar a password através do email mandado.
 
