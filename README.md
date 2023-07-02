@@ -1,4 +1,4 @@
-| Número | Nome |
+| Número | Nome             |
 | 96434  | Francisca Barros |
 | 93870  | Rafael Correia   |
 | 96361  | Vasco Oliveira   |
